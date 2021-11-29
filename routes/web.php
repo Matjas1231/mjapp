@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+# workers
+Route::get('/workers', [WorkerController::class, 'list'])->name('worker.list');
+
+
+
+
+
 
 Auth::routes();
 

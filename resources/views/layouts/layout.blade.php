@@ -56,7 +56,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('worker.list') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Lista pracowników</span></a>
             </li>

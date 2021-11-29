@@ -15,8 +15,8 @@ class CreateComputersTable extends Migration
     {
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
-            $table->string('brand', 60);
-            $table->string('model', 100);
+            $table->string('brand', 60)->index();
+            $table->string('model', 100)->index();
             $table->enum('type', ['PC', 'Laptop', 'AiO', 'Terminal']);
             $table->string('processor', 60);
             $table->string('motherboard', 100);
