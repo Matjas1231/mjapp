@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ComputerTypesSeeder::class,
             PeripheralTypesSeeder::class,
             WorkersSeeder::class,
+            ComputersSeeder::class,
         ]);
     }
 }
