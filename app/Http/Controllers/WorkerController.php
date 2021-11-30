@@ -23,7 +23,6 @@ class WorkerController extends Controller
     public function show(int $workerId)
     {
         $worker = $this->workerRepository->get($workerId);
-
         return view('worker.show', ['worker' => $worker]);
     }
 }
