@@ -20,16 +20,33 @@ class ComputerTypesSeeder extends Seeder
 
         DB::table('computer_types')->truncate();
 
-        for ($j = 0; $j < 1; $j++) {
             $computerTypes = [];
-            for ($i = 0; $i < 6; $i++) {
-                $computerTypes[] = [
-                    'type' => $faker->word(),
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now(),
-                ];
-            }
-        }
+
+            $computerTypes[] = [
+                'type' => 'PC',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+
+            $computerTypes[] = [
+                'type' => 'Laptop',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+
+            $computerTypes[] = [
+                'type' => 'AiO',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+
+            $computerTypes[] = [
+                'type' => 'Terminal',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+
+
         DB::table('computer_types')->insert($computerTypes);
     }
 }
