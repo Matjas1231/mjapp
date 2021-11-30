@@ -22,7 +22,7 @@ class CreateComputersTable extends Migration
             $table->string('motherboard', 100);
             $table->string('ram', 200);
             $table->string('description', 1000);
-            $table->integer('worker_id', false, true);
+            $table->integer('worker_id', false, true)->nullable();
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
             $table->timestamps();

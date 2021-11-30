@@ -19,6 +19,7 @@
 {{-- Sekcja komputerów --}}
 <div>
     <h1 class="h3 mb-0 text-gray-800">Komputery</h1>
+
     @if (count($worker->computers) > 0)
         <table class="table table-striped">
             <thead>
@@ -59,24 +60,34 @@
 <div>
     <h1 class="h3 mb-0 text-gray-800">Peryferia</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>1</th>
-                <th>1</th>
-                <th>1</th>
-                <th>1</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-            </tr>
-        </tbody>
-    </table>
+
+    @if (count($worker->peripherals) > 0)
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Typ</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($worker->peripherals as $peripheral)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $peripheral->brand }}</td>
+                        <td>{{ $peripheral->model }}</td>
+                        <td>{{ $peripheral->peripheralType->type }}</td>
+                        <td>Akcja</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        Brak urządzeń peryferyjnych
+    @endif
+
 </div>
 
 @endsection
