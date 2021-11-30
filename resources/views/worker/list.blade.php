@@ -12,22 +12,28 @@
     <thead>
         <tr>
                 <th>Lp.</th>
+                <th>Id.</th>
                 <th>Imię</th>
                 <th>Nazwisko</th>
-                <th>Stanowisko</th>
                 <th>Dział</th>
+                <th>Telefon</th>
                 <th>Akcja</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
+        @foreach ($workers as $worker)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $worker->id }}</td>
+                <td>{{ $worker->name }}</td>
+                <td>{{ $worker->surname }}</td>
+                <td>{{ $worker->department->name }}</td>
+                <td>{{ $worker->phone }}</td>
+                <td>
+                    <a href="{{ route('worker.show', ['workerId' => $worker->id]) }}">Szczegóły</a>
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
 

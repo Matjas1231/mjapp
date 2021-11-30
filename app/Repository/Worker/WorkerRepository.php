@@ -19,4 +19,9 @@ class WorkerRepository implements WorkerRepositoryInterface
     {
         return $this->workerModel->get();
     }
+
+    public function get(int $id)
+    {
+        return $this->workerModel->find($id);
+    }
 }

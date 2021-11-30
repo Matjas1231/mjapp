@@ -26,7 +26,9 @@ class WorkersSeeder extends Seeder
                 $workers[] = [
                     'name' => $faker->name(),
                     'surname' => $faker->name(),
+                    'position' => $faker->name(),
                     'department_id' => $faker->numberBetween(1,4),
+                    'phone' => $faker->phoneNumber(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];

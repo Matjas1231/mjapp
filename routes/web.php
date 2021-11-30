@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 # workers
 Route::get('/workers', [WorkerController::class, 'list'])->name('worker.list');
+Route::get('/workers/{workerId}/show', [WorkerController::class, 'show'])->name('worker.show');
 
 
 

@@ -17,7 +17,9 @@ class CreateWorkersTable extends Migration
             $table->id();
             $table->string('name', 50)->index();
             $table->string('surname', 60)->index();
+            $table->string('position', 60);
             $table->integer('department_id', false, true);
+            $table->string('phone', 12);
             $table->timestamps();
         });
     }
