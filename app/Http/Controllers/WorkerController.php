@@ -19,4 +19,11 @@ class WorkerController extends Controller
         $workers = $this->workerRepository->all();
         return view('worker.list', ['workers' => $workers]);
     }
+
+    public function show(int $workerId)
+    {
+        $worker = $this->workerRepository->get($workerId);
+
+        return view('worker.show', ['worker' => $worker]);
+    }
 }
