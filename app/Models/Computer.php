@@ -15,4 +15,8 @@ class Computer extends Model
         return $this->belongsTo(Worker::class);
     }
 
+    public function computerType()
+    {
+        return $this->belongsTo(ComputerTypes::class, 'type_id', 'id');
+    }
 }

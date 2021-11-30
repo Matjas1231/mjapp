@@ -17,12 +17,14 @@ class CreateComputersTable extends Migration
             $table->id();
             $table->string('brand', 60)->index();
             $table->string('model', 100)->index();
-            $table->enum('type', ['PC', 'Laptop', 'AiO', 'Terminal']);
+            $table->integer('type_id', false, false);
             $table->string('processor', 60);
             $table->string('motherboard', 100);
             $table->string('ram', 200);
             $table->string('description', 1000);
             $table->integer('worker_id', false, true);
+            $table->string('ip_address')->default('Dynamic');
+            $table->string('computer_name');
             $table->timestamps();
         });
     }

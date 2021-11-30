@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class PeripheralTypesSeeder extends Seeder
+class ComputerTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,18 +18,18 @@ class PeripheralTypesSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('peripheral_types')->truncate();
+        DB::table('computer_types')->truncate();
 
         for ($j = 0; $j < 1; $j++) {
-            $peripherals = [];
+            $computerTypes = [];
             for ($i = 0; $i < 6; $i++) {
-                $peripherals[] = [
+                $computerTypes[] = [
                     'type' => $faker->word(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];
             }
         }
-        DB::table('peripheral_types')->insert($peripherals);
+        DB::table('computer_types')->insert($computerTypes);
     }
 }
