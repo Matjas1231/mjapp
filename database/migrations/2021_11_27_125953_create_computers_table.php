@@ -25,6 +25,7 @@ class CreateComputersTable extends Migration
             $table->integer('worker_id', false, true)->nullable();
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
+            $table->date('date_of_buy')->nullable();
             $table->timestamps();
         });
     }
