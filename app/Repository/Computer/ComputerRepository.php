@@ -20,8 +20,8 @@ class ComputerRepository implements ComputerRepositoryInterface
         return $this->computerModel->get();
     }
 
-    // public function get(int $id)
-    // {
-    //     return $this->workerModel->find($id);
-    // }
+    public function get(int $id)
+    {
+        return $this->computerModel->find($id);
+    }
 }

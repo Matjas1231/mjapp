@@ -6,5 +6,5 @@ namespace App\Repository;
 interface ComputerRepositoryInterface
 {
     public function all();
-    // public function get(int $id);
+    public function get(int $id);
 }

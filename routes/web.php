@@ -26,6 +26,7 @@ Route::get('/workers/{workerId}/show', [WorkerController::class, 'show'])->name(
 
 # computers
 Route::get('/computers', [ComputerController::class, 'list'])->name('computer.list');
+Route::get('/computers/{computerId}/show', [ComputerController::class, 'show'])->name('computer.show');
 
 
 
