@@ -51,7 +51,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Pracownicy
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -60,6 +60,45 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Lista pracowników</span></a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Komputery
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('computer.list') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Lista komputerów</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Peryferia
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('worker.list') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Lista peryferiów</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
