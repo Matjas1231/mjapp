@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\ComputerServiceProvider;
 use App\Providers\WorkerServiceProvider;
 
 return [
@@ -178,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         WorkerServiceProvider::class,
+        ComputerServiceProvider::class,
 
     ],
 
