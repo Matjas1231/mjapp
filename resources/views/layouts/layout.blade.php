@@ -61,6 +61,12 @@
                     <span>Lista pracowników</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('worker.create') }}">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Dodaj pracownika</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Providers\ComputerServiceProvider;
+use App\Providers\DepartmentServiceProvider;
 use App\Providers\WorkerServiceProvider;
 
 return [
@@ -180,6 +181,7 @@ return [
 
         WorkerServiceProvider::class,
         ComputerServiceProvider::class,
+        DepartmentServiceProvider::class,
 
     ],
 

@@ -20,11 +20,19 @@ Route::get('/', function () {
 })->name('dashboard');
 
 
-# workers
+// WORKERS
 Route::get('/workers', [WorkerController::class, 'list'])->name('worker.list');
 Route::get('/workers/{workerId}/show', [WorkerController::class, 'show'])->name('worker.show');
 
-# computers
+Route::get('/workers/create', [WorkerController::class, 'create'])->name('worker.create');
+Route::post('/workers/store', [WorkerController::class, 'store'])->name('worker.store');
+
+Route::get('/workers/{workerId}/edit', [WorkerController::class, 'edit'])->name('worker.edit');
+Route::post('/workers/update', [WorkerController::class, 'update'])->name('worker.update');
+
+
+
+// COMPUTERS
 Route::get('/computers', [ComputerController::class, 'list'])->name('computer.list');
 Route::get('/computers/{computerId}/show', [ComputerController::class, 'show'])->name('computer.show');
 
