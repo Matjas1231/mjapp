@@ -31,6 +31,7 @@ class PeripheralsSeeder extends Seeder
                     'type_id' => $faker->numberBetween(1, PeripheralType::all()->count()),
                     'description' => $faker->words(30, true),
                     'worker_id' => $faker->numberBetween(1, Worker::all()->count()),
+                    'date_of_buy' => Carbon::now(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];

@@ -6,7 +6,17 @@
 @section('content')
 
 
-ass
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>1</th>
+            <th>1</th>
+            <th>1</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+    </thead>
+</table>
 
 
 @endsection

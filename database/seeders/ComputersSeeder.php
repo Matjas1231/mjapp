@@ -36,6 +36,7 @@ class ComputersSeeder extends Seeder
                     'ram' => $faker->words(2, true),
                     'worker_id' => $faker->numberBetween(1, Worker::all()->count()),
                     'computer_name' => $faker->word(),
+                    'date_of_buy' => Carbon::now(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];
