@@ -20,4 +20,10 @@ class ComputerController extends Controller
 
         return view('computer.list', ['computers' => $computers]);
     }
+
+    public function show(int $computerId)
+    {
+        $computer = $this->computerRepository->get($computerId);
+        return view('computer.show', ['computer' => $computer]);
+    }
 }
