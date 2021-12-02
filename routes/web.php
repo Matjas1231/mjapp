@@ -30,6 +30,7 @@ Route::post('/workers/store', [WorkerController::class, 'store'])->name('worker.
 Route::get('/workers/{workerId}/edit', [WorkerController::class, 'edit'])->name('worker.edit');
 Route::post('/workers/update', [WorkerController::class, 'update'])->name('worker.update');
 
+Route::get('/workers/{workerId}/delete', [WorkerController::class, 'delete'])->name('worker.delete');
 
 
 // COMPUTERS

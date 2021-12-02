@@ -26,7 +26,7 @@ class WorkerController extends Controller
 
     public function show(int $workerId)
     {
-        $worker = $this->workerRepository->get($workerId);
+        $worker = $this->workerRepository->getWorker($workerId);
         return view('worker.show', ['worker' => $worker]);
     }
 
@@ -54,7 +54,7 @@ class WorkerController extends Controller
 
     public function edit(int $workerId)
     {
-        $worker = $this->workerRepository->get($workerId);
+        $worker = $this->workerRepository->getWorker($workerId);
         $departments = $this->departmentRepository->all();
         return view('worker.edit', ['worker' => $worker, 'departments' => $departments]);
     }
@@ -63,6 +63,14 @@ class WorkerController extends Controller
     {
         $workerData = $request->input();
         $this->workerRepository->update($workerData);
+
+        return redirect()
+                ->route('worker.list');
+    }
+
+    public function delete(int $workerId)
+    {
+        $this->workerRepository->delete($workerId);
 
         return redirect()
                 ->route('worker.list');
