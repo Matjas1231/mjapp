@@ -39,11 +39,11 @@ class WorkerController extends Controller
     public function store(Request $request)
     {
         $workerData = $request->input();
+        $workerId = $this->workerRepository->saveAndReturnId($workerData);
 
-        $this->workerRepository->save($workerData);
 
         return redirect()
-                ->route('worker.list');
+                ->route('worker.show', ['workerId' => $workerId]);
     }
 
     public function edit(int $workerId)
@@ -59,7 +59,7 @@ class WorkerController extends Controller
         $this->workerRepository->update($workerData);
 
         return redirect()
-                ->route('worker.list');
+                ->route('worker.show',['workerId' => $request['id']]);
     }
 
     public function delete(int $workerId)

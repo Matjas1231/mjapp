@@ -27,10 +27,10 @@
                 <td>{{ $worker->id }}</td>
                 <td>{{ $worker->name }}</td>
                 <td>{{ $worker->surname }}</td>
-                @if (!empty($worker->department->name))
+                @if (!is_null($worker->department_id))
                     <td>{{ $worker->department->name }}</td>
                 @else
-                    <td><b>Nieprzypisany</b></td>
+                    <td>{{ NULL }}</td>
                 @endif
 
                 <td>{{ $worker->phone }}</td>

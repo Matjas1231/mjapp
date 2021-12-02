@@ -6,6 +6,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class ComputerTypesSeeder extends Seeder
 {
@@ -17,8 +18,9 @@ class ComputerTypesSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-
+        Schema::disableForeignKeyConstraints();
         DB::table('computer_types')->truncate();
+        Schema::enableForeignKeyConstraints();
 
             $computerTypes = [];
 

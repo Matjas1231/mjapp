@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
@@ -47,8 +48,23 @@ Route::get('/departments/{departmentId}/delete', [DepartmentController::class, '
 
 
 // COMPUTERS
+
+Route::get('/computers/types', [ComputerTypesController::class, 'list'])->name('computer.type.list');
+Route::get('/computers/types/{computerTypeId}/edit', [ComputerTypesController::class, 'edit'])->name('computer.type.edit');
+Route::post('/computers/types/update', [ComputerTypesController::class, 'update'])->name('computer.type.update');
+
+Route::get('computers/types/create', [ComputerTypesController::class, 'create'])->name('computer.type.create');
+Route::post('/comptuers/types/store', [ComputerTypesController::class, 'store'])->name('computer.type.store');
+
+
+Route::get('computers/types/{computerTypeId}/delete', [ComputerTypesController::class, 'delete'])->name('computer.type.delete');
+
+
+
 Route::get('/computers', [ComputerController::class, 'list'])->name('computer.list');
 Route::get('/computers/{computerId}/show', [ComputerController::class, 'show'])->name('computer.show');
+
+
 
 
 
