@@ -57,7 +57,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('worker.list') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-address-book"></i>
                     <span>Lista pracowników</span></a>
             </li>
 
@@ -65,6 +65,12 @@
                 <a class="nav-link" href="{{ route('worker.create') }}">
                     <i class="fas fa-user-plus"></i>
                     <span>Dodaj pracownika</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('department.list') }}">
+                    <i class="fas fa-building"></i>
+                    <span>Lista działów</span></a>
             </li>
 
             <!-- Divider -->

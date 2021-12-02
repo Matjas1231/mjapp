@@ -5,8 +5,7 @@
 
 @section('content')
 
-
-<form method="POST" action={{ route('worker.store')}}>
+<form method="POST" action="{{ route('worker.store')}}">
     @csrf
     <div class='form-group'>
         <label for="name">Imię</label>
@@ -18,7 +17,7 @@
     </div>
     <div class='form-group'>
         <label for="name">Stanowisko</label>
-        <input type="text" class="form-control" id="position" name="position" placeholder="Podaj stanowisko">
+        <input type="text" class="form-control" id="position" name="position" placeholder="Podaj stanowisko" required>
     </div>
     <div class='form-group'>
         <label for="department">Wybierz dział</label>
@@ -32,7 +31,7 @@
         <label for="name">Numer telefonu</label>
         <input type="text" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" required>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
 
 

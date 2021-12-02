@@ -20,16 +20,25 @@ class DepartmentsSeeder extends Seeder
 
         DB::table('departments')->truncate();
 
+        $defaultDepartment = [
+            'name' => 'aaaaaaaaaaaaaa',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ];
+
+        DB::table('departments')->insert($defaultDepartment);
+
         for ($j = 0; $j < 1; $j++) {
-            $workers = [];
+            $department = [];
             for ($i = 0; $i < 4; $i++) {
-                $workers[] = [
+                $department[] = [
                     'name' => $faker->word(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];
             }
         }
-        DB::table('departments')->insert($workers);
+
+        DB::table('departments')->insert($department);
     }
 }

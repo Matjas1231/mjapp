@@ -38,13 +38,7 @@ class WorkerController extends Controller
 
     public function store(Request $request)
     {
-        $workerData = [
-            'name' => $request['name'],
-            'surname' => $request['surname'],
-            'position' => $request['position'],
-            'department_id' => $request['department_id'],
-            'phone' => $request['phone'],
-        ];
+        $workerData = $request->input();
 
         $this->workerRepository->save($workerData);
 

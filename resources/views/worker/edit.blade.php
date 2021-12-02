@@ -40,7 +40,7 @@
         <label for="name">Numer telefonu</label>
         <input type="text" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" value="{{ $worker->phone }}" required>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
 </form>
 
 
