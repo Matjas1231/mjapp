@@ -27,7 +27,12 @@
                 <td>{{ $worker->id }}</td>
                 <td>{{ $worker->name }}</td>
                 <td>{{ $worker->surname }}</td>
-                <td>{{ $worker->department->name }}</td>
+                @if (!empty($worker->department->name))
+                    <td>{{ $worker->department->name }}</td>
+                @else
+                    <td><b>Nieprzypisany</b></td>
+                @endif
+
                 <td>{{ $worker->phone }}</td>
                 <td>
                     <a href="{{ route('worker.show', ['workerId' => $worker->id]) }}">Szczegóły</a>

@@ -28,7 +28,6 @@
             <td>{{ $computer->computerType->type }}</td>
             <td>{{ $computer->ip_address }}</td>
             <td>{{ $computer->computer_name }}</td>
-            {{-- <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td> --}}
             @if (!empty($computer->worker->name))
                 <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td>
             @else

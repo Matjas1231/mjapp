@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,18 @@ Route::get('/workers/{workerId}/edit', [WorkerController::class, 'edit'])->name(
 Route::post('/workers/update', [WorkerController::class, 'update'])->name('worker.update');
 
 Route::get('/workers/{workerId}/delete', [WorkerController::class, 'delete'])->name('worker.delete');
+
+
+// DEPARTMENTS
+Route::get('/departments', [DepartmentController::class, 'list'])->name('department.list');
+
+Route::get('/departments/create', [DepartmentController::class, 'create'])->name('department.create');
+Route::post('/departments/store', [DepartmentController::class, 'store'])->name('department.store');
+
+Route::get('departments/{departmentId}/edit', [DepartmentController::class, 'edit'])->name('department.edit');
+Route::post('/departments/update', [DepartmentController::class, 'update'])->name('department.update');
+
+Route::get('/departments/{departmentId}/delete', [DepartmentController::class, 'delete'])->name('department.delete');
 
 
 // COMPUTERS

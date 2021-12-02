@@ -18,7 +18,8 @@ class CreateWorkersTable extends Migration
             $table->string('name', 50)->index();
             $table->string('surname', 60)->index();
             $table->string('position', 60);
-            $table->integer('department_id', false, true);
+            // $table->foreignId('department_id')->nullable()->references('id')->on('departments')->onDelete('set null');
+            $table->foreignId('department_id')->default(1)->constrained('departments')->onDelete('set default');
             $table->string('phone', 12);
             $table->timestamps();
         });
