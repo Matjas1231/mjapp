@@ -19,7 +19,7 @@ class CreatePeripheralsTable extends Migration
             $table->string('model', 100)->nullable();
             $table->integer('type_id', false, false);
             $table->text('description')->nullable();
-            $table->integer('worker_id', false, true)->nullable();
+            $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
             $table->date('date_of_buy')->nullable();
             $table->timestamps();
         });

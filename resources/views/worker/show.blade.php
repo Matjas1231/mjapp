@@ -13,6 +13,7 @@
     <p>Dział: <b>{{ $worker->department->name }}</b></p>
     <p>Numer telefonu: <b>{{ $worker->phone }}</b></p>
     <a href="{{ route('worker.edit', ['workerId' => $worker->id]) }}" class="btn btn-primary"> Edytuj </a>
+    <a href="{{ route('worker.delete', ['workerId' => $worker->id]) }}" class="btn btn-danger"> Usuń </a>
 </div>
 
 <hr>

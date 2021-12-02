@@ -28,7 +28,14 @@
             <td>{{ $computer->computerType->type }}</td>
             <td>{{ $computer->ip_address }}</td>
             <td>{{ $computer->computer_name }}</td>
-            <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td>
+            {{-- <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td> --}}
+            @if (!empty($computer->worker->name))
+                <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td>
+            @else
+              <td>
+                <b>Nieprzypisany</b>
+              </td>
+            @endif
             <td>
                 <a href="{{ route('computer.show', ['computerId' => $computer->id]) }}">Szczegóły</a>
             </td>

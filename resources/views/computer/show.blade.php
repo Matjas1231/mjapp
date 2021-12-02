@@ -15,7 +15,15 @@
         <p>Adres IP: <b>{{ $computer->ip_address }}</b></p>
         <p>Nazwa: <b>{{ $computer->computer_name }}</b></p>
         <p>Data zakupu: <b>{{ $computer->date_of_buy }}</b></p>
-        <p>Pracownik: <b>{{ $computer->worker->name }} {{ $computer->worker->surname }}</b></p>
+
+        <p>Pracownik:
+            @if(empty($computer->worker->name))
+                <b>Brak pracownika</b>
+            @else
+                <b>{{ $computer->worker->name }} {{ $computer->worker->surname }}</b>
+            @endif
+
+        </p>
     </div>
 
 @endsection

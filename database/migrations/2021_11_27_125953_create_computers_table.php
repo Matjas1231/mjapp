@@ -22,10 +22,10 @@ class CreateComputersTable extends Migration
             $table->string('motherboard', 100);
             $table->string('ram', 200);
             $table->text('description')->nullable();
-            $table->integer('worker_id', false, true)->nullable();
+            $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
-            $table->date('date_of_buy')->nullable();
+            $table->date('date_of_buy')->default('Nieprzypisany');
             $table->timestamps();
         });
     }

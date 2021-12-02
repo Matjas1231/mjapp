@@ -21,7 +21,7 @@ class WorkerRepository implements WorkerRepositoryInterface
         return $this->workerModel->get();
     }
 
-    public function get(int $id)
+    public function getWorker(int $id)
     {
         return $this->workerModel->find($id);
     }
@@ -50,5 +50,11 @@ class WorkerRepository implements WorkerRepositoryInterface
 
         // return $worker->fill($workerData)->save();
         return $worker->save();
+    }
+
+    public function delete(int $id)
+    {
+        $worker = $this->workerModel->find($id);
+        return $worker->delete();
     }
 }
