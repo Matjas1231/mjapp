@@ -6,6 +6,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class DepartmentsSeeder extends Seeder
 {
@@ -20,13 +21,14 @@ class DepartmentsSeeder extends Seeder
 
         DB::table('departments')->truncate();
 
-        $defaultDepartment = [
-            'name' => 'aaaaaaaaaaaaaa',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ];
+        // $defaultDepartment = [
+        //     'id' => 0,
+        //     'name' => 'aaaaaaaaaaaaaa',
+        //     'created_at' => Carbon::now(),
+        //     'updated_at' => Carbon::now(),
+        // ];
 
-        DB::table('departments')->insert($defaultDepartment);
+
 
         for ($j = 0; $j < 1; $j++) {
             $department = [];
@@ -38,6 +40,7 @@ class DepartmentsSeeder extends Seeder
                 ];
             }
         }
+        // DB::table('departments')->insert($defaultDepartment);
 
         DB::table('departments')->insert($department);
     }

@@ -25,7 +25,8 @@
     <div class='form-group'>
         <label for="department">Wybierz dział</label>
 
-        <select class="form-control" id='department_id' name='department_id' required>
+        <select class="form-control" id='department_id' name='department_id'>
+            <option value="{{ NULL }}"></option>
             @foreach ($departments as $department)
                 @if ($department->id == $worker->department_id)
                     <option value="{{ $department->id }}" selected>{{ $department->name }}</option>

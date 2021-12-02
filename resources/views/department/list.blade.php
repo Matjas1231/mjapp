@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 @section('title')Lista działów @endsection
 
-@section('page-heading') Lista działów
-
-<br>
-<a href="{{ route('department.create') }}"class="btn btn-primary">Dodaj dział</a>
+@section('page-heading')
+    Lista działów
+    <br>
+    <a href="{{ route('department.create') }}"class="btn btn-primary">Dodaj dział</a>
 @endsection
 
 @section('content')

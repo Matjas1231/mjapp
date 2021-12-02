@@ -7,7 +7,7 @@ interface WorkerRepositoryInterface
 {
     public function all();
     public function getWorker(int $id);
-    public function save(array $workerData);
+    public function saveAndReturnId(array $workerData);
     public function update(array $workerData);
     public function delete(int $id);
 }

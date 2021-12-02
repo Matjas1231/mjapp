@@ -10,7 +10,12 @@
     <p>Imię: <b>{{ $worker->name }}</b></p>
     <p>Nazwisko: <b>{{ $worker->surname }}</b></p>
     <p>Stanowisko: <b>{{ $worker->position }}</b></p>
-    <p>Dział: <b>{{ $worker->department->name }}</b></p>
+    @if (!is_null($worker->department_id))
+        <p>Dział: <b>{{ $worker->department->name }}</b></p>
+    @else
+    <p>Dział: <b>Nieprzypisany</b></p>
+    @endif
+
     <p>Numer telefonu: <b>{{ $worker->phone }}</b></p>
     <a href="{{ route('worker.edit', ['workerId' => $worker->id]) }}" class="btn btn-primary"> Edytuj </a>
     <a href="{{ route('worker.delete', ['workerId' => $worker->id]) }}" class="btn btn-danger"> Usuń </a>

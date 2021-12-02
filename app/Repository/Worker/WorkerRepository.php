@@ -26,7 +26,7 @@ class WorkerRepository implements WorkerRepositoryInterface
         return $this->workerModel->find($id);
     }
 
-    public function save(array $workerData)
+    public function saveAndReturnId(array $workerData)
     {
         $worker = $this->workerModel->newInstance();
         $worker->name = $workerData['name'];
@@ -34,8 +34,9 @@ class WorkerRepository implements WorkerRepositoryInterface
         $worker->position = $workerData['position'];
         $worker->department_id = $workerData['department_id'];
         $worker->phone = $workerData['phone'];
+        $worker->save();
 
-        return $worker->save();
+        return $worker->id;
     }
 
     public function update(array $workerData)
@@ -46,9 +47,7 @@ class WorkerRepository implements WorkerRepositoryInterface
         $worker['position'] = $workerData['position'];
         $worker['department_id'] = $workerData['department_id'];
         $worker['phone'] = $workerData['phone'];
-        $worker['updated_at'] = Carbon::now();
 
-        // return $worker->fill($workerData)->save();
         return $worker->save();
     }
 
