@@ -89,6 +89,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('computer.create') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Dodaj komputer</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('computer.type.list') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Lista typów</span></a>

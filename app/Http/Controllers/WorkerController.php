@@ -39,7 +39,7 @@ class WorkerController extends Controller
     public function store(Request $request)
     {
         $workerData = $request->input();
-        $workerId = $this->workerRepository->saveAndReturnId($workerData);
+        $workerId = $this->workerRepository->storeAndReturnId($workerData);
 
 
         return redirect()

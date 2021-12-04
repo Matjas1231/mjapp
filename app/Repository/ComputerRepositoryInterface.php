@@ -7,4 +7,5 @@ interface ComputerRepositoryInterface
 {
     public function all();
     public function get(int $id);
+    public function storeAndReturnId(array $computerData);
 }

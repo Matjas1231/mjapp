@@ -47,22 +47,24 @@ Route::post('/departments/update', [DepartmentController::class, 'update'])->nam
 Route::get('/departments/{departmentId}/delete', [DepartmentController::class, 'delete'])->name('department.delete');
 
 
-// COMPUTERS
-
+// COMPUTERS TYPES
 Route::get('/computers/types', [ComputerTypesController::class, 'list'])->name('computer.type.list');
+
 Route::get('/computers/types/{computerTypeId}/edit', [ComputerTypesController::class, 'edit'])->name('computer.type.edit');
 Route::post('/computers/types/update', [ComputerTypesController::class, 'update'])->name('computer.type.update');
 
-Route::get('computers/types/create', [ComputerTypesController::class, 'create'])->name('computer.type.create');
+Route::get('/computers/types/create', [ComputerTypesController::class, 'create'])->name('computer.type.create');
 Route::post('/comptuers/types/store', [ComputerTypesController::class, 'store'])->name('computer.type.store');
 
-
-Route::get('computers/types/{computerTypeId}/delete', [ComputerTypesController::class, 'delete'])->name('computer.type.delete');
-
+Route::get('/computers/types/{computerTypeId}/delete', [ComputerTypesController::class, 'delete'])->name('computer.type.delete');
 
 
+// COMPUTERS
 Route::get('/computers', [ComputerController::class, 'list'])->name('computer.list');
 Route::get('/computers/{computerId}/show', [ComputerController::class, 'show'])->name('computer.show');
+
+Route::get('/computers/create', [ComputerController::class, 'create'])->name('computer.create');
+Route::post('computers/store', [ComputerController::class, 'store'])->name('computer.store');
 
 
 

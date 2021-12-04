@@ -3,5 +3,60 @@
 @section('title')Dodawanie komputera @endsection
 
 @section('content')
-    sss
+
+
+<form method="POST" action="{{ route('computer.store') }}">
+    @csrf
+    <div class='form-group'>
+        <label for="brand">Marka</label>
+        <input type="text" class="form-control" id="brand" name="brand" placeholder="Podaj markę" required>
+    </div>
+    <div class='form-group'>
+        <label for="model">Model</label>
+        <input type="text" class="form-control" id="model" name="model" placeholder="Podaj model" required>
+    </div>
+    <div class='form-group'>
+        <label for="brand">Typ</label>
+        <select class="form-control" id="type_id" name="type_id">
+            <option value="{{ NULL }}"></option>
+            @foreach ($types as $type)
+                <option value="{{ $type->id }}">{{ $type->type }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class='form-group'>
+        <label for="processor">Procesor</label>
+        <input type="text" class="form-control" id="processor" name="processor" placeholder="Podaj procesor" required>
+    </div>
+    <div class='form-group'>
+        <label for="motherboard">Płyta główna</label>
+        <input type="text" class="form-control" id="motherboard" name="motherboard" placeholder="Podaj płytę główną" required>
+    </div>
+    <div class='form-group'>
+        <label for="ram">Pamięć RAM</label>
+        <input type="text" class="form-control" id="ram" name="ram" placeholder="Podaj wielkość i rodzaj pamięci" required>
+    </div>
+    <div class='form-group'>
+        <label for="description">Dodatkowe informacje</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Podaj dodatkowe informacje">
+    </div>
+    <div class='form-group'>
+        <label for="worker_id">Wybierz pracownika</label>
+        <select class="form-control" id="worker_id" name="worker_id">
+            <option value={{ NULL }}></option>
+            @foreach ($workers as $worker)
+                <option value={{ $worker->id }}>{{ $worker->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class='form-group'>
+        <label for="ip_address">Adres IP</label>
+        <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="Podaj adres IP" value="Dynamic" required>
+    </div>
+    <div class='form-group'>
+        <label for="computer_name">Nazwa komputera</label>
+        <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Zapisz</button>
+</form>
 @endsection
