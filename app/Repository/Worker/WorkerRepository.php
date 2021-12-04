@@ -26,7 +26,7 @@ class WorkerRepository implements WorkerRepositoryInterface
         return $this->workerModel->find($id);
     }
 
-    public function saveAndReturnId(array $workerData)
+    public function storeAndReturnId(array $workerData)
     {
         $worker = $this->workerModel->newInstance();
         $worker->name = $workerData['name'];
