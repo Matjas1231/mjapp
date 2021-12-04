@@ -2,6 +2,8 @@
 
 @section('title')Dodawanie komputera @endsection
 
+@section('page-heading')Dodawanie komputera @endsection
+
 @section('content')
 
 

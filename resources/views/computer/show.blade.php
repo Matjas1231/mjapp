@@ -8,7 +8,7 @@
         <p>Marka: <b>{{ $computer->brand }}</b></p>
         <p>Model: <b>{{ $computer->model }}</b></p>
         @if (!empty($computer->type_id))
-            <b><td>{{ $computer->computerType->type }}</td></b>
+            Typ: <b><td>{{ $computer->computerType->type }}</td></b>
         @else
             <td>Typ: <b>Brak</b></td>
         @endif
@@ -28,6 +28,7 @@
             @endif
 
         </p>
+        <a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a>
     </div>
 
 @endsection
