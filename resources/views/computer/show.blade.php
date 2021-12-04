@@ -7,7 +7,11 @@
     <div>
         <p>Marka: <b>{{ $computer->brand }}</b></p>
         <p>Model: <b>{{ $computer->model }}</b></p>
-        <p>Typ: <b>{{ $computer->computerType->type }}</b></p>
+        @if (!empty($computer->type_id))
+            <b><td>{{ $computer->computerType->type }}</td></b>
+        @else
+            <td>Typ: <b>Brak</b></td>
+        @endif
         <p>Procesor: <b>{{ $computer->processor }}</b></p>
         <p>Płyta główna: <b>{{ $computer->motherboard }}</b></p>
         <p>RAM: <b>{{ $computer->ram }}</b></p>

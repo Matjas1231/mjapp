@@ -25,14 +25,18 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $computer->brand }}</td>
             <td>{{ $computer->model }}</td>
-            <td>{{ $computer->computerType->type }}</td>
-            <td>{{ $computer->ip_address }}</td>
+            @if (!is_null($computer->type_id))
+                <td>{{ $computer->computerType->type }}</td>
+            @else
+                <td>{{ NULL }}</td>
+            @endif
+            <td>{{ $computer->p_address }}</td>
             <td>{{ $computer->computer_name }}</td>
-            @if (!empty($computer->worker->name))
+            @if (!is_null($computer->worker_id))
                 <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td>
             @else
               <td>
-                <b>Nieprzypisany</b>
+                <b>{{ NULL }}</b>
               </td>
             @endif
             <td>

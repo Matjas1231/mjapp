@@ -19,7 +19,7 @@ class CreateComputersTable extends Migration
             $table->string('brand', 60)->index();
             $table->string('model', 100)->index();
             // $table->integer('type_id', false, false);
-            $table->foreignId('type_id')->default(1)->constrained('computer_types')->onDelete('set default');
+            $table->foreignId('type_id')->nullable()->references('id')->on('computer_types')->onDelete('set null');
             $table->string('processor', 60);
             $table->string('motherboard', 100);
             $table->string('ram', 200);
