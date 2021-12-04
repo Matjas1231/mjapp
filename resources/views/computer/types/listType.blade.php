@@ -24,14 +24,8 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $computerType->type }}</td>
             <td>
-                @if ($computerType->id === 1)
-                    <a href="{{ route('computer.type.edit', ['computerTypeId' => $computerType->id]) }}" class="btn btn-primary">Edycja</a>
-                    Wartość domyślna - nie można usunąć
-                @else
                     <a href="{{ route('computer.type.edit', ['computerTypeId' => $computerType->id]) }}" class="btn btn-primary">Edycja</a>
                     <a href="{{ route('computer.type.delete', ['computerTypeId' => $computerType->id]) }}" class="btn btn-danger">Usuń</a>
-                @endif
-
             </td>
         </tr>
         @endforeach
