@@ -6,6 +6,7 @@ namespace App\Repository;
 interface ComputerRepositoryInterface
 {
     public function all();
-    public function get(int $id);
+    public function getComputer(int $id);
     public function storeAndReturnId(array $computerData);
+    public function update(array $computerData);
 }

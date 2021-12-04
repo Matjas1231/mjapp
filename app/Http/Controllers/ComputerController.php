@@ -29,8 +29,25 @@ class ComputerController extends Controller
 
     public function show(int $computerId)
     {
-        $computer = $this->computerRepository->get($computerId);
+        $computer = $this->computerRepository->getComputer($computerId);
         return view('computer.show', ['computer' => $computer]);
+    }
+
+    public function edit(int $computerId)
+    {
+        return view('computer.edit', [
+            'computer' => $this->computerRepository->getComputer($computerId),
+            'workers' => $this->workerRepository->all(),
+            'types' => $this->computerTypeRepostiory->all(),
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->computerRepository->update($request->input());
+
+        return redirect()
+                ->route('computer.show', ['computerId' => $request['id']]);
     }
 
     public function create()
@@ -38,8 +55,7 @@ class ComputerController extends Controller
         return view('computer.create', [
                         'types' => $this->computerTypeRepostiory->all(),
                         'workers' => $this->workerRepository->all()
-                ]
-            );
+                ]);
     }
 
     public function store(Request $request)
@@ -48,7 +64,6 @@ class ComputerController extends Controller
         return redirect()
                 ->route('computer.show', [
                     'computerId' => $this->computerRepository->storeAndReturnId($request->input())
-                    ]
-                );
+                    ]);
     }
 }
