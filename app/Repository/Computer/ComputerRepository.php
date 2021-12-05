@@ -5,6 +5,7 @@ namespace App\Repository\Computer;
 
 use App\Models\Computer;
 use App\Repository\ComputerRepositoryInterface;
+use Illuminate\Support\Carbon;
 
 class ComputerRepository implements ComputerRepositoryInterface
 {
@@ -55,6 +56,7 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->worker_id = $computerData['worker_id'];
         $computer->ip_address = $computerData['ip_address'] ?? 'Dynamic';
         $computer->computer_name = $computerData['computer_name'];
+        $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('d-m-Y');
         return $computer->save();
     }
 }

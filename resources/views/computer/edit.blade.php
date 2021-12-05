@@ -66,6 +66,10 @@
         <label for="computer_name">Nazwa komputera</label>
         <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" value="{{ $computer->computer_name }}" required>
     </div>
+    <div class='form-group'>
+        <label for="date_of_buy">Data zakupu</label>
+        <input type="date" class="form-control" id="date_of_buy" name="date_of_buy" placeholder="Podaj datę zakupu" value="{{ $computer->date_of_buy }}" required>
+    </div>
     <button class="btn btn-primary" type="submit">Edytuj</button>
 </form>
 @endsection
