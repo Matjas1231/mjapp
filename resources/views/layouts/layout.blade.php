@@ -110,7 +110,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('worker.list') }}">
+                <a class="nav-link" href="{{ route('peripheral.list') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Lista peryferiów</span></a>
             </li>

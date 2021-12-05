@@ -18,9 +18,7 @@ class ComputerTypesSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        Schema::disableForeignKeyConstraints();
         DB::table('computer_types')->truncate();
-        Schema::enableForeignKeyConstraints();
 
             $computerTypes = [];
 

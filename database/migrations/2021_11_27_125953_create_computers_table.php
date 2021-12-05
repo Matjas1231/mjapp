@@ -3,6 +3,7 @@
 use App\Models\ComputerTypes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreateComputersTable extends Migration
@@ -27,7 +28,7 @@ class CreateComputersTable extends Migration
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
-            $table->date('date_of_buy')->default('Nieprzypisany');
+            $table->date('date_of_buy')->default(Carbon::now()->format('d-m-Y'));
             $table->timestamps();
         });
     }

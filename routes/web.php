@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\WorkerController;
 use App\Models\Computer;
 use Illuminate\Support\Facades\Route;
@@ -72,8 +73,8 @@ Route::get('/computers/{computerId}/edit', [ComputerController::class, 'edit'])-
 Route::post('/computers/update', [ComputerController::class, 'update'])->name('computer.update');
 
 
-
-
+// PERIPHERALS
+Route::get('/peripherals', [PeripheralController::class, 'list'])->name('peripheral.list');
 
 
 Auth::routes();
