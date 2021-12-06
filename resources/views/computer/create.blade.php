@@ -20,7 +20,7 @@
     <div class='form-group'>
         <label for="brand">Typ</label>
         <select class="form-control" id="type_id" name="type_id">
-            <option value="{{ NULL }}"></option>
+            <option value="{{ NULL }}">Wybierz typ komputera</option>
             @foreach ($types as $type)
                 <option value="{{ $type->id }}">{{ $type->type }}</option>
             @endforeach
@@ -43,7 +43,7 @@
         <input type="text" class="form-control" id="description" name="description" placeholder="Podaj dodatkowe informacje">
     </div>
     <div class='form-group'>
-        <label for="worker_id">Wybierz pracownika</label>
+        <label for="worker_id">Pracownik</label>
         <select class="form-control" id="worker_id" name="worker_id">
             <option value={{ NULL }}></option>
             @foreach ($workers as $worker)
@@ -51,14 +51,31 @@
             @endforeach
         </select>
     </div>
-    <div class='form-group'>
+    <div class='form-row'>
+        <div class="col">
+            <label for="ip_address">Adres IP</label>
+            <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="Podaj adres IP" value="Dynamic" required>
+        </div>
+        <div class="col">
+            <label for="computer_name">Nazwa komputera</label>
+            <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" required>
+        </div>
+    </div>
+
+    {{-- <div class='form-group'>
         <label for="ip_address">Adres IP</label>
         <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="Podaj adres IP" value="Dynamic" required>
     </div>
     <div class='form-group'>
         <label for="computer_name">Nazwa komputera</label>
         <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" required>
+    </div> --}}
+
+    <div class='form-group'>
+        <label for="date_of_buy">Data zakupu</label>
+        <input type="date" class="form-control" id="date_of_buy" name="date_of_buy" placeholder="Podaj datę zakupu" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
     </div>
+
     <button class="btn btn-primary" type="submit">Zapisz</button>
 </form>
 @endsection

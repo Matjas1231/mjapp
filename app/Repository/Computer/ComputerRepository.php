@@ -56,7 +56,7 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->worker_id = $computerData['worker_id'];
         $computer->ip_address = $computerData['ip_address'] ?? 'Dynamic';
         $computer->computer_name = $computerData['computer_name'];
-        $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('d-m-Y');
+        $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('Y-m-d');
         return $computer->save();
     }
 }

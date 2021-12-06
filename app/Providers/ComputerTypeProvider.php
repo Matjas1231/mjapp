@@ -15,7 +15,7 @@ class ComputerTypeProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
+        $this->app->bind(
             ComputerTypeRepositoryInterface::class,
             ComputerTypeRepository::class
         );

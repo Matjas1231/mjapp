@@ -13,6 +13,7 @@
                 <th>Lp.</th>
                 <th>Marka</th>
                 <th>Model</th>
+                <th>Numer seryjny</th>
                 <th>Typ</th>
                 <th>Pracownik</th>
                 <th>Akcja</th>
@@ -24,17 +25,21 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $peripheral->brand }}</td>
                     <td>{{ $peripheral->model }}</td>
-                    @if (!is_null($peripheral->type_id))
+                    <td>{{ $peripheral->serial_number }}</td>
+                    <td>{{ $peripheral->peripheralType->type ?? NULL }}
+                    {{-- @if (!is_null($peripheral->type_id))
                         <td>{{ $peripheral->peripheralType->type }}</td>
                     @else
                         <td>{{ NULL }}</td>
-                    @endif
+                    @endif --}}
                     @if (!is_null($peripheral->worker_id))
-                        <td>{{ $peripheral->worker->name }} {{ $peripheral->worker->surname }}</td>
+                        <td>{{ $peripheral->worker->fullname() }}</td>
                     @else
                         <td>{{ NULL }}</td>
                     @endif
-                    <td>Akcja</td>
+                    <td>
+                        <a href={{ route('peripheral.show', ['peripheralId' => $peripheral->id]) }}>Szczegóły</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

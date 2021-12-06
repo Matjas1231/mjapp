@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-interface ComputerTypeRepositoryInterface
+interface PeripheralTypeRepositoryInterface
 {
     public function all();
     public function getSingle(int $id);

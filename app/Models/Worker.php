@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\Component;
 
 class Worker extends Model
 {
@@ -19,6 +21,13 @@ class Worker extends Model
 
     protected $table = 'workers';
 
+    public function fullname()
+    {
+        return "{$this->name} {$this->surname}";
+    }
+
+    // RELATIONS
+
     public function department()
     {
         return $this->belongsTo(Department::class);
@@ -31,6 +40,6 @@ class Worker extends Model
 
     public function peripherals()
     {
-        return $this->hasMany(Peripherals::class);
+        return $this->hasMany(peripheral::class);
     }
 }

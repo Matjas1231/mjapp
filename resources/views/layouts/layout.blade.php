@@ -114,6 +114,11 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Lista peryferiów</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('peripheral.create') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Dodaj urządzenie</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
