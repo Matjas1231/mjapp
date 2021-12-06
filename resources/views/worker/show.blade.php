@@ -10,12 +10,7 @@
     <p>Imię: <b>{{ $worker->name }}</b></p>
     <p>Nazwisko: <b>{{ $worker->surname }}</b></p>
     <p>Stanowisko: <b>{{ $worker->position }}</b></p>
-    @if (!is_null($worker->department_id))
-        <p>Dział: <b>{{ $worker->department->name }}</b></p>
-    @else
-    <p>Dział: <b>Nieprzypisany</b></p>
-    @endif
-
+    <p>Dział: <b>{{ !is_null($worker->department_id) ? $worker->department->name : 'Nieprzypisany' }}</b></p>
     <p>Numer telefonu: <b>{{ $worker->phone }}</b></p>
     <a href="{{ route('worker.edit', ['workerId' => $worker->id]) }}" class="btn btn-primary"> Edytuj </a>
     <a href="{{ route('worker.delete', ['workerId' => $worker->id]) }}" class="btn btn-danger"> Usuń </a>
@@ -46,10 +41,10 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $computer->brand }}</td>
                     <td>{{ $computer->model }}</td>
-                    <td>{{ $computer->computerType->type }}</td>
+                    <td>{{ !is_null($computer->type_id) ? $computer->computerType->type : NULL }}</td>
                     <td>{{ $computer->ip_address }}</td>
                     <td>{{ $computer->computer_name }}</td>
-                    <td>Akcja</td>
+                    <td><a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a></td>
                 </tr>
                 @endforeach
 
@@ -85,8 +80,8 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $peripheral->brand }}</td>
                         <td>{{ $peripheral->model }}</td>
-                        <td>{{ $peripheral->peripheralType->type }}</td>
-                        <td>Akcja</td>
+                        <td>{{ !is_null($peripheral->type_id) ? $peripheral->peripheralType->type : NULL }}</td>
+                        <td><a href="{{ route('peripheral.edit', ['peripheralId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a></td>
                     </tr>
                 @endforeach
             </tbody>

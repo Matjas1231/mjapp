@@ -22,21 +22,27 @@ class PeripheralTypeRepository implements PeripheralTypeRepositoryInterface
 
     public function getSingle(int $id)
     {
-
+        return $this->peripheralTypeModel->find($id);
     }
 
     public function store(array $peripheralTypeData)
     {
+        $peripheralType = $this->peripheralTypeModel->newInstance();
+        $peripheralType->type = $peripheralTypeData['type'];
 
+        return $peripheralType->save();
     }
 
     public function update(array $peripheralTypeData)
     {
+        $peripheralType = $this->peripheralTypeModel->find($peripheralTypeData['id']);
+        $peripheralType->type = $peripheralTypeData['type'];
 
+        return $peripheralType->save();
     }
 
     public function delete(int $id)
     {
-
+        return $this->peripheralTypeModel->find($id)->delete();
     }
 }

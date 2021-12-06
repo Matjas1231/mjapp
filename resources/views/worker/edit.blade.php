@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title')Edycja pracownika @endsection
 
-@section('page-heading')Edycja {{ $worker->fullname() }} @endsection
+@section('page-heading') Edycja {{ $worker->fullname() }} @endsection
 
 @section('content')
 
@@ -23,16 +23,16 @@
     </div>
 
     <div class='form-group'>
-        <label for="department">Wybierz dział</label>
-
+        <label for="department">Dział</label>
         <select class="form-control" id='department_id' name='department_id'>
-            <option value="{{ NULL }}"></option>
+            <option value="{{ NULL }}">Wybierz dział</option>
             @foreach ($departments as $department)
-                @if ($department->id == $worker->department_id)
+                <option value="{{ $department->id }}" {{ $department->id == $worker->department_id ? 'selected' : '' }}>{{ $department->name }}</option>
+                {{-- @if ($department->id === $worker->department_id)
                     <option value="{{ $department->id }}" selected>{{ $department->name }}</option>
                 @else
                     <option value="{{ $department->id }}">{{ $department->name }}</option>
-                @endif
+                @endif --}}
             @endforeach
         </select>
     </div>

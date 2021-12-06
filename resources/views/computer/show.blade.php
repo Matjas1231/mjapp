@@ -15,14 +15,9 @@
         <p>Adres IP: <b>{{ $computer->ip_address }}</b></p>
         <p>Nazwa: <b>{{ $computer->computer_name }}</b></p>
         <p>Data zakupu: <b>{{ $computer->date_of_buy }}</b></p>
-        <p>Pracownik:
-            @if(!is_null($computer->worker_id))
-                <b>{{ $computer->worker->name }} {{ $computer->worker->surname }}</b>
-            @else
-                <b>Brak pracownika</b>
-            @endif
-        </p>
+        <p>Pracownik: <b>{{ !is_null($computer->worker_id) ? $computer->worker->fullname() : 'Brak pracownika' }}</b></p>
         <a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a>
+        <a href="{{ route('computer.delete', ['computerId' => $computer->id]) }}" class="btn btn-danger">Usuń</a>
     </div>
 
 @endsection

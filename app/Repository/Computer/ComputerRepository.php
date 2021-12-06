@@ -59,4 +59,9 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('Y-m-d');
         return $computer->save();
     }
+
+    public function delete(int $id)
+    {
+        return $this->computerModel->find($id)->delete();
+    }
 }

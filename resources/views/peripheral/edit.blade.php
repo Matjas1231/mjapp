@@ -20,34 +20,28 @@
         <label for="serial_number">Numer seryjny</label>
         <input type="text" class="form-control" id="serial_number" name="serial_number" placeholder="Podaj numer seryjny" value="{{ $peripheral->serial_number }}">
     </div>
-        <div class="form-group">
-            <label for='type_id'>Typ urządzenia</label>
-            <select class='form-control' id='type_id' name='type_id'>
-                <option value="{{ NULL }}">Wybierz typ</option>
-                @foreach ($types as $type)
-                    @if ($peripheral->type_id == $type->id)
-                        <option value="{{ $type->id }}" selected>{{ $type->type }}</option>
-                    @else
-                        <option value="{{ $type->id }}">{{ $type->type }}</option>
-                    @endif
-                @endforeach
-            </select>
+
+    <div class="form-group">
+        <label for='type_id'>Typ urządzenia</label>
+        <select class='form-control' id='type_id' name='type_id'>
+            <option value="{{ NULL }}">Wybierz typ</option>
+            @foreach ($types as $type)
+                <option value="{{ $type->id }}" {{ $type->id == $peripheral->type_id ? 'selected' : ''}}>{{ $type->type }}</option>
+            @endforeach
+        </select>
     </div>
+
     <div class='form-group'>
         <label for="description">Dodatkowe informacje</label>
         <input type="text" class="form-control" id="description" name="description" placeholder="Dodatkowe informacje" value="{{ $peripheral->description }}">
     </div>
+
     <div class="form-group">
         <label for="worker_id">Pracownik</label>
         <select class='form-control' id='worker_id' name='worker_id'>
             <option value="{{ NULL }}">Wybierz pracownika</option>
             @foreach ($workers as $worker)
-                @if ($peripheral->worker_id == $worker->id)
-                    <option value="{{ $worker->id }}" selected>{{ $worker->fullname() }}</option>
-                @else
-                    <option value="{{ $worker->id }}">{{ $worker->fullname() }}</option>
-                @endif
-
+            <option value="{{ $worker->id }}" {{ $worker->id == $peripheral->worker_id ? 'selected' : '' }}>{{ $worker->fullname() }}</option>
             @endforeach
         </select>
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title')Edycja typu komputera @endsection
 
-@section('page-heading') Edycja typu komputera @endsection
+@section('page-heading') Edycja {{ $computerType->type }} @endsection
 
 
 
