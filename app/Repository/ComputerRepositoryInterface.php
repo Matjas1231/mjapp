@@ -9,4 +9,5 @@ interface ComputerRepositoryInterface
     public function getComputer(int $id);
     public function storeAndReturnId(array $computerData);
     public function update(array $computerData);
+    public function delete(int $id);
 }

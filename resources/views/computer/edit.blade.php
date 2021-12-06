@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')Edytowanie komputera @endsection
+@section('title') Edytowanie komputera @endsection
 
 @section('content')
 
@@ -19,13 +19,9 @@
     <div class='form-group'>
         <label for="brand">Typ</label>
         <select class="form-control" id="type_id" name="type_id">
-            <option value="{{ NULL }}"></option>
+            <option value="{{ NULL }}">Wybierz typ</option>
             @foreach ($types as $type)
-                @if ($type->id == $computer->type_id)
-                    <option value="{{ $type->id }}" selected>{{ $type->type }}</option>
-                @else
-                    <option value="{{ $type->id }}">{{ $type->type }}</option>
-                @endif
+                <option value="{{ $type->id }}" {{ $type->id == $computer->type_id ? 'selected' : ''}}>{{ $type->type }}</option>
             @endforeach
         </select>
     </div>
@@ -46,15 +42,11 @@
         <input type="text" class="form-control" id="description" name="description" placeholder="Podaj dodatkowe informacje" value="{{ $computer->description }}">
     </div>
     <div class='form-group'>
-        <label for="worker_id">Wybierz pracownika</label>
+        <label for="worker_id">Pracownik</label>
         <select class="form-control" id="worker_id" name="worker_id">
-            <option value={{ NULL }}></option>
+            <option value={{ NULL }}>Wybierz pracownika</option>
             @foreach ($workers as $worker)
-                @if ($worker->id == $computer->worker_id)
-                    <option value="{{ $worker->id }}" selected>{{ $worker->name }} {{ $worker->surname }}</option>
-                @else
-                    <option value="{{ $worker->id }}">{{ $worker->name }} {{ $worker->surname }}</option>
-                @endif
+                <option value="{{ $worker->id }}" {{ $worker->id == $computer->worker_id ? 'selected' : '' }}>{{ $worker->fullname() }}</option>
             @endforeach
         </select>
     </div>

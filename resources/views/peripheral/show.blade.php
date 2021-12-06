@@ -13,6 +13,7 @@
         <p>Pracownik: <b>{{ !is_null($peripheral->worker_id) ? $peripheral->worker->fullname() : 'Brak'}}</b></p>
         <p>Data zakupu: <b>{{ $peripheral->date_of_buy }}</b></p>
         <a href="{{ route('peripheral.edit', ['peripheralId' => $peripheral->id]) }}" class="btn btn-primary">Edytuj</a>
+        <a href="{{ route('peripheral.delete', ['peripheralId' => $peripheral->id]) }}" class="btn btn-danger">Usuń</a>
     </div>
 
 @endsection

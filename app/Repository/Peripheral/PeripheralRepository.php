@@ -59,6 +59,6 @@ class PeripheralRepository implements PeripheralRepositoryInterface
 
     public function delete(int $id)
     {
-
+        return $this->peripheralModel->find($id)->delete();
     }
 }

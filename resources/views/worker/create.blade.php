@@ -20,9 +20,9 @@
         <input type="text" class="form-control" id="position" name="position" placeholder="Podaj stanowisko" required>
     </div>
     <div class='form-group'>
-        <label for="department">Wybierz dział</label>
+        <label for="department">Dział</label>
         <select class="form-control" id='department_id' name='department_id'>
-            <option value="{{ NULL }}"></option>
+            <option value="{{ NULL }}">Wybierz dział</option>
             @foreach ($departments as $department)
                 <option value="{{ $department->id }}">{{ $department->name }}</option>
             @endforeach

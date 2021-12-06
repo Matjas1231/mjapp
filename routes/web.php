@@ -4,6 +4,7 @@ use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PeripheralController;
+use App\Http\Controllers\PeripheralTypeController;
 use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
 use Nette\Schema\Context;
@@ -71,6 +72,8 @@ Route::post('computers/store', [ComputerController::class, 'store'])->name('comp
 Route::get('/computers/{computerId}/edit', [ComputerController::class, 'edit'])->name('computer.edit');
 Route::post('/computers/update', [ComputerController::class, 'update'])->name('computer.update');
 
+Route::get('/computers/{computerId}/delete', [ComputerController::class, 'delete'])->name('computer.delete');
+
 
 // PERIPHERALS
 Route::get('/peripherals', [PeripheralController::class, 'list'])->name('peripheral.list');
@@ -82,8 +85,19 @@ Route::post('/peripherals/store', [PeripheralController::class, 'store'])->name(
 Route::get('/peripherals/{peripheralId}/edit', [PeripheralController::class, 'edit'])->name('peripheral.edit');
 Route::post('/peripherals/update', [PeripheralController::class, 'update'])->name('peripheral.update');
 
-Route::get('/peripherals/delete', [PeripheralController::class, 'delete'])->name('peripheral.delete');
+Route::get('/peripherals/{peripheralId}/delete', [PeripheralController::class, 'delete'])->name('peripheral.delete');
 
+
+// PERIPHERALS TYPES
+Route::get('/peripherals/types', [PeripheralTypeController::class, 'list'])->name('peripheral.type.list');
+
+Route::get('/peripherals/types/{peripheralTypeId}/edit', [PeripheralTypeController::class, 'edit'])->name('peripheral.type.edit');
+Route::get('/peripherals/types/update', [PeripheralTypeController::class, 'update'])->name('peripheral.type.update');
+
+Route::get('/peripherals/types/create', [PeripheralTypeController::class, 'create'])->name('peripheral.type.create');
+Route::post('/peripherals/types/store', [PeripheralTypeController::class, 'store'])->name('peripheral.type.store');
+
+Route::get('/peripherals/types/{peripheralTypeId}/delete', [PeripheralTypeController::class, 'delete'])->name('peripheral.type.delete');
 
 Auth::routes();
 

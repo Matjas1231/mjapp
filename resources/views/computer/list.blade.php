@@ -33,7 +33,7 @@
             <td>{{ $computer->ip_address }}</td>
             <td>{{ $computer->computer_name }}</td>
             @if (!is_null($computer->worker_id))
-                <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td>
+                <td>{{ $computer->worker->fullname() }}</td>
             @else
               <td>
                 <b>{{ NULL }}</b>

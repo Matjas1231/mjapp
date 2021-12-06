@@ -20,14 +20,14 @@
     </thead>
     <tbody>
         @foreach ($computerTypes as $computerType)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $computerType->type }}</td>
-            <td>
-                    <a href="{{ route('computer.type.edit', ['computerTypeId' => $computerType->id]) }}" class="btn btn-primary">Edycja</a>
-                    <a href="{{ route('computer.type.delete', ['computerTypeId' => $computerType->id]) }}" class="btn btn-danger">Usuń</a>
-            </td>
-        </tr>
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $computerType->type }}</td>
+                <td>
+                        <a href="{{ route('computer.type.edit', ['computerTypeId' => $computerType->id]) }}" class="btn btn-primary">Edycja</a>
+                        <a href="{{ route('computer.type.delete', ['computerTypeId' => $computerType->id]) }}" class="btn btn-danger">Usuń</a>
+                </td>
+            </tr>
         @endforeach
     </tbody>
 </table>

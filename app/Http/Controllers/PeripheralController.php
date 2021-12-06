@@ -66,4 +66,11 @@ class PeripheralController extends Controller
         return redirect()
                 ->route('peripheral.show', ['peripheralId' => $request->id]);
     }
+
+    public function delete(int $id)
+    {
+        $this->peripheralRepository->delete($id);
+        return redirect()
+                ->route('peripheral.list');
+    }
 }

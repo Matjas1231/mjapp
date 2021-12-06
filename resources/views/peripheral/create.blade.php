@@ -17,7 +17,7 @@
     </div>
     <div class='form-group'>
         <label for="serial_number">Numer seryjny</label>
-        <input type="text" class="form-control" id="serial_number" name="serial_number" placeholder="Podaj numer seryjny"">
+        <input type="text" class="form-control" id="serial_number" name="serial_number" placeholder="Podaj numer seryjny">
     </div>
         <div class="form-group">
             <label for='type_id'>Typ urządzenia</label>

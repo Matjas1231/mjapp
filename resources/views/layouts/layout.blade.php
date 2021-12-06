@@ -84,19 +84,19 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('computer.list') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-desktop"></i>
                     <span>Lista komputerów</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('computer.create') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-laptop-medical"></i>
                     <span>Dodaj komputer</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('computer.type.list') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-laptop-house"></i>
                     <span>Lista typów</span></a>
             </li>
 
@@ -111,13 +111,18 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('peripheral.list') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Lista peryferiów</span></a>
+                    <i class="fas fa-keyboard"></i>
+                    <span>Lista urządzeń</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('peripheral.create') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-mouse-pointer"></i>
                     <span>Dodaj urządzenie</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('peripheral.type.list') }}">
+                    <i class="fas fa-laptop-house"></i>
+                    <span>Lista typów urządzeń</span></a>
             </li>
 
             <!-- Divider -->

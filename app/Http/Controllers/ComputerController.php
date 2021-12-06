@@ -66,4 +66,11 @@ class ComputerController extends Controller
                     'computerId' => $this->computerRepository->storeAndReturnId($request->input())
                     ]);
     }
+
+    public function delete(int $id)
+    {
+        $this->computerRepository->delete($id);
+        return redirect()
+                ->route('computer.list');
+    }
 }
