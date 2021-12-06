@@ -15,7 +15,7 @@ class WorkerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
+        $this->app->bind(
             WorkerRepositoryInterface::class,
             WorkerRepository::class
         );

@@ -15,7 +15,7 @@ class DepartmentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
+        $this->app->bind(
             DepartmentRepositoryInterface::class,
             DepartmentRepository::class,
         );

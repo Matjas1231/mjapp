@@ -4,6 +4,7 @@ use App\Providers\ComputerServiceProvider;
 use App\Providers\ComputerTypeProvider;
 use App\Providers\DepartmentServiceProvider;
 use App\Providers\PeripheralServiceProvider;
+use App\Providers\PeripheralTypeServiceProvider;
 use App\Providers\WorkerServiceProvider;
 
 return [
@@ -186,6 +187,7 @@ return [
         DepartmentServiceProvider::class,
         ComputerTypeProvider::class,
         PeripheralServiceProvider::class,
+        PeripheralTypeServiceProvider::class,
 
     ],
 

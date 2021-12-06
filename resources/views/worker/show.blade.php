@@ -2,7 +2,7 @@
 
 @section('title')Szczegóły pracownika @endsection
 
-@section('page-heading') Szczegóły pracownika {{ $worker->name }} {{ $worker->surname }} @endsection
+@section('page-heading') Szczegóły pracownika {{ $worker->fullname() }} @endsection
 
 @section('content')
 

@@ -37,7 +37,7 @@ class DepartmentController extends Controller
     public function edit(int $departmentId)
     {
         return view('department.edit', [
-            'department' => $this->departmentRepository->getDepartment($departmentId),
+            'department' => $this->departmentRepository->getSingle($departmentId),
             'workers' => $this->workerRepository->all(),
         ]);
     }

@@ -32,8 +32,9 @@ class WorkerController extends Controller
 
     public function create()
     {
-        $departments = $this->departmentRepository->all();
-        return view('worker.create', ['departments' => $departments]);
+        return view('worker.create', [
+            'departments' => $this->departmentRepository->all()
+        ]);
     }
 
     public function store(Request $request)

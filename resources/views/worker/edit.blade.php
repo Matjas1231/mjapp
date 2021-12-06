@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title')Edycja pracownika @endsection
 
-@section('page-heading')Dodawanie pracownika @endsection
+@section('page-heading')Edycja {{ $worker->fullname() }} @endsection
 
 @section('content')
 

@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Repository\Peripheral\PeripheralRepository;
-use App\Repository\PeripheralRepositoryInterface;
+use App\Repository\Peripheral\PeripheralTypeRepository;
+use App\Repository\PeripheralTypeRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
-class PeripheralServiceProvider extends ServiceProvider
+class PeripheralTypeServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -16,8 +16,8 @@ class PeripheralServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            PeripheralRepositoryInterface::class,
-            PeripheralRepository::class,
+            PeripheralTypeRepositoryInterface::class,
+            PeripheralTypeRepository::class,
         );
     }
 

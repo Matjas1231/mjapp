@@ -27,7 +27,7 @@ class ComputerTypeRepository implements ComputerTypeRepositoryInterface
         return $computerType->save();
     }
 
-    public function getComputerType(int $computerTypeId)
+    public function getSingle(int $computerTypeId)
     {
         return $this->computerTypeModel->find($computerTypeId);
     }

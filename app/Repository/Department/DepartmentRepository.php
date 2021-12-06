@@ -27,7 +27,7 @@ class DepartmentRepository implements DepartmentRepositoryInterface
         return $department->save();
     }
 
-    public function getDepartment(int $id)
+    public function getSingle(int $id)
     {
         return $this->departmentModel->find($id);
     }

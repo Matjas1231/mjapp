@@ -22,7 +22,7 @@ class ComputerTypesController extends Controller
 
     public function edit(int $computerTypeId)
     {
-        $computerType = $this->computerTypeRepository->getComputerType($computerTypeId);
+        $computerType = $this->computerTypeRepository->getSingle($computerTypeId);
 
         return view('computer.types.editType', ['computerType' => $computerType]);
     }

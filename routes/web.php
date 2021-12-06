@@ -5,7 +5,6 @@ use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\WorkerController;
-use App\Models\Computer;
 use Illuminate\Support\Facades\Route;
 use Nette\Schema\Context;
 
@@ -75,6 +74,15 @@ Route::post('/computers/update', [ComputerController::class, 'update'])->name('c
 
 // PERIPHERALS
 Route::get('/peripherals', [PeripheralController::class, 'list'])->name('peripheral.list');
+Route::get('/peripherals/{peripheralId}/show', [PeripheralController::class, 'show'])->name('peripheral.show');
+
+Route::get('/peripheral/create', [PeripheralController::class, 'create'])->name('peripheral.create');
+Route::post('/peripherals/store', [PeripheralController::class, 'store'])->name('peripheral.store');
+
+Route::get('/peripherals/{peripheralId}/edit', [PeripheralController::class, 'edit'])->name('peripheral.edit');
+Route::post('/peripherals/update', [PeripheralController::class, 'update'])->name('peripheral.update');
+
+Route::get('/peripherals/delete', [PeripheralController::class, 'delete'])->name('peripheral.delete');
 
 
 Auth::routes();
