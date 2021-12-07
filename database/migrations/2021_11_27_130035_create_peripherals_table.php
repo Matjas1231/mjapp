@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePeripheralsTable extends Migration
@@ -21,7 +22,7 @@ class CreatePeripheralsTable extends Migration
             $table->foreignId('type_id')->nullable()->references('id')->on('peripheral_types')->onDelete('set null');
             $table->text('description')->nullable();
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
-            $table->date('date_of_buy')->nullable();
+            $table->date('date_of_buy')->nullable()->default(Carbon::now()->format('Y-m-d'));
             $table->timestamps();
         });
     }

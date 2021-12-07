@@ -40,6 +40,11 @@ class Worker extends Model
 
     public function peripherals()
     {
-        return $this->hasMany(peripheral::class);
+        return $this->hasMany(Peripheral::class);
+    }
+
+    public function softwares()
+    {
+        return $this->hasMany(Software::class);
     }
 }

@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-
             ComputerTypesSeeder::class,
             DepartmentsSeeder::class,
             WorkersSeeder::class,
             PeripheralTypesSeeder::class,
             PeripheralsSeeder::class,
             ComputersSeeder::class,
+            SoftwaresSeeder::class,
         ]);
     }
 }
