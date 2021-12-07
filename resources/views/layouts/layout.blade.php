@@ -109,14 +109,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoftwares"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-laptop-house"></i>
+                    <i class="fab fa-uncharted"></i>
                     <span>Oprogramowanie</span>
                 </a>
                 <div id="collapseSoftwares" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                        <a class="collapse-item" href="{{ route('computer.list') }}">
-                            <i class="fas fa-desktop"></i>
+                        <a class="collapse-item" href="{{ route('software.list') }}">
+                            <i class="fas fa-spinner"></i>
                             <span>Lista oprogramowania</span>
                         </a>
                         <a class="collapse-item" href="{{ route('computer.create') }}">

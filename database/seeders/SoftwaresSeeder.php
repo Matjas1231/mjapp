@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\PeripheralType;
 use App\Models\Worker;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class PeripheralsSeeder extends Seeder
+class SoftwaresSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,24 +19,25 @@ class PeripheralsSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('peripherals')->truncate();
+        DB::table('softwares')->truncate();
 
         for ($j = 0; $j < 1; $j++) {
-            $peripherals = [];
-            for ($i = 0; $i < 20; $i++) {
-                $peripherals[] = [
-                    'brand' => $faker->randomElement(['Dell', 'HP', 'Brother', 'Canon']),
-                    'model' => $faker->words(4, true),
-                    'serial_number' => $faker->words(5, true),
-                    'type_id' => $faker->numberBetween(1, PeripheralType::all()->count()),
-                    'description' => $faker->words(30, true),
+            $softwares = [];
+            for ($i = 0; $i < 10; $i++) {
+                $softwares[] = [
+                    'producer' => $faker->words('2', true),
+                    'serial_number' => $faker->sentence(),
+                    'name' => $faker->firstName(),
                     'worker_id' => $faker->numberBetween(1, Worker::all()->count()),
+                    'description' => $faker->sentence(9),
                     'date_of_buy' => $faker->date(),
+                    'expiry_date' => $faker->date(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];
             }
         }
-        DB::table('peripherals')->insert($peripherals);
+
+        DB::table('softwares')->insert($softwares);
     }
 }

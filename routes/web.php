@@ -5,6 +5,7 @@ use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\PeripheralTypeController;
+use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
 use Nette\Schema\Context;
@@ -75,6 +76,12 @@ Route::post('/computers/update', [ComputerController::class, 'update'])->name('c
 Route::get('/computers/{computerId}/delete', [ComputerController::class, 'delete'])->name('computer.delete');
 
 
+// SOFTWARES
+Route::get('/softwares', [SoftwareController::class, 'list'])->name('software.list');
+Route::get('softwares/{softwareId}/show', [SoftwareController::class, 'show'])->name('software.show');
+
+
+
 // PERIPHERALS
 Route::get('/peripherals', [PeripheralController::class, 'list'])->name('peripheral.list');
 Route::get('/peripherals/{peripheralId}/show', [PeripheralController::class, 'show'])->name('peripheral.show');
@@ -98,6 +105,9 @@ Route::get('/peripherals/types/create', [PeripheralTypeController::class, 'creat
 Route::post('/peripherals/types/store', [PeripheralTypeController::class, 'store'])->name('peripheral.type.store');
 
 Route::get('/peripherals/types/{peripheralTypeId}/delete', [PeripheralTypeController::class, 'delete'])->name('peripheral.type.delete');
+
+
+
 
 Auth::routes();
 

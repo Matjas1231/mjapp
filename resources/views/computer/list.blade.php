@@ -36,7 +36,7 @@
                 <td>{{ $computer->worker->fullname() }}</td>
             @else
               <td>
-                <b>{{ NULL }}</b>
+                {{ NULL }}
               </td>
             @endif
             <td>

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Software extends Model
 {
     use HasFactory;
+    protected $table='softwares';
+
+    public function worker()
+    {
+        return $this->belongsTo(Worker::class);
+    }
 }

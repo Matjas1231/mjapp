@@ -18,6 +18,41 @@
 
 <hr>
 
+{{-- Sekcja oprogramowania --}}
+<div>
+    <h1 class="h3 mb-0 text-gray-800">Oprogramowanie</h1>
+
+    @if (count($worker->softwares) > 0)
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Producent</th>
+                    <th>Numer Seryjny</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($worker->softwares as $software)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $software->producer }}</td>
+                    <td>{{ $software->serial_number }}</td>
+                    <td>Akcja</td>
+                    {{-- <td><a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a></td> --}}
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+    @else
+      Brak oprogramowania
+    @endif
+
+</div>
+
+<hr>
+
 {{-- Sekcja komputerów --}}
 <div>
     <h1 class="h3 mb-0 text-gray-800">Komputery</h1>
@@ -81,7 +116,7 @@
                         <td>{{ $peripheral->brand }}</td>
                         <td>{{ $peripheral->model }}</td>
                         <td>{{ !is_null($peripheral->type_id) ? $peripheral->peripheralType->type : NULL }}</td>
-                        <td><a href="{{ route('peripheral.edit', ['peripheralId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a></td>
+                        <td><a href="{{ route('peripheral.edit', ['peripheralId' => $peripheral->id]) }}" class="btn btn-primary">Edytuj</a></td>
                     </tr>
                 @endforeach
             </tbody>
