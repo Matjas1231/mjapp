@@ -54,7 +54,32 @@
                 Pracownicy
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWorkers"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Pracownicy</span>
+                </a>
+                <div id="collapseWorkers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        <a class="collapse-item" href="{{ route('worker.list') }}">
+                            <i class="fas fa-address-book"></i>
+                            <span>Lista pracowników</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('worker.create') }}">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Dodaj pracownika</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('department.list') }}">
+                            <i class="fas fa-building"></i>
+                            <span>Lista działów</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            {{-- <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('worker.list') }}">
                     <i class="fas fa-address-book"></i>
@@ -71,6 +96,39 @@
                 <a class="nav-link" href="{{ route('department.list') }}">
                     <i class="fas fa-building"></i>
                     <span>Lista działów</span></a>
+            </li> --}}
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Oprogramowanie
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoftwares"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-laptop-house"></i>
+                    <span>Oprogramowanie</span>
+                </a>
+                <div id="collapseSoftwares" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        <a class="collapse-item" href="{{ route('computer.list') }}">
+                            <i class="fas fa-desktop"></i>
+                            <span>Lista oprogramowania</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('computer.create') }}">
+                            <i class="fas fa-laptop-medical"></i>
+                            <span>Dodaj oprogramowanie</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('computer.type.list') }}">
+                            <i class="fas fa-laptop-house"></i>
+                            <span>Lista typów</span>
+                        </a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -81,7 +139,32 @@
                 Komputery
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComputers"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-laptop-house"></i>
+                    <span>Komputery</span>
+                </a>
+                <div id="collapseComputers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        <a class="collapse-item" href="{{ route('computer.list') }}">
+                            <i class="fas fa-desktop"></i>
+                            <span>Lista komputerów</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('computer.create') }}">
+                            <i class="fas fa-laptop-medical"></i>
+                            <span>Dodaj komputer</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('computer.type.list') }}">
+                            <i class="fas fa-laptop-house"></i>
+                            <span>Lista typów</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            {{-- <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('computer.list') }}">
                     <i class="fas fa-desktop"></i>
@@ -98,7 +181,7 @@
                 <a class="nav-link" href="{{ route('computer.type.list') }}">
                     <i class="fas fa-laptop-house"></i>
                     <span>Lista typów</span></a>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -108,7 +191,32 @@
                 Peryferia
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeripherals"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fan"></i>
+                    <span>Peryferia</span>
+                </a>
+                <div id="collapsePeripherals" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        <a class="collapse-item" href="{{ route('peripheral.list') }}">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Lista urządzeń</span></a>
+                        </a>
+                        <a class="collapse-item" href="{{ route('peripheral.create') }}">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span>Dodaj urządzenie</span></a>
+                        </a>
+                        <a class="collapse-item" href="{{ route('peripheral.type.list') }}">
+                            <i class="fas fa-laptop-house"></i>
+                            <span>Lista typów urządzeń</span></a>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            {{-- <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('peripheral.list') }}">
                     <i class="fas fa-keyboard"></i>
@@ -123,7 +231,7 @@
                 <a class="nav-link" href="{{ route('peripheral.type.list') }}">
                     <i class="fas fa-laptop-house"></i>
                     <span>Lista typów urządzeń</span></a>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
