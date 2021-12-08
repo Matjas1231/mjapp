@@ -58,6 +58,6 @@ class SoftwareRepository implements SoftwareRepositoryInterface
 
     public function delete(int $id)
     {
-
+        return $this->softwareModel->find($id)->delete();
     }
 }

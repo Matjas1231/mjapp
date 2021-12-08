@@ -16,9 +16,11 @@ class WorkerRepository implements WorkerRepositoryInterface
         $this->workerModel = $workerModel;
     }
 
-    public function all()
+    public function all(?string $filter)
     {
-        return $this->workerModel->get();
+        $query = $this->workerModel->whereRaw('name like ?', ["%$filter%"]);
+        // return $this->workerModel->get();
+        return $query->get();
     }
 
     public function getWorker(int $id)

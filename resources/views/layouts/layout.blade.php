@@ -18,6 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+
+
 </head>
 
 <body id="page-top">
@@ -604,6 +606,7 @@
     <!-- Custom scripts for all pages-->
     {{-- <script src="js/sb-admin-2.min.js"></script> --}}
     <script src="{{ mix('js/app.js') }}"></script>
+    @yield('script')
 
     <!-- Page level plugins -->
     {{-- <script src="vendor/chart.js/Chart.min.js"></script> --}}
