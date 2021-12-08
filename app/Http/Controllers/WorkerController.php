@@ -17,9 +17,10 @@ class WorkerController extends Controller
         $this->departmentRepository = $departmentRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $workers = $this->workerRepository->all();
+        // dd($request->query('filterName'));
+        $workers = $this->workerRepository->all($request->query('filterName'));
         return view('worker.list', ['workers' => $workers]);
     }
 

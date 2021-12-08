@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 
 // WORKERS
-Route::get('/workers', [WorkerController::class, 'list'])->name('worker.list');
+Route::get('/workers/{filters?}', [WorkerController::class, 'list'])->name('worker.list');
 Route::get('/workers/{workerId}/show', [WorkerController::class, 'show'])->name('worker.show');
 
 Route::get('/workers/create', [WorkerController::class, 'create'])->name('worker.create');
@@ -86,7 +86,7 @@ Route::post('/softwares/store', [SoftwareController::class, 'store'])->name('sof
 Route::get('/softwares/{softwareId}/edit', [SoftwareController::class, 'edit'])->name('software.edit');
 Route::post('/softwares/update', [SoftwareController::class, 'update'])->name('software.update');
 
-Route::get('/softwares/delete', [SoftwareController::class, 'delete'])->name('software.delete');
+Route::get('/softwares/{softwareId}/delete', [SoftwareController::class, 'delete'])->name('software.delete');
 
 
 

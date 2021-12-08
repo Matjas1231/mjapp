@@ -59,4 +59,12 @@ class SoftwareController extends Controller
         return redirect()
                 ->route('software.show', ['softwareId' => $request['id']]);
     }
+
+    public function delete(int $id)
+    {
+        $this->softwareRepository->delete($id);
+
+        return redirect()
+                ->route('software.list');
+    }
 }

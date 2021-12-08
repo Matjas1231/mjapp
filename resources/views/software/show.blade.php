@@ -15,6 +15,7 @@
     <p>Data zakupu: <b>{{ $software->date_of_buy }}</b></p>
     <p>Data ważności: <b>{{ $software->expiry_date ?? 'N/D' }}</b></p>
     <a href="{{ route('software.edit', ['softwareId' => $software->id]) }}" class="btn btn-primary">Edytuj</a>
+    <a href="{{ route('software.delete', ['softwareId' => $software->id]) }}" class="btn btn-danger">Usuń</a>
 </div>
 
 @endsection
