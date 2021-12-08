@@ -25,20 +25,22 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $computer->brand }}</td>
             <td>{{ $computer->model }}</td>
-            @if (!is_null($computer->type_id))
-                <td>{{ $computer->computerType->type }}</td>
-            @else
-                <td>{{ NULL }}</td>
-            @endif
+            <td>
+                @if (!is_null($computer->type_id))
+                    {{ $computer->computerType->type }}
+                @else
+                    {{ NULL }}
+                @endif
+            </td>
             <td>{{ $computer->ip_address }}</td>
             <td>{{ $computer->computer_name }}</td>
-            @if (!is_null($computer->worker_id))
-                <td>{{ $computer->worker->fullname() }}</td>
-            @else
-              <td>
-                {{ NULL }}
-              </td>
-            @endif
+            <td>
+                @if (!is_null($computer->worker_id))
+                    {{ $computer->worker->fullname() }}
+                @else
+                    {{ NULL }}
+                @endif
+            </td>
             <td>
                 <a href="{{ route('computer.show', ['computerId' => $computer->id]) }}">Szczegóły</a>
             </td>

@@ -27,12 +27,13 @@
                 <td>{{ $worker->id }}</td>
                 <td>{{ $worker->name }}</td>
                 <td>{{ $worker->surname }}</td>
-                @if (!is_null($worker->department_id))
-                    <td>{{ $worker->department->name }}</td>
-                @else
-                    <td>{{ NULL }}</td>
-                @endif
-
+                <td>
+                    @if (!is_null($worker->department_id))
+                        {{ $worker->department->name }}
+                    @else
+                        {{ NULL }}
+                    @endif
+                </td>
                 <td>{{ $worker->phone }}</td>
                 <td>
                     <a href="{{ route('worker.show', ['workerId' => $worker->id]) }}">Szczegóły</a>

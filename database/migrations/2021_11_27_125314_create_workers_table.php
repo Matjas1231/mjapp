@@ -19,11 +19,6 @@ class CreateWorkersTable extends Migration
             $table->string('surname', 60)->index();
             $table->string('position', 60);
             $table->foreignId('department_id')->nullable()->constrained('departments', 'id')->onDelete('set null');
-            // $table->foreignId('department_id')->default(0)->constrained('departments', 'id')->onDelete('set default');
-            // $table->integer('department_id', false, true)->default(1);
-            // $table->foreignId('department_id')->default(0)->references('id')->on('departments')->onDelete('set default');
-            // $table->foreignId('department_id')->nullable()->references('id')->on('departments')->onDelete('set null');
-
             $table->string('phone', 12);
             $table->timestamps();
         });

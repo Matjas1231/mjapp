@@ -35,7 +35,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $computer->computer_name }}</td>
-                        <td>{{ $computer->worker->name }} {{ $computer->worker->surname }}</td>
+                        <td>{{ !is_null($computer->worker_id) ? $computer->worker->fullname() : '' }}</td>
                     </tr>
                 @endforeach
             </tbody>

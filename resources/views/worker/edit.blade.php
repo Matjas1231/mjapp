@@ -28,11 +28,6 @@
             <option value="{{ NULL }}">Wybierz dział</option>
             @foreach ($departments as $department)
                 <option value="{{ $department->id }}" {{ $department->id == $worker->department_id ? 'selected' : '' }}>{{ $department->name }}</option>
-                {{-- @if ($department->id === $worker->department_id)
-                    <option value="{{ $department->id }}" selected>{{ $department->name }}</option>
-                @else
-                    <option value="{{ $department->id }}">{{ $department->name }}</option>
-                @endif --}}
             @endforeach
         </select>
     </div>

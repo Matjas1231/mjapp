@@ -22,7 +22,7 @@ class CreatePeripheralsTable extends Migration
             $table->foreignId('type_id')->nullable()->references('id')->on('peripheral_types')->onDelete('set null');
             $table->text('description')->nullable();
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
-            $table->date('date_of_buy')->nullable()->default(Carbon::now()->format('Y-m-d'));
+            $table->date('date_of_buy')->default(Carbon::now()->format('Y-m-d'));
             $table->timestamps();
         });
     }
