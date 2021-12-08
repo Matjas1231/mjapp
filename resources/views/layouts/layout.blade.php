@@ -50,9 +50,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            {{-- <div class="sidebar-heading">
                 Pracownicy
-            </div>
+            </div> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWorkers"
@@ -102,9 +102,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            {{-- <div class="sidebar-heading">
                 Oprogramowanie
-            </div>
+            </div> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoftwares"
@@ -119,14 +119,14 @@
                             <i class="fas fa-spinner"></i>
                             <span>Lista oprogramowania</span>
                         </a>
-                        <a class="collapse-item" href="{{ route('computer.create') }}">
-                            <i class="fas fa-laptop-medical"></i>
+                        <a class="collapse-item" href="{{ route('software.create') }}">
+                            <i class="fas fa-plus-square"></i>
                             <span>Dodaj oprogramowanie</span>
                         </a>
-                        <a class="collapse-item" href="{{ route('computer.type.list') }}">
+                        {{-- <a class="collapse-item" href="{{ route('computer.type.list') }}">
                             <i class="fas fa-laptop-house"></i>
                             <span>Lista typów</span>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </li>
@@ -135,9 +135,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            {{-- <div class="sidebar-heading">
                 Komputery
-            </div>
+            </div> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComputers"
@@ -187,9 +187,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            {{-- <div class="sidebar-heading">
                 Peryferia
-            </div>
+            </div> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeripherals"

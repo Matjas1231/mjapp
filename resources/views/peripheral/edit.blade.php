@@ -2,6 +2,8 @@
 
 @section('title')Edytowanie komputera @endsection
 
+@section('page-heading')Edytowanie komputera @endsection
+
 @section('content')
 
 

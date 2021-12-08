@@ -47,7 +47,7 @@
         <select class="form-control" id="worker_id" name="worker_id">
             <option value={{ NULL }}>Wybierz pracownika</option>
             @foreach ($workers as $worker)
-                <option value={{ $worker->id }}>{{ $worker->name }}</option>
+                <option value="{{ $worker->id }}">{{ $worker->name }}</option>
             @endforeach
         </select>
     </div>

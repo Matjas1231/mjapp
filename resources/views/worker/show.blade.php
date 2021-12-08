@@ -29,6 +29,7 @@
                     <th>Lp.</th>
                     <th>Producent</th>
                     <th>Numer Seryjny</th>
+                    <th>Data ważności</th>
                     <th>Akcja</th>
                 </tr>
             </thead>
@@ -38,11 +39,10 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $software->producer }}</td>
                     <td>{{ $software->serial_number }}</td>
-                    <td>Akcja</td>
-                    {{-- <td><a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a></td> --}}
+                    <td>{{ $software->expiry_date }}</td>
+                    <td><a href="{{ route('software.edit', ['softwareId' => $software->id]) }}" class="btn btn-primary">Edytuj</a></td>
                 </tr>
                 @endforeach
-
             </tbody>
         </table>
     @else
@@ -96,7 +96,6 @@
 {{-- Sekcja peryferii --}}
 <div>
     <h1 class="h3 mb-0 text-gray-800">Peryferia</h1>
-
 
     @if (count($worker->peripherals) > 0)
         <table class="table table-striped">

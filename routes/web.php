@@ -78,7 +78,15 @@ Route::get('/computers/{computerId}/delete', [ComputerController::class, 'delete
 
 // SOFTWARES
 Route::get('/softwares', [SoftwareController::class, 'list'])->name('software.list');
-Route::get('softwares/{softwareId}/show', [SoftwareController::class, 'show'])->name('software.show');
+Route::get('/softwares/{softwareId}/show', [SoftwareController::class, 'show'])->name('software.show');
+
+Route::get('/softwares/create', [SoftwareController::class, 'create'])->name('software.create');
+Route::post('/softwares/store', [SoftwareController::class, 'store'])->name('software.store');
+
+Route::get('/softwares/{softwareId}/edit', [SoftwareController::class, 'edit'])->name('software.edit');
+Route::post('/softwares/update', [SoftwareController::class, 'update'])->name('software.update');
+
+Route::get('/softwares/delete', [SoftwareController::class, 'delete'])->name('software.delete');
 
 
 

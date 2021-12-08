@@ -26,15 +26,20 @@
                     <td>{{ $peripheral->brand }}</td>
                     <td>{{ $peripheral->model }}</td>
                     <td>{{ $peripheral->serial_number }}</td>
-                    <td>{{ !is_null($peripheral->type_id) ? $peripheral->peripheralType->type : NULL }}</td>
-                    <td>{{ !is_null($peripheral->worker_id) ? $peripheral->worker->fullname()  : NULL }}<td>
-                    {{-- @if (!is_null($peripheral->worker_id))
-                        <td>{{ $peripheral->worker->fullname() }}</td>
-                    @else
-                        <td>
+                    <td>
+                        @if (!is_null($peripheral->type_id))
+                            {{ $peripheral->peripheralType->type }}
+                        @else
                             {{ NULL }}
-                        </td>
-                    @endif --}}
+                        @endif
+                    </td>
+                    <td>
+                        @if (!is_null($peripheral->worker_id))
+                            {{ $peripheral->worker->fullname() }}
+                        @else
+                            {{ NULL }}
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('peripheral.show', ['peripheralId' => $peripheral->id]) }}">Szczegóły</a>
                     </td>
