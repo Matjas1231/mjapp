@@ -5,7 +5,8 @@ namespace App\Repository;
 
 interface WorkerRepositoryInterface
 {
-    public function all(?string $filter);
+    public function all();
+    public function filterBy(?string $phrase);
     public function getWorker(int $id);
     public function storeAndReturnId(array $workerData);
     public function update(array $workerData);
