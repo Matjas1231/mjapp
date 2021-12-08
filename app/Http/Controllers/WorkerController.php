@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Worker;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
@@ -19,9 +20,20 @@ class WorkerController extends Controller
 
     public function list(Request $request)
     {
-        // dd($request->query('filterName'));
-        $workers = $this->workerRepository->all($request->query('filterName'));
-        return view('worker.list', ['workers' => $workers]);
+        $phrase = $request->get('phrase');
+        $workers = $this->workerRepository->filterBy($phrase);
+        return view('worker.list', [
+            'workers' => $workers,
+            'phrase' => $phrase,
+        ]);
+    }
+
+    public function ajaxList(?string $phrase, Request $request)
+    {
+        dump($request);
+        $workers = Worker::all();
+        dd($workers);
+
     }
 
     public function show(int $workerId)

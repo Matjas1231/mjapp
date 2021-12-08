@@ -27,7 +27,9 @@ Route::get('/', function () {
 
 
 // WORKERS
-Route::get('/workers/{filters?}', [WorkerController::class, 'list'])->name('worker.list');
+Route::get('/ajax-request-get', [WorkerController::class, 'ajaxList'])->name('ajax');
+
+Route::get('/workers', [WorkerController::class, 'list'])->name('worker.list');
 Route::get('/workers/{workerId}/show', [WorkerController::class, 'show'])->name('worker.show');
 
 Route::get('/workers/create', [WorkerController::class, 'create'])->name('worker.create');
