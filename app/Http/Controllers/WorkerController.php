@@ -20,20 +20,22 @@ class WorkerController extends Controller
 
     public function list(Request $request)
     {
-        $phrase = $request->get('phrase');
-        $workers = $this->workerRepository->filterBy($phrase);
+        $phraseName = $request->get('phraseName') ?? '';
+
+        $workers = $this->workerRepository->filterBy($phraseName);
         return view('worker.list', [
             'workers' => $workers,
-            'phrase' => $phrase,
+            'phraseName' => $phraseName ?? '',
         ]);
     }
 
-    public function ajaxList(?string $phrase, Request $request)
+    public function ajaxList(Request $request)
     {
-        dump($request);
-        $workers = Worker::all();
-        dd($workers);
+        $filter = $request->get('filter');
 
+        $workers = Worker::where('name', 'LIKE', "%$filter%" )->get();
+
+        return response()->json(['workers' => $workers]);
     }
 
     public function show(int $workerId)

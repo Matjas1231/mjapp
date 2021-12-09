@@ -27,7 +27,7 @@
                 <td>{{ $software->serial_number }}</td>
                 <td>
                     @if (!is_null($software->worker_id))
-                        {{ $software->worker->fullname() }}
+                        <a href="{{ route('worker.show', ['workerId' => $software->worker_id]) }}">{{ $software->worker->fullname() }}</a>
                     @else
                         {{ NULL }}
                     @endif
