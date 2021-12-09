@@ -8,17 +8,16 @@
 @section('content')
 
 
-<form method="GET" action="{{ route('worker.list') }}"class="form-inline">
+    <div class="form-inline">
     <div class="form-group mb-2">
         <label for="phrase">Wyszukaj pracownika: </label>
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" name="phraseName" id="phraseName"  class="form-control" value="{{ $phraseName }}" placeholder="Imię lub nazwisko">
-        {{-- <input type="text" name="phraseDep" id="phraseDep"  class="form-control" value="{{ $phraseDep }}" placeholder="Dział"> --}}
+        <input type="text" class="form-control" id="filterName" placeholder="Imię lub nazwisko">
+        <input type="text" class="form-control" id="filterDep" placeholder="Dział">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
-</form>
-    <input type="text" class="form-control" id="filterName">
+    </div>
+
 <div>
     <table class="table table-striped">
         <thead>
@@ -38,29 +37,6 @@
     </table>
 </div>
 
-
-{{-- <tbody>
-    @foreach ($workers as $worker)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $worker->id }}</td>
-            <td>{{ $worker->name }}</td>
-            <td>{{ $worker->surname }}</td>
-            <td>
-                @if (!is_null($worker->department_id))
-                    <a href="{{ route('department.edit', ['departmentId' =>$worker->department_id]) }}">{{ $worker->department->name }}</a>
-                @else
-                    {{ NULL }}
-                @endif
-            </td>
-            <td>{{ $worker->phone }}</td>
-            <td>
-                <a href="{{ route('worker.show', ['workerId' => $worker->id]) }}">Szczegóły</a>
-            </td>
-        </tr>
-    @endforeach
-</tbody> --}}
-
 @endsection
 
 @section('script')
@@ -71,74 +47,55 @@
     let baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
     let url = baseUrl + "/ajax-request-get";
     let filter = document.querySelector("#filterName");
-    if (filter == null)
+    let filterDep = document.querySelector("#filterDep");
+    // let alldata = 'true';
+
+    xhttp = new XMLHttpRequest();
+
+    something()
+    filter.addEventListener('keyup', something);
+    filterDep.addEventListener('keyup', something);
+
+    function something()
     {
-        console.log = 'ssssssssss'
-    } else {
-        xhttp = new XMLHttpRequest();
-
-        filter.addEventListener('click', something);
-        function something()
-        {
-            // console.log(filter.value);
-                xhttp.open("GET", url +"?filter="+ filter.value, true);
-                xhttp.send();
-        }
-
-
+        xhttp.open("GET", url +"?filter="+ filter.value + "&filterDep=" + filterDep.value, true);
+        console.log(xhttp);
+        xhttp.send();
     }
+
     xhttp.onreadystatechange = function() {
 	        if (this.readyState == 4 && this.status == 200) {
                 const xhttp = new XMLHttpRequest();
-                const all_items = JSON.parse(this.responseText);
-                // console.log(all_items);
-                output = '';
-                // console.log(all_items[0]);
-                // console.log(Object.values(all_items));
-                // for (const item of Object.values(all_items)) {
-                //     console.log(item);
-                //     }
-                for (const v in Object.values(all_items)) {
-                    console.log(all_items[v]);
+                const workers = JSON.parse(this.responseText);
+                let workerArray = Object.values(workers);
+                let output = '';
+                let i = 1;
+                console.log(workerArray);
+                workerArray[0].forEach(element => {
                     output +=
-                    "<tr><td>" +
-                    all_items['id'] +
-                    "</td>" + "<td>" +
-                    all_items['name'] +
-                    "</td>" + "<td>" +
-                    all_items['surname'] +
-                    "</td>" + "<td>" +
-                    all_items['position'] +
-                    "</td>" + "<td>" +
-                    all_items['department_id'] +
-                    "</td>" + "<td>" +
-                    all_items['phone'] +
-                    "</td></tr>";
-                }
-                // }
-                // all_items.forEach(e => {
-                //     console.log(all_items[e]);
-                //     "<tr><td>" +
-                //     all_items[e]['id'] +
-                //     "</td>" + "<td>" +
-                //     all_items[e]['name'] +
-                //     "</td>" + "<td>" +
-                //     all_items[e]['surname'] +
-                //     "</td>" + "<td>" +
-                //     all_items[e]['position'] +
-                //     "</td>" + "<td>" +
-                //     all_items[e]['department_id'] +
-                //     "</td>" + "<td>" +
-                //     all_items[e]['phone'] +
-                //     "</td></tr>";
-                // });
+                    "<tr>" +
+                        "<td>" + i + "</td>" +
+                        "<td>" + element['id'] + "</td>" +
+                        "<td>" + element['name'] + "</td>" +
+                        "<td>" + element['surname'] +"</td>" +
+                        "<td>" + element['position'] + "</td>" +
+                        "<td>" +
+                            (element['department_id'] ? "<a href={{ route('department.edit', ['departmentId' => ':departmentId']) }}".replace(':departmentId', element['department_id']) + '>' +
+                            element['department']['name'] : '')+'</a>' +
+                        "</td>" +
+                        "<td>" + element['phone'] +"</td>" +
+                        "<td>" +
+                            "<a href={{ route('worker.show', ['workerId' => ':workerId']) }}> Szczegóły </a>".replace(':workerId', element['id']) +
+                        "</td>" +
+                    "</tr>";
+                    i++;
+                });
+                console.log(output);
 
-
-                    return output;
+                document.querySelector("#ajax").innerHTML = output;
             }
-            document.querySelector("#ajax").appendText(output);
-
         }
+
 </script>
 
 @endsection
