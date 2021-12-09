@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace App\Repository\Worker;
 
+use App\Models\Department;
 use App\Models\Worker;
 use App\Repository\WorkerRepositoryInterface;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class WorkerRepository implements WorkerRepositoryInterface
 {
@@ -16,14 +18,19 @@ class WorkerRepository implements WorkerRepositoryInterface
         $this->workerModel = $workerModel;
     }
 
-    public function filterBy(?string $phrase)
+    public function filterBy(?string $phraseName)
     {
-        // dd($filter);
-        $query = $this->workerModel->where('name', 'LIKE', "%$phrase%")
-                                    ->orWHere('surname', 'LIKE', "%$phrase%")
-                                    ->with('department');
-        return $query->get();
+        if ($phraseName!= null) {
+            // $phraseName = $phrases['phraseName'];
+            $query = $this->workerModel->where('name', 'LIKE', "%$phraseName%")
+                                        ->orWhere('surname', 'LIKE', "%$phraseName%")
+                                        ->get();
+            return $query;
+        } else {
+            return $this->workerModel->all();
+        }
     }
+
 
     public function all()
     {
