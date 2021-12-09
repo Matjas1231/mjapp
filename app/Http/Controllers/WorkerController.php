@@ -6,6 +6,8 @@ use App\Models\Worker;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class WorkerController extends Controller
 {
@@ -32,8 +34,22 @@ class WorkerController extends Controller
     public function ajaxList(Request $request)
     {
         $filter = $request->get('filter');
+        $filterDep = $request->get('filterDep');
+        // $workers = Worker::where('name', 'LIKE', "%$filter%")
+        $workers = Worker::where('name', 'LIKE', "%$filter%")
+                            // ->orWhere('surname', 'like', "%$filter%")
+                            ->with('department')
+                            ->get()
+                            ->filter(function($q) use($filterDep) {
+                                if(!is_null($q->department->name) > 0) {
+                                    $name = $q->department->name;
+                                    $resultName = Str::contains($name, $filterDep);
+                                    return $resultName;
+                                }
 
-        $workers = Worker::where('name', 'LIKE', "%$filter%" )->get();
+                            });
+                            // dd($workers);
+
 
         return response()->json(['workers' => $workers]);
     }
