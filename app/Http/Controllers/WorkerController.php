@@ -6,8 +6,6 @@ use App\Models\Worker;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class WorkerController extends Controller
 {
@@ -22,12 +20,16 @@ class WorkerController extends Controller
 
     public function list(Request $request)
     {
-        $phraseName = $request->get('phraseName') ?? '';
+        if (!empty($request->query())) {
+            // dd($request->query());
+            $workers = $this->workerRepository->filterBy($request->filtername);
+        } else {
+            $workers = $this->workerRepository->all();
+        }
 
-        $workers = $this->workerRepository->filterBy($phraseName);
+
         return view('worker.list', [
             'workers' => $workers,
-            'phraseName' => $phraseName ?? '',
         ]);
     }
 
@@ -36,22 +38,27 @@ class WorkerController extends Controller
         $filter = $request->get('filter');
         $filterDep = $request->get('filterDep');
         // $workers = Worker::where('name', 'LIKE', "%$filter%")
-        $workers = Worker::where('name', 'LIKE', "%$filter%")
-                            // ->orWhere('surname', 'like', "%$filter%")
-                            ->with('department')
-                            ->get()
-                            ->filter(function($q) use($filterDep) {
-                                if(!is_null($q->department->name) > 0) {
-                                    $name = $q->department->name;
-                                    $resultName = Str::contains($name, $filterDep);
-                                    return $resultName;
-                                }
+        //                     // ->orWhere('surname', 'like', "%$filter%")
+        //                     ->with('department')
+        //                     ->get()
+        //                     ->filter(function($q) use($filterDep) {
+        //                         if(!is_null($q->department->name) > 0) {
+        //                             $name = $q->department->name;
+        //                             $resultName = Str::contains($name, $filterDep);
+        //                             return $resultName;
+        //                         }
 
-                            });
+        //                     });
                             // dd($workers);
 
 
-        return response()->json(['workers' => $workers]);
+        $workers = Worker::where('name', 'LIKE', "%$filter%")
+                            ->orWhere('surname', 'like', "%$filter%")
+                            ->with('department')
+                            // ->paginate(2);
+                            ->get();
+
+        return response()->json($workers);
     }
 
     public function show(int $workerId)
