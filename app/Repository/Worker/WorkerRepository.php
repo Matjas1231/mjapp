@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace App\Repository\Worker;
 
-use App\Models\Department;
 use App\Models\Worker;
 use App\Repository\WorkerRepositoryInterface;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class WorkerRepository implements WorkerRepositoryInterface
@@ -18,14 +16,23 @@ class WorkerRepository implements WorkerRepositoryInterface
         $this->workerModel = $workerModel;
     }
 
-    public function filterBy(?string $phraseName)
+    public function filterBy(?string $filterName)
     {
-        if ($phraseName!= null) {
-            // $phraseName = $phrases['phraseName'];
-            $query = $this->workerModel->where('name', 'LIKE', "%$phraseName%")
-                                        ->orWhere('surname', 'LIKE', "%$phraseName%")
-                                        ->get();
-            return $query;
+        if ($filterName != null) {
+                $worker = DB::table('workers')
+                                ->join('departments', 'workers.department_id', '=','departments.id')
+                                ->select('departments.*')
+                                ->select('workers.*')
+                                ->orWhere('workers', 'LIKE', "%$filterName%")
+                                ->orWhere('departments.name', 'LIKE', "%$filterName%")
+                                ->get();
+                                dd($worker);
+            // $query = $this->workerModel->orWhere('name', 'LIKE', "%$filterName%")
+            //                             ->orWhere('surname', 'LIKE', "%$filterName%")
+            //                             ->with('department')
+            //                             ->orWhere('name', 'LIKE', "%$filterName%")
+            //                             ->get();
+            return $worker;
         } else {
             return $this->workerModel->all();
         }

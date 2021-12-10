@@ -19,7 +19,6 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 
-
 </head>
 
 <body id="page-top">
@@ -606,6 +605,7 @@
     <!-- Custom scripts for all pages-->
     {{-- <script src="js/sb-admin-2.min.js"></script> --}}
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @yield('script')
 
     <!-- Page level plugins -->
