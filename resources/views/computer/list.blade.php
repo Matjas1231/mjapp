@@ -14,6 +14,7 @@
             <th>Model</th>
             <th>Typ</th>
             <th>Adres IP</th>
+            <th>Adres MAC</th>
             <th>Nazwa komputera</th>
             <th>Pracownik</th>
             <th>Akcja</th>
@@ -33,6 +34,7 @@
                 @endif
             </td>
             <td>{{ $computer->ip_address }}</td>
+            <td>{{ $computer->mac_address }}</td>
             <td>{{ $computer->computer_name }}</td>
             <td>
                 @if (!is_null($computer->worker_id))
@@ -48,6 +50,7 @@
         @endforeach
     </tbody>
 </table>
+{{ $computers->links() }}
 
 
 @endsection

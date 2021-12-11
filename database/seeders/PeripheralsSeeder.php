@@ -24,7 +24,7 @@ class PeripheralsSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $peripherals = [];
-            for ($i = 0; $i < 20; $i++) {
+            for ($i = 0; $i < 1400; $i++) {
                 $peripherals[] = [
                     'brand' => $faker->randomElement(['Dell', 'HP', 'Brother', 'Canon']),
                     'model' => $faker->words(4, true),

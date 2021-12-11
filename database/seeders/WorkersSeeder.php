@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -22,12 +23,12 @@ class WorkersSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $workers = [];
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 1600; $i++) {
                 $workers[] = [
                     'name' => $faker->name(),
                     'surname' => $faker->name(),
                     'position' => $faker->name(),
-                    'department_id' => $faker->numberBetween(2,4),
+                    'department_id' => $faker->numberBetween(1,Department::all()->count()),
                     'phone' => $faker->phoneNumber(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),

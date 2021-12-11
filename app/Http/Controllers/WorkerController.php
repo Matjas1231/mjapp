@@ -21,8 +21,11 @@ class WorkerController extends Controller
     public function list(Request $request)
     {
         if (!empty($request->query())) {
-            // dd($request->query());
-            $workers = $this->workerRepository->filterBy($request->filtername);
+            $filters = [];
+            $filters['filter']  = $request->filter ?? null;
+            // $filters['filterSurname']  = $request->filtersurname ?? null;
+            $filters['filterDeb']  = $request->filterdeb ?? null;
+            $workers = $this->workerRepository->filterBy($filters);
         } else {
             $workers = $this->workerRepository->all();
         }
@@ -30,6 +33,9 @@ class WorkerController extends Controller
 
         return view('worker.list', [
             'workers' => $workers,
+            'filter' => $filters['filter'] ?? null,
+            // 'filterSurname' => $filters['filterSurname'] ?? null,
+            'filterDeb' => $filters['filterDeb'] ?? null,
         ]);
     }
 

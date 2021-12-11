@@ -28,6 +28,7 @@ class CreateComputersTable extends Migration
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
+            $table->string('mac_address', 255);
             $table->date('date_of_buy')->default(Carbon::now()->format('Y-m-d'));
             $table->timestamps();
         });

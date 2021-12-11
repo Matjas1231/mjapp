@@ -18,12 +18,11 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Earnings (Monthly)</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Liczba pracowników</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countWorkers }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fas fa-user-alt fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -36,12 +35,11 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Earnings (Annual)</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Liczba działów</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countDepartments }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                <i class="fas fa-building fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -54,28 +52,16 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Liczba komputerów</div>
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $countComputers }}</div>
                                 </div>
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-desktop fa-2x text-gray-300"></i>
                                 </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -83,97 +69,93 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Pending Requests</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Liczba programów</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countSoftwares }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                <i class="fab fa-uncharted fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <!-- Content Row -->
 
         <div class="row">
 
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">Dropdown Header:</div>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
-                        </div>
-                    </div>
+            <div class="col">
+                <div class="card shadow">
+                    <table class="table table-striped" style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th>Lp.</th>
+                                <th>Nazwa działu</th>
+                                <th>Ilość pracowników w dziale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($departments as $department)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $department->name }}</td>
+                                    <td>{{ $department->workers->count() }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">Dropdown Header:</div>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="chart-pie pt-4 pb-2">
-                            <canvas id="myPieChart"></canvas>
-                        </div>
-                        <div class="mt-4 text-center small">
-                            <span class="mr-2">
-                                <i class="fas fa-circle text-primary"></i> Direct
-                            </span>
-                            <span class="mr-2">
-                                <i class="fas fa-circle text-success"></i> Social
-                            </span>
-                            <span class="mr-2">
-                                <i class="fas fa-circle text-info"></i> Referral
-                            </span>
-                        </div>
-                    </div>
+            <div class="col">
+                <div class="card shadow">
+                    <table class="table table-striped" style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th>Lp.</th>
+                                <th>Nazwa typu komputera</th>
+                                <th>Ilość komputerów danego typu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($computerTypes as $computerType)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $computerType->type }}</td>
+                                    <td>{{ $computerType->computers->count() }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+            <div class="col">
+                <div class="card shadow">
+                    <table class="table table-striped" style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th>Lp.</th>
+                                <th>Nazwa typu urządzenia</th>
+                                <th>Ilość urządzeń dangeo typu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($peripheralTypes as $peripheralType)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $peripheralType->type }}</td>
+                                    <td>{{ $peripheralType->peripherals->count() }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
-
         <!-- Content Row -->
         <div class="row">
 

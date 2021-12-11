@@ -10,4 +10,5 @@ interface ComputerRepositoryInterface
     public function storeAndReturnId(array $computerData);
     public function update(array $computerData);
     public function delete(int $id);
+    public function countComputers();
 }

@@ -6,9 +6,10 @@ namespace App\Repository;
 interface WorkerRepositoryInterface
 {
     public function all();
-    public function filterBy(?string $phraseName);
+    public function filterBy(?array $phraseName);
     public function getWorker(int $id);
     public function storeAndReturnId(array $workerData);
     public function update(array $workerData);
     public function delete(int $id);
+    public function countWorkers();
 }

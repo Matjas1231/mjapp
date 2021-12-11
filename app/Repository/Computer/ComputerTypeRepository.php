@@ -29,7 +29,7 @@ class ComputerTypeRepository implements ComputerTypeRepositoryInterface
 
     public function getSingle(int $computerTypeId)
     {
-        return $this->computerTypeModel->find($computerTypeId);
+        return $this->computerTypeModel->with('computers')->find($computerTypeId);
     }
 
     public function update(array $computerData)

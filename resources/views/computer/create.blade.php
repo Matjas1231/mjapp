@@ -57,6 +57,10 @@
             <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="Podaj adres IP" value="Dynamic" required>
         </div>
         <div class="col">
+            <label for="ip_address">Adres MAC</label>
+            <input type="text" class="form-control" id="mac_address" name="mac_address" placeholder="Podaj adres MAC" value="00:00:00:00:00:00" required>
+        </div>
+        <div class="col">
             <label for="computer_name">Nazwa komputera</label>
             <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" required>
         </div>

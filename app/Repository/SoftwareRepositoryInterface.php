@@ -11,4 +11,5 @@ interface SoftwareRepositoryInterface
     public function storeAndReturnId(array $peripheralData);
     public function update(array $peripheralData);
     public function delete(int $id);
+    public function countSoftwares();
 }

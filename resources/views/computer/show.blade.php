@@ -13,6 +13,7 @@
         <p>RAM: <b>{{ $computer->ram }}</b></p>
         <p>Opis: <b>{{ $computer->description }}</b></p>
         <p>Adres IP: <b>{{ $computer->ip_address }}</b></p>
+        <p>Adres MAC: <b>{{ $computer->mac_address }}</b></p>
         <p>Nazwa: <b>{{ $computer->computer_name }}</b></p>
         <p>Data zakupu: <b>{{ $computer->date_of_buy }}</b></p>
         <p>Pracownik: <b>{{ !is_null($computer->worker_id) ? $computer->worker->fullname() : 'Brak pracownika' }}</b></p>

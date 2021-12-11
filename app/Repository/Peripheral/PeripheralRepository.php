@@ -18,12 +18,12 @@ class PeripheralRepository implements PeripheralRepositoryInterface
 
     public function all()
     {
-        return $this->peripheralModel->get();
+        return $this->peripheralModel->with('worker', 'peripheralType')->paginate(25);
     }
 
     public function getPeripheral(int $id)
     {
-        return $this->peripheralModel->find($id);
+        return $this->peripheralModel->with('worker', 'peripheralType')->find($id);
     }
 
     public function storeAndReturnId(array $peripheralData)
