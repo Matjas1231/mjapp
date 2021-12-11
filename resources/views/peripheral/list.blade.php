@@ -47,6 +47,6 @@
             @endforeach
         </tbody>
     </table>
-
+    {{ $peripherals->links() }}
 
 @endsection

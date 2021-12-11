@@ -50,13 +50,19 @@
             @endforeach
         </select>
     </div>
-    <div class='form-group'>
-        <label for="ip_address">Adres IP</label>
-        <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="Podaj adres IP" value="{{ $computer->ip_address }}" required>
-    </div>
-    <div class='form-group'>
-        <label for="computer_name">Nazwa komputera</label>
-        <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" value="{{ $computer->computer_name }}" required>
+    <div class='form-row'>
+        <div class="col">
+            <label for="ip_address">Adres IP</label>
+            <input type="text" class="form-control" id="ip_address" name="ip_address" placeholder="Podaj adres IP" value="{{ $computer->ip_address }}" required>
+        </div>
+        <div class="col">
+            <label for="computer_name">Nazwa komputera</label>
+            <input type="text" class="form-control" id="computer_name" name="computer_name" placeholder="Podaj nazwę komputera" value="{{ $computer->computer_name }}" required>
+        </div>
+        <div class="col">
+            <label for="computer_name">Adres MAC</label>
+            <input type="text" class="form-control" id="mac_address" name="mac_address" placeholder="Podaj adres MAC" value="{{ $computer->mac_address }}" required>
+        </div>
     </div>
     <div class='form-group'>
         <label for="date_of_buy">Data zakupu</label>

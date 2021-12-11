@@ -18,7 +18,9 @@ class ComputerRepository implements ComputerRepositoryInterface
 
     public function all()
     {
-        return $this->computerModel->get();
+        return $this->computerModel
+                    ->with('worker', 'computerType')
+                    ->paginate(25);
     }
 
     public function getComputer(int $id)
@@ -37,6 +39,7 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->description = $computerData['description'];
         $computer->worker_id = $computerData['worker_id'];
         $computer->ip_address = $computerData['ip_address'] ?? 'Dynamic';
+        $computer->mac_address = $computerData['mac_address'] ?? '00:00:00:00:00:00';
         $computer->computer_name = $computerData['computer_name'];
         $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('Y-m-d');
         $computer->save();
@@ -56,6 +59,7 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->description = $computerData['description'];
         $computer->worker_id = $computerData['worker_id'];
         $computer->ip_address = $computerData['ip_address'] ?? 'Dynamic';
+        $computer->mac_address = $computerData['mac_address'] ?? '00:00:00:00:00:00';
         $computer->computer_name = $computerData['computer_name'];
         $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('Y-m-d');
         return $computer->save();
@@ -64,5 +68,10 @@ class ComputerRepository implements ComputerRepositoryInterface
     public function delete(int $id)
     {
         return $this->computerModel->find($id)->delete();
+    }
+
+    public function countComputers()
+    {
+        return $this->computerModel->all()->count();
     }
 }

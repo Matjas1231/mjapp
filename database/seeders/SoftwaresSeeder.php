@@ -23,7 +23,7 @@ class SoftwaresSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $softwares = [];
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 1001; $i++) {
                 $softwares[] = [
                     'producer' => $faker->words('2', true),
                     'serial_number' => $faker->sentence(),

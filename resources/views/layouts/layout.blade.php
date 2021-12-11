@@ -11,9 +11,9 @@
 
     <title>Menedżer informacji - @yield('title')</title>
 
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.css"/> --}}
 
     <!-- Custom styles for this template-->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -41,7 +41,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -233,7 +233,7 @@
                     <i class="fas fa-laptop-house"></i>
                     <span>Lista typów urządzeń</span></a>
             </li> --}}
-
+{{--
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -322,15 +322,17 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
+
+
+            <!-- Sidebar Message -->
+            {{-- <div class="sidebar-card d-none d-lg-flex"></div> --}}
+                        <!-- Sidebar Toggler (Sidebar) -->
+
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
-            {{-- <div class="sidebar-card d-none d-lg-flex"></div> --}}
-
-        </ul>
+     </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -605,7 +607,7 @@
     <!-- Custom scripts for all pages-->
     {{-- <script src="js/sb-admin-2.min.js"></script> --}}
     <script src="{{ mix('js/app.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
     @yield('script')
 
     <!-- Page level plugins -->

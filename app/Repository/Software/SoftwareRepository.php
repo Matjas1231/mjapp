@@ -18,7 +18,9 @@ class SoftwareRepository implements SoftwareRepositoryInterface
 
     public function all()
     {
-        return $this->softwareModel->get();
+        return $this->softwareModel
+                    ->with('worker')
+                    ->paginate(25);
     }
 
     public function getSoftware(int $id)
@@ -59,5 +61,10 @@ class SoftwareRepository implements SoftwareRepositoryInterface
     public function delete(int $id)
     {
         return $this->softwareModel->find($id)->delete();
+    }
+
+    public function countSoftwares()
+    {
+        return $this->softwareModel->all()->count();
     }
 }

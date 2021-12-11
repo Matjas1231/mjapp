@@ -38,5 +38,5 @@
         @endforeach
     </tbody>
 </table>
-
+{{ $softwares->links() }}
 @endsection

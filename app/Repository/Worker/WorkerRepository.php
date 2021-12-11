@@ -16,37 +16,50 @@ class WorkerRepository implements WorkerRepositoryInterface
         $this->workerModel = $workerModel;
     }
 
-    public function filterBy(?string $filterName)
+    public function filterBy(?array $filters)
     {
-        if ($filterName != null) {
-                $worker = DB::table('workers')
-                                ->join('departments', 'workers.department_id', '=','departments.id')
-                                ->select('departments.*')
-                                ->select('workers.*')
-                                ->orWhere('workers', 'LIKE', "%$filterName%")
-                                ->orWhere('departments.name', 'LIKE', "%$filterName%")
-                                ->get();
-                                dd($worker);
-            // $query = $this->workerModel->orWhere('name', 'LIKE', "%$filterName%")
-            //                             ->orWhere('surname', 'LIKE', "%$filterName%")
-            //                             ->with('department')
-            //                             ->orWhere('name', 'LIKE', "%$filterName%")
-            //                             ->get();
-            return $worker;
+        if (!empty($filters)) {
+            $workers = $this->workerModel->query();
+
+            if (!empty($filters['filter'])) {
+                $filter = $filters['filter'];
+                // $workers->where('name', 'LIKE', "%$filterName%")
+                $workers->where(DB::raw('("name" || "surname")'), 'LIKE', "%$filter%")
+                // ->orderBy('id', 'desc')
+                ->get();
+            }
+
+            // if (!empty($filters['filterSurname'])) {
+            //     $filterSurname = $filters['filterSurname'];
+            //     $workers->where('surname', 'LIKE', "%$filterSurname%")
+            //     ->get();
+            // }
+
+            if (!empty($filters['filterDeb'])) {
+                $filterDeb = $filters['filterDeb'];
+                $workers->whereHas('department', function($q) use($filterDeb) {
+                    $q->where('name', 'LIKE', "%$filterDeb%");
+                })->get();
+            }
+
+            return $workers->with('department')->paginate(20);
+            // return $workers->all();
         } else {
-            return $this->workerModel->all();
+            // return $this->workerModel->all();
+            return $this->workerModel->with('department')->paginate(20);
         }
     }
 
 
     public function all()
     {
-        return $this->workerModel->all();
+        // return $this->workerModel->all();
+        return $this->workerModel->with('department')->paginate(20);
     }
 
     public function getWorker(int $id)
     {
-        return $this->workerModel->find($id);
+        return $this->workerModel->with('computers', 'softwares', 'peripherals')->find($id);
     }
 
     public function storeAndReturnId(array $workerData)
@@ -78,5 +91,10 @@ class WorkerRepository implements WorkerRepositoryInterface
     {
         $worker = $this->workerModel->find($id);
         return $worker->delete();
+    }
+
+    public function countWorkers()
+    {
+        return $this->workerModel->all()->count();
     }
 }

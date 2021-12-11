@@ -7,31 +7,29 @@
 
 @section('content')
 
+
 <form method="GET">
     <div class="form-inline">
         <div class="form-group mb-2">
-            <label for="phrase">Wyszukaj pracownika: </label>
+            <label for="phrase">Wyszukaj: </label>
         </div>
         <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" id="filtername" name="filtername" placeholder="Imię lub nazwisko">
-            {{-- <input type="text" class="form-control" id="filterDep" placeholder="Dział"> --}}
-            <button type="submit" class="btn btn-primary">Szukaj</button>
+            <input type="text" class="form-control" id="filtername" name="filter" value="{{ $filter }}" placeholder="Imię lub nazwisko">
+        </div>
+        {{-- <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="filtername" name="filtersurname" value="{{ $filterSurname }}" placeholder="Nazwisko">
+        </div> --}}
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="filterdeb" name="filterdeb" value="{{ $filterDeb }}"  placeholder="Dział">
         </div>
     </div>
+    <button id="sss" type="submit" class="btn btn-primary">Szukaj</button>
 </form>
 
-{{-- <div class="form-inline">
-    <div class="form-group mb-2">
-        <label for="phrase">Wyszukaj pracownika: </label>
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control" id="filterName" placeholder="Imię lub nazwisko">
-        {{-- <input type="text" class="form-control" id="filterDep" placeholder="Dział"> --}}
-    {{-- </div>
-</div> --}}
-
 <div>
-    <table class="table table-striped">
+    {{-- <input type="text" id="search" placeholder="Wyszukaj"> --}}
+
+    <table class="table table-striped" id="datatable">
         <thead>
             <tr>
                     <th>Lp.</th>
@@ -43,7 +41,7 @@
                     <th>Akcja</th>
             </tr>
         </thead>
-        <tbody id="ajax">
+        <tbody id="tableSearch">
             @foreach ($workers as $worker)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -51,20 +49,77 @@
                     <td>{{ $worker->name }}</td>
                     <td>{{ $worker->surname }}</td>
                     <td>
-                        {{ $worker->department->name ?? '' }}
+                        @if (!is_null($worker->department_id))
+                            <a href="{{ route('department.edit', ['departmentId' => $worker->department_id]) }}">{{ $worker->department->name }}</a>
+                        @else
+                            {{ null }}
+                        @endif
                     </td>
                     <td>{{ $worker->phone }}</td>
-                    <td>Akcja</td>
+                    <td>
+                        <a href="{{ route('worker.show', ['workerId' => $worker->id]) }}">Sczegóły</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <div>{{ $workers->links('pagination::bootstrap-4') }}</div>
 </div>
 
 @endsection
 
 @section('script')
 
+<script>
+
+    // Wyszukiwanie po wszystkich kolumnach jQUery
+
+    // var $rows = $('#tableSearch tr');
+    // $('#search').keyup(function() {
+
+    //     var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+    //         reg = RegExp(val, 'i'),
+    //         text;
+
+    //     $rows.show().filter(function() {
+    //         text = $(this).text().replace(/\s+/g, ' ');
+    //         return !reg.test(text);
+    //     }).hide();
+    // });
+
+        // wyszukiwanie po jednej kolumnie
+    // function myFunction() {
+    //     var input = document.getElementById("myInput");
+    // var filter = input.value.toUpperCase();
+    // var table = document.getElementById("mytable");
+    // var tr = table.getElementsByTagName("tr");
+    // var tds = tr.getElementsByTagName('td');
+
+    //     for (var i = 0; i < tr.length; i++) {
+    //         var firstCol = tds[2].textContent.toUpperCase();
+    //         var secondCol = tds[3].textContent.toUpperCase();
+    //         if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1) {
+    //             tr[i].style.display = "";
+    //         } else {
+    //             tr[i].style.display = "none";
+    //         }
+    //     }
+    // }
+
+    //     // api datatable
+    // $(document).ready(function() {
+    //     $('#datatable').DataTable( {
+    //         "dom": 'f'
+    //         "columns": [
+    //             {"searchable": false},
+    //             {"searchable": false},
+    //             null,
+
+    //         ]
+    //     });
+    // });
+
+</script>
 
 
 {{-- <script> // dobre

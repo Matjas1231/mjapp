@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\ComputerTypesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\PeripheralTypeController;
@@ -21,9 +22,7 @@ use Nette\Schema\Context;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 
 // WORKERS

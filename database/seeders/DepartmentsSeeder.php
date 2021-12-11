@@ -23,7 +23,7 @@ class DepartmentsSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $department = [];
-            for ($i = 0; $i < 4; $i++) {
+            for ($i = 0; $i < 12; $i++) {
                 $department[] = [
                     'name' => $faker->word(),
                     'created_at' => Carbon::now(),
