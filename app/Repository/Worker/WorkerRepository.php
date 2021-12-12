@@ -42,19 +42,18 @@ class WorkerRepository implements WorkerRepositoryInterface
                 })->get();
             }
 
-            return $workers->with('department')->paginate(20);
+            return $workers->with('department')->paginate(25);
             // return $workers->all();
         } else {
             // return $this->workerModel->all();
-            return $this->workerModel->with('department')->paginate(20);
+            return $this->workerModel->with('department')->paginate(25);
         }
     }
-
 
     public function all()
     {
         // return $this->workerModel->all();
-        return $this->workerModel->with('department')->paginate(20);
+        return $this->workerModel->with('department')->paginate(25);
     }
 
     public function getWorker(int $id)
