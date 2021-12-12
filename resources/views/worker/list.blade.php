@@ -106,16 +106,10 @@
     //     }
     // }
 
-    //     // api datatable
+    // api datatable
+
     // $(document).ready(function() {
     //     $('#datatable').DataTable( {
-    //         "dom": 'f'
-    //         "columns": [
-    //             {"searchable": false},
-    //             {"searchable": false},
-    //             null,
-
-    //         ]
     //     });
     // });
 
