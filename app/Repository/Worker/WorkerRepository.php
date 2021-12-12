@@ -55,6 +55,11 @@ class WorkerRepository implements WorkerRepositoryInterface
         // return $this->workerModel->all();
         return $this->workerModel->with('department')->paginate(25);
     }
+    public function allWithoutPaginate()
+    {
+        // return $this->workerModel->all();
+        return $this->workerModel->all();
+    }
 
     public function getWorker(int $id)
     {

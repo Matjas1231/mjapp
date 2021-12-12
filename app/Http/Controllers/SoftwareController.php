@@ -34,7 +34,7 @@ class SoftwareController extends Controller
     public function create()
     {
         return view('software.create', [
-            'workers' => $this->workerRepository->all(),
+            'workers' => $this->workerRepository->allWithoutPaginate(),
         ]);
     }
 

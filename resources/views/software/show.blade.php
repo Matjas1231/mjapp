@@ -10,7 +10,12 @@
     <p>Producent: <b>{{ $software->producer }}</b></p>
     <p>Nazwa: <b>{{ $software->name }}</b></p>
     <p>Numer seryjny: <b>{{ $software->serial_number }}</b></p>
-    <p>Pracownik: <b>{{ !is_null($software->worker_id) ? $software->worker->fullname() : 'Brak pracownika'}}</b></p>
+    <p>Pracownik: <b>
+        @if (!is_null($software->worker_id))
+            <a href="{{ route('worker.show', ['workerId' => $software->worker_id]) }}">{{ $software->worker->fullname() }}</a>
+        @else
+            'Brak pracownika'
+        @endif </b></p>
     <p>Dodatkowe informacje: <b>{{ $software->description }}</b></p>
     <p>Data zakupu: <b>{{ $software->date_of_buy }}</b></p>
     <p>Data ważności: <b>{{ $software->expiry_date ?? 'N/D' }}</b></p>
