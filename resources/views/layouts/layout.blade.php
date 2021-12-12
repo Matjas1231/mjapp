@@ -607,7 +607,7 @@
     <!-- Custom scripts for all pages-->
     {{-- <script src="js/sb-admin-2.min.js"></script> --}}
     <script src="{{ mix('js/app.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script> --}}
     @yield('script')
 
     <!-- Page level plugins -->
