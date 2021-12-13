@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Worker;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
@@ -36,9 +37,10 @@ class DepartmentController extends Controller
 
     public function edit(int $departmentId)
     {
+        $workers = Worker::query()->where('department_id', '=', $departmentId)->paginate(25);
         return view('department.edit', [
             'department' => $this->departmentRepository->getSingle($departmentId),
-            'workers' => $this->workerRepository->all(),
+            'workers' => $workers,
         ]);
     }
 

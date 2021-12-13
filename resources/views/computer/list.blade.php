@@ -38,9 +38,9 @@
             <td>{{ $computer->computer_name }}</td>
             <td>
                 @if (!is_null($computer->worker_id))
-                    {{ $computer->worker->fullname() }}
+                    <a href="{{ route('worker.show', ['workerId' => $computer->worker_id]) }}">{{ $computer->worker->fullname() }}</a>
                 @else
-                    {{ NULL }}
+                    'Brak pracownika'
                 @endif
             </td>
             <td>

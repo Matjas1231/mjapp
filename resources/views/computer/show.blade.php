@@ -16,7 +16,12 @@
         <p>Adres MAC: <b>{{ $computer->mac_address }}</b></p>
         <p>Nazwa: <b>{{ $computer->computer_name }}</b></p>
         <p>Data zakupu: <b>{{ $computer->date_of_buy }}</b></p>
-        <p>Pracownik: <b>{{ !is_null($computer->worker_id) ? $computer->worker->fullname() : 'Brak pracownika' }}</b></p>
+        <p>Pracownik: <b>
+            @if (!is_null($computer->worker_id))
+                <a href="{{ route('worker.show', ['workerId' => $computer->worker_id]) }}">{{ $computer->worker->fullname() }}</a>
+            @else
+                'Brak pracownika'
+            @endif </b></p>
         <a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a>
         <a href="{{ route('computer.delete', ['computerId' => $computer->id]) }}" class="btn btn-danger">Usuń</a>
     </div>

@@ -18,7 +18,7 @@ class CreatePeripheralsTable extends Migration
             $table->id();
             $table->string('brand', 60);
             $table->string('model', 100)->nullable();
-            $table->string('serial_number', 100)->nullable();
+            $table->string('serial_number', 100)->nullable()->default('N/D');
             $table->foreignId('type_id')->nullable()->references('id')->on('peripheral_types')->onDelete('set null');
             $table->text('description')->nullable();
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');

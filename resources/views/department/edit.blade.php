@@ -33,7 +33,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($department->workers as $worker)
+                @foreach ($workers as $worker)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $worker->name }}</td>
@@ -44,6 +44,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $workers->links() }}
     @else
         <h1 class="h3 mb-0 text-gray-800">Brak pracowników</h1>
     @endif

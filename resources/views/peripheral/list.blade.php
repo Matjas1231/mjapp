@@ -13,8 +13,8 @@
                 <th>Lp.</th>
                 <th>Marka</th>
                 <th>Model</th>
-                <th>Numer seryjny</th>
                 <th>Typ</th>
+                <th>Numer seryjny</th>
                 <th>Pracownik</th>
                 <th>Akcja</th>
             </tr>
@@ -25,7 +25,6 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $peripheral->brand }}</td>
                     <td>{{ $peripheral->model }}</td>
-                    <td>{{ $peripheral->serial_number }}</td>
                     <td>
                         @if (!is_null($peripheral->type_id))
                             {{ $peripheral->peripheralType->type }}
@@ -33,11 +32,12 @@
                             {{ NULL }}
                         @endif
                     </td>
+                    <td>{{ $peripheral->serial_number }}</td>
                     <td>
                         @if (!is_null($peripheral->worker_id))
-                            {{ $peripheral->worker->fullname() }}
+                            <a href="{{ route('worker.show', ['workerId' => $peripheral->worker_id]) }}">{{ $peripheral->worker->fullname() }}</a>
                         @else
-                            {{ NULL }}
+                            'Brak pracownika'
                         @endif
                     </td>
                     <td>

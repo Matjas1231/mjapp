@@ -24,7 +24,7 @@ class ComputersSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $computers = [];
-            for ($i = 0; $i < 1230; $i++) {
+            for ($i = 0; $i < $faker->numberBetween(400, 1600); $i++) {
                 $computers[] = [
                     'brand' => $faker->randomElement(['Dell', 'HP', 'Lenovo', 'Fujitsu']),
                     // 'brand' => $faker->randomElement(),
@@ -35,6 +35,7 @@ class ComputersSeeder extends Seeder
                     'description' => $faker->words(30, true),
                     'ram' => $faker->words(2, true),
                     'worker_id' => $faker->numberBetween(1, Worker::all()->count()),
+                    'ip_address' => $faker->ipv4(),
                     'mac_address' => $faker->macAddress(),
                     'computer_name' => $faker->word(),
                     'date_of_buy' => $faker->date(),
