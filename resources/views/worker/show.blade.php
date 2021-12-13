@@ -10,7 +10,12 @@
     <p>Imię: <b>{{ $worker->name }}</b></p>
     <p>Nazwisko: <b>{{ $worker->surname }}</b></p>
     <p>Stanowisko: <b>{{ $worker->position }}</b></p>
-    <p>Dział: <b>{{ !is_null($worker->department_id) ? $worker->department->name : 'Nieprzypisany' }}</b></p>
+    <p>Dział: <b>
+        @if (!is_null($worker->department_id))
+            <a href="{{ route('department.edit', ['departmentId' => $worker->department_id]) }}">{{ $worker->department->name }}</a>
+        @else
+            {{ null }}
+        @endif </b></p>
     <p>Numer telefonu: <b>{{ $worker->phone }}</b></p>
     <a href="{{ route('worker.edit', ['workerId' => $worker->id]) }}" class="btn btn-primary"> Edytuj </a>
     <a href="{{ route('worker.delete', ['workerId' => $worker->id]) }}" class="btn btn-danger"> Usuń </a>
@@ -28,6 +33,7 @@
                 <tr>
                     <th>Lp.</th>
                     <th>Producent</th>
+                    <th>Nazwa</th>
                     <th>Numer Seryjny</th>
                     <th>Data ważności</th>
                     <th>Akcja</th>
@@ -38,6 +44,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $software->producer }}</td>
+                    <td>{{ $software->name }}</td>
                     <td>{{ $software->serial_number }}</td>
                     <td>{{ $software->expiry_date }}</td>
                     <td><a href="{{ route('software.edit', ['softwareId' => $software->id]) }}" class="btn btn-primary">Edytuj</a></td>
@@ -105,6 +112,7 @@
                     <th>Marka</th>
                     <th>Model</th>
                     <th>Typ</th>
+                    <th>Numer seryjny</th>
                     <th>Akcja</th>
                 </tr>
             </thead>
@@ -115,6 +123,7 @@
                         <td>{{ $peripheral->brand }}</td>
                         <td>{{ $peripheral->model }}</td>
                         <td>{{ !is_null($peripheral->type_id) ? $peripheral->peripheralType->type : NULL }}</td>
+                        <td>{{ $peripheral->serial_number }}</td>
                         <td><a href="{{ route('peripheral.edit', ['peripheralId' => $peripheral->id]) }}" class="btn btn-primary">Edytuj</a></td>
                     </tr>
                 @endforeach

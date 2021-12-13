@@ -23,12 +23,12 @@ class WorkersSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $workers = [];
-            for ($i = 0; $i < 1600; $i++) {
+            for ($i = 0; $i < $faker->numberBetween(652, 2125); $i++) {
                 $workers[] = [
                     'name' => $faker->name(),
                     'surname' => $faker->name(),
                     'position' => $faker->name(),
-                    'department_id' => $faker->numberBetween(1,Department::all()->count()),
+                    'department_id' => $faker->numberBetween(1, Department::all()->count()),
                     'phone' => $faker->phoneNumber(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),

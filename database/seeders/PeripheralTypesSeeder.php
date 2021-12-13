@@ -22,7 +22,7 @@ class PeripheralTypesSeeder extends Seeder
 
         for ($j = 0; $j < 1; $j++) {
             $peripherals = [];
-            for ($i = 0; $i < 6; $i++) {
+            for ($i = 0; $i < $faker->numberBetween(3, 15); $i++) {
                 $peripherals[] = [
                     'type' => $faker->word(),
                     'created_at' => Carbon::now(),
