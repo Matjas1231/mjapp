@@ -39,6 +39,7 @@ class ComputersSeeder extends Seeder
                     'mac_address' => $faker->macAddress(),
                     'computer_name' => $faker->word(),
                     'date_of_buy' => $faker->date(),
+                    'serial_number' => $faker->sentence(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];

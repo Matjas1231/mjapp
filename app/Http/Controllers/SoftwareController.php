@@ -17,10 +17,25 @@ class SoftwareController extends Controller
         $this->workerRepository = $workerRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
+        if (!empty($request->query())) {
+            $filters = [];
+            $filters['filter'] = $request->filter ?? null;
+            $filters['producer'] = $request->producer ?? null;
+            $filters['name'] = $request->name ?? null;
+            $filters['serialnumber'] = $request->serialnumber ?? null;
+
+            $softwares = $this->softwareRepository->filterBy($filters);
+        } else {
+            $softwares = $this->softwareRepository->all();
+        }
         return view('software.list', [
-            'softwares' => $this->softwareRepository->all(),
+            'softwares' => $softwares,
+            'filter' => $filters['filter'] ?? null,
+            'producer' => $filters['producer'] ?? null,
+            'name' => $filters['name'] ?? null,
+            'serialNumber' => $filters['serialnumber'] ?? null,
         ]);
     }
 

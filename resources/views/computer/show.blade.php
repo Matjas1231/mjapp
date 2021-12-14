@@ -15,6 +15,7 @@
         <p>Adres IP: <b>{{ $computer->ip_address }}</b></p>
         <p>Adres MAC: <b>{{ $computer->mac_address }}</b></p>
         <p>Nazwa: <b>{{ $computer->computer_name }}</b></p>
+        <p>Numer seryjny: <b>{{ $computer->serial_number }}</b></p>
         <p>Data zakupu: <b>{{ $computer->date_of_buy }}</b></p>
         <p>Pracownik: <b>
             @if (!is_null($computer->worker_id))

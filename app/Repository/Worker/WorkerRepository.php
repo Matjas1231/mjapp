@@ -5,6 +5,7 @@ namespace App\Repository\Worker;
 
 use App\Models\Worker;
 use App\Repository\WorkerRepositoryInterface;
+use GuzzleHttp\Psr7\FnStream;
 use Illuminate\Support\Facades\DB;
 
 class WorkerRepository implements WorkerRepositoryInterface
@@ -59,6 +60,11 @@ class WorkerRepository implements WorkerRepositoryInterface
     {
         // return $this->workerModel->all();
         return $this->workerModel->all();
+    }
+
+    public function workersByDepartment(int $departmentId)
+    {
+        return $this->workerModel->query()->where('department_id', '=', $departmentId)->paginate(25);
     }
 
     public function getWorker(int $id)

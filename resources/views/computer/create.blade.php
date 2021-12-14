@@ -39,6 +39,10 @@
         <input type="text" class="form-control" id="ram" name="ram" placeholder="Podaj wielkość i rodzaj pamięci" required>
     </div>
     <div class='form-group'>
+        <label for="ram">Numer seryjny</label>
+        <input type="text" class="form-control" id="serial_number" name="serial_number" placeholder="Podaj numer seryjny" value="{{ $computer->serial_number }}" required>
+    </div>
+    <div class='form-group'>
         <label for="description">Dodatkowe informacje</label>
         <input type="text" class="form-control" id="description" name="description" placeholder="Podaj dodatkowe informacje">
     </div>

@@ -19,7 +19,6 @@ class CreateComputersTable extends Migration
             $table->id();
             $table->string('brand', 60)->index();
             $table->string('model', 100)->index();
-            // $table->integer('type_id', false, false);
             $table->foreignId('type_id')->nullable()->references('id')->on('computer_types')->onDelete('set null');
             $table->string('processor', 60);
             $table->string('motherboard', 100);
@@ -29,6 +28,7 @@ class CreateComputersTable extends Migration
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
             $table->string('mac_address', 255);
+            $table->string('serial_number', 255);
             $table->date('date_of_buy')->default(Carbon::now()->format('Y-m-d'));
             $table->timestamps();
         });
