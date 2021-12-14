@@ -37,10 +37,9 @@ class DepartmentController extends Controller
 
     public function edit(int $departmentId)
     {
-        $workers = Worker::query()->where('department_id', '=', $departmentId)->paginate(25);
         return view('department.edit', [
             'department' => $this->departmentRepository->getSingle($departmentId),
-            'workers' => $workers,
+            'workers' => $this->workerRepository->workersByDepartment($departmentId),
         ]);
     }
 

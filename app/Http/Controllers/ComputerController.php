@@ -20,11 +20,36 @@ class ComputerController extends Controller
         $this->workerRepository = $workerRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $computers = $this->computerRepository->all();
+        if (!empty($request->query())) {
+            $filters = [];
+            $filters['filter'] = $request->filter ?? null;
+            $filters['computertype'] = $request->computertype ?? null;
+            $filters['brand'] = $request->brand ?? null;
+            $filters['model'] = $request->model ?? null;
+            $filters['serialnumber'] = $request->serialnumber ?? null;
+            $filters['ipaddress'] = $request->ipaddress ?? null;
+            $filters['macaddress'] = $request->macaddress ?? null;
+            $filters['computername'] = $request->computername ?? null;
 
-        return view('computer.list', ['computers' => $computers]);
+            // dd($filters);
+            $computers = $this->computerRepository->filterBy($filters);
+        } else {
+            $computers = $this->computerRepository->all();
+        }
+
+        return view('computer.list', [
+            'computers' => $computers,
+            'filter' => $filters['filter'] ?? null,
+            'computertype' => $filters['computertype'] ?? null,
+            'brand' => $filters['brand'] ?? null,
+            'model' => $filters['model'] ?? null,
+            'serialnumber' => $filters['serialnumber'] ?? null,
+            'ipaddress' => $filters['ipaddress'] ?? null,
+            'macaddress' => $filters['macaddress'] ?? null,
+            'computername' => $filters['computername'] ?? null,
+        ]);
     }
 
     public function show(int $computerId)

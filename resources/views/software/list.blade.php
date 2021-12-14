@@ -6,6 +6,29 @@
 
 @section('content')
 
+<form method="GET">
+    <div class="form-group mb-2">
+        <label for="phrase">Wyszukaj: </label>
+    </div>
+    <div class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="filtername" name="filter" value="{{ $filter }}" placeholder="Imię lub nazwisko">
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="filterprod" name="producer" value="{{ $producer }}"  placeholder="Producent">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="filterna" name="name" value="{{ $name }}"  placeholder="Nazwa">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="filtersn" name="serialnumber" value="{{ $serialNumber }}"  placeholder="Numer seryjny">
+        </div>
+    </div>
+    <button id="sss" type="submit" class="btn btn-primary">Szukaj</button>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>

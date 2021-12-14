@@ -6,6 +6,7 @@ namespace App\Repository\Software;
 use App\Models\Software;
 use App\Repository\SoftwareRepositoryInterface;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SoftwareRepository implements SoftwareRepositoryInterface
 {
@@ -21,6 +22,39 @@ class SoftwareRepository implements SoftwareRepositoryInterface
         return $this->softwareModel
                     ->with('worker')
                     ->paginate(25);
+    }
+
+    public function filterBy(?array $filters)
+    {
+        if (!empty($filters)) {
+            $softwares = $this->softwareModel->query();
+
+            if (!empty($filters['filter'])) {
+                $fullname = $filters['filter'];
+                $softwares->whereHas('worker', function($q) use($fullname) {
+                    $q->where(DB::raw('("name" || "surname")'), 'LIKE', "%$fullname%");
+                })->get();
+            }
+
+            if (!empty($filters['producer'])) {
+                $producer = $filters['producer'];
+                $softwares->where('producer', 'LIKE', "%$producer%")->get();
+            }
+
+            if (!empty($filters['name'])) {
+                $name = $filters['name'];
+                $softwares->where('name', 'LIKE', "%$name%")->get();
+            }
+
+            if (!empty($filters['serialnumber'])) {
+                $serialNumber = $filters['serialnumber'];
+                $softwares->where('serial_number', 'LIKE', "%$serialNumber%")->get();
+            }
+
+            return $softwares->with('worker')->paginate(25);
+        } else {
+            return $this->softwareModel->with('worker')->paginate(25);
+        }
     }
 
     public function getSoftware(int $id)
