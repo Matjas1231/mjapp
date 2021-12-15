@@ -62,7 +62,7 @@ class ComputerController extends Controller
     {
         return view('computer.edit', [
             'computer' => $this->computerRepository->getComputer($computerId),
-            'workers' => $this->workerRepository->all(),
+            'workers' => $this->workerRepository->allWithoutPaginate(),
             'types' => $this->computerTypeRepostiory->all(),
         ]);
     }

@@ -21,6 +21,9 @@ class CreatePeripheralsTable extends Migration
             $table->string('serial_number', 100)->nullable()->default('N/D');
             $table->foreignId('type_id')->nullable()->references('id')->on('peripheral_types')->onDelete('set null');
             $table->text('description')->nullable();
+            $table->string('ip_address')->nullable()->default('N/D');
+            $table->string('mac_address')->nullable()->default('N/D');
+            $table->string('network_name')->nullable()->default('N/D');
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
             $table->date('date_of_buy')->default(Carbon::now()->format('Y-m-d'));
             $table->timestamps();
