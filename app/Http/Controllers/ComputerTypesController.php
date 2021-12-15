@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\ComputerRepositoryInterface;
 use App\Repository\ComputerTypeRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ComputerTypesController extends Controller
 {
     private ComputerTypeRepositoryInterface $computerTypeRepository;
+    private ComputerRepositoryInterface $computerRepository;
 
-    public function __construct(ComputerTypeRepositoryInterface $computerTypeRepository)
+    public function __construct(ComputerTypeRepositoryInterface $computerTypeRepository, ComputerRepositoryInterface $computerRepository)
     {
         $this->computerTypeRepository = $computerTypeRepository;
+        $this->computerRepository = $computerRepository;
     }
 
     public function list()
@@ -23,8 +26,12 @@ class ComputerTypesController extends Controller
     public function edit(int $computerTypeId)
     {
         $computerType = $this->computerTypeRepository->getSingle($computerTypeId);
+        $computers = $this->computerRepository->computersByType($computerTypeId);
 
-        return view('computer.types.editType', ['computerType' => $computerType]);
+        return view('computer.types.editType', [
+            'computerType' => $computerType,
+            'computers' => $computers,
+        ]);
     }
 
     public function create()

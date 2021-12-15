@@ -64,7 +64,7 @@ class SoftwareController extends Controller
     {
         return view('software.edit', [
             'software' => $this->softwareRepository->getSoftware($id),
-            'workers' => $this->workerRepository->all(),
+            'workers' => $this->workerRepository->allWithoutPaginate(),
         ]);
     }
 
