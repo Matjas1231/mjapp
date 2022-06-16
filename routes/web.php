@@ -132,15 +132,15 @@ Route::group([
     'prefix' => 'peripherals/types',
     'as' => 'peripheral.type.'
 ], function () {
-    Route::get('/', [PeripheralTypeController::class, 'list'])->name('peripheral.type.list');
+    Route::get('/', [PeripheralTypeController::class, 'list'])->name('list');
 
-    Route::get('/{peripheralTypeId}/edit', [PeripheralTypeController::class, 'edit'])->name('peripheral.type.edit');
-    Route::get('/update', [PeripheralTypeController::class, 'update'])->name('peripheral.type.update');
+    Route::get('/{peripheralTypeId}/edit', [PeripheralTypeController::class, 'edit'])->name('edit');
+    Route::get('/update', [PeripheralTypeController::class, 'update'])->name('update');
 
-    Route::get('/create', [PeripheralTypeController::class, 'create'])->name('peripheral.type.create');
-    Route::post('/store', [PeripheralTypeController::class, 'store'])->name('peripheral.type.store');
+    Route::get('/create', [PeripheralTypeController::class, 'create'])->name('create');
+    Route::post('/store', [PeripheralTypeController::class, 'store'])->name('store');
 
-    Route::get('/{peripheralTypeId}/delete', [PeripheralTypeController::class, 'delete'])->name('peripheral.type.delete');
+    Route::get('/{peripheralTypeId}/delete', [PeripheralTypeController::class, 'delete'])->name('delete');
 });
 
 Route::group([
