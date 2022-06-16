@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Szczegóły komputera @endsection
+@section('title', 'Szczegóły komputera')
 
 @section('page-heading')Szczegóły komputera {{ $computer->computer_name }} @endsection
 

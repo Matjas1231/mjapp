@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')Szczegóły pracownika @endsection
+@section('title', 'Szczegóły pracownika')
 
 @section('page-heading') Szczegóły pracownika {{ $worker->fullname() }} @endsection
 

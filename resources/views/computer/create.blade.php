@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')Dodawanie komputera @endsection
+@section('title', 'Dodawanie komputera')
 
 @section('page-heading')Dodawanie komputera @endsection
 

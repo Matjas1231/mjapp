@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Edytowanie komputera @endsection
+@section('title', 'Edytowanie komputera')
 @section('page-heading') Edytowanie komputera {{ $computer->computer_name }} @endsection
 
 @section('content')

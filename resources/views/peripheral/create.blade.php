@@ -1,7 +1,7 @@
 @extends('layouts.layout')
-@section('title') Dodawanie urządzenia @endsection
+@section('title', 'Dodawanie nowego urządzenia')
 
-@section('page-heading') Dodawanie urządzenia @endsection
+@section('page-heading') Dodawanie nowego urządzenia @endsection
 
 @section('content')
 

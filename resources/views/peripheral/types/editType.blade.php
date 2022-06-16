@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Edycja typu komputera @endsection
+@section('title', 'Edycja typu urządzenia')
 
 @section('page-heading') Edycja {{ $peripheralType->type }} @endsection
 

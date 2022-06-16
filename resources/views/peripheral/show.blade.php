@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Szczegóły urządzenia @endsection
+@section('title', 'Szczegóły urządzenia')
 
 @section('page-heading')Szczegóły urządzenia @endsection
 

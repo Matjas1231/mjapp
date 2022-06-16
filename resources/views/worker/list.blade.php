@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Lista pracowników @endsection
+@section('title', 'Lista pracowników')
 
 @section('page-heading') Lista pracowników @endsection
 

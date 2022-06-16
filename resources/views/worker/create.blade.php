@@ -1,7 +1,7 @@
 @extends('layouts.layout')
-@section('title')Dodawanie pracownika @endsection
+@section('title', 'Dodawanie nowego pracownika')
 
-@section('page-heading')Dodawanie pracownika @endsection
+@section('page-heading')Dodawanie nowego pracownika @endsection
 
 @section('content')
 
