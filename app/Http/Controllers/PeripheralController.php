@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class PeripheralController extends Controller
 {
-    private PeripheralRepositoryInterface $peripheralRepository;
-    private PeripheralTypeRepositoryInterface $peripheralTypeRepostiory;
-    private WorkerRepositoryInterface $workerRepository;
-
-    public function __construct(PeripheralRepositoryInterface $peripheralRepository, WorkerRepositoryInterface $workerRepository, PeripheralTypeRepositoryInterface $peripheralTypeRepostiory)
+    public function __construct(
+        private PeripheralRepositoryInterface $peripheralRepository,
+        private WorkerRepositoryInterface $workerRepository,
+        private PeripheralTypeRepositoryInterface $peripheralTypeRepostiory
+        )
     {
         $this->peripheralRepository = $peripheralRepository;
         $this->workerRepository = $workerRepository;

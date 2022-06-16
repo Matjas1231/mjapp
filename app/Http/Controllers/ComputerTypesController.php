@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ComputerTypesController extends Controller
 {
-    private ComputerTypeRepositoryInterface $computerTypeRepository;
-    private ComputerRepositoryInterface $computerRepository;
-
-    public function __construct(ComputerTypeRepositoryInterface $computerTypeRepository, ComputerRepositoryInterface $computerRepository)
+    public function __construct(
+        private ComputerTypeRepositoryInterface $computerTypeRepository,
+        private ComputerRepositoryInterface $computerRepository
+        )
     {
         $this->computerTypeRepository = $computerTypeRepository;
         $this->computerRepository = $computerRepository;

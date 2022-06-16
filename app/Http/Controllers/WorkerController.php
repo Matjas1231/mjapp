@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
-    private WorkerRepositoryInterface $workerRepository;
-    private DepartmentRepositoryInterface $departmentRepository;
-
-    public function __construct(WorkerRepositoryInterface $workerRepository, DepartmentRepositoryInterface $departmentRepository)
+    public function __construct(
+        private WorkerRepositoryInterface $workerRepository,
+        private DepartmentRepositoryInterface $departmentRepository
+        )
     {
         $this->workerRepository = $workerRepository;
         $this->departmentRepository = $departmentRepository;

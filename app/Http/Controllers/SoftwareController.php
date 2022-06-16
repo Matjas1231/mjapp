@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class SoftwareController extends Controller
 {
-    private SoftwareRepositoryInterface $softwareRepository;
-    private WorkerRepositoryInterface $workerRepository;
-
-    public function __construct(SoftwareRepositoryInterface $softwareRepository, WorkerRepositoryInterface $workerRepository)
+    public function __construct(
+        private SoftwareRepositoryInterface $softwareRepository,
+        private WorkerRepositoryInterface $workerRepository
+        )
     {
         $this->softwareRepository = $softwareRepository;
         $this->workerRepository = $workerRepository;
