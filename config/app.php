@@ -2,6 +2,7 @@
 
 use App\Providers\ComputerServiceProvider;
 use App\Providers\ComputerTypeProvider;
+use App\Providers\CurrencyServiceProvider;
 use App\Providers\DepartmentServiceProvider;
 use App\Providers\PeripheralServiceProvider;
 use App\Providers\PeripheralTypeServiceProvider;
@@ -190,6 +191,7 @@ return [
         PeripheralServiceProvider::class,
         PeripheralTypeServiceProvider::class,
         SoftwareServiceProvider::class,
+        CurrencyServiceProvider::class,
 
     ],
 
