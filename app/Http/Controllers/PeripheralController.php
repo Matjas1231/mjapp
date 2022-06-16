@@ -20,10 +20,33 @@ class PeripheralController extends Controller
         $this->peripheralTypeRepostiory = $peripheralTypeRepostiory;
     }
 
-    public function list()
+    public function list(Request $request)
     {
+        if (!empty($request->query())) {
+            $filters = [];
+            $filters['filter'] = $request->filter ?? null;
+            $filters['peripheraltype'] = $request->peripheraltype ?? null;
+            $filters['brand'] = $request->brand ?? null;
+            $filters['model'] = $request->model ?? null;
+            $filters['serialnumber'] = $request->serialnumber ?? null;
+            $filters['ipaddress'] = $request->ipaddress ?? null;
+            $filters['macaddress'] = $request->macaddress ?? null;
+            $filters['networkname'] = $request->networkname ?? null;
+
+            $peripherals = $this->peripheralRepository->filterBy($filters);
+        } else {
+            $peripherals = $this->peripheralRepository->all();
+        }
         return view('peripheral.list', [
-            'peripherals' => $this->peripheralRepository->all(),
+            'peripherals' => $peripherals,
+            'filter' => $filters['filter'] ?? null,
+            'peripheralType' => $filters['peripheraltype'] ?? null,
+            'brand' => $filters['brand'] ?? null,
+            'model' => $filters['model'] ?? null,
+            'serialNumber' => $filters['serialnumber'] ?? null,
+            'ipaddress' => $filters['ipaddress'] ?? null,
+            'macaddress' => $filters['macaddress'] ?? null,
+            'networkName' => $filters['networkname'] ?? null,
         ]);
     }
 
@@ -38,7 +61,7 @@ class PeripheralController extends Controller
     {
         return view('peripheral.create', [
             'peripheralTypes' => $this->peripheralTypeRepostiory->all(),
-            'workers' => $this->workerRepository->all(),
+            'workers' => $this->workerRepository->allWithoutPaginate(),
         ]);
     }
 
@@ -54,7 +77,7 @@ class PeripheralController extends Controller
     {
         return view('peripheral.edit', [
             'peripheral' => $this->peripheralRepository->getPeripheral($peripheralId),
-            'workers' => $this->workerRepository->all(),
+            'workers' => $this->workerRepository->allWithoutPaginate(),
             'types' => $this->peripheralTypeRepostiory->all(),
         ]);
     }

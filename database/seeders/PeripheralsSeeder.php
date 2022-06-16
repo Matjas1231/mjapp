@@ -27,12 +27,15 @@ class PeripheralsSeeder extends Seeder
             for ($i = 0; $i < $faker->numberBetween(800, 2400); $i++) {
                 $peripherals[] = [
                     'brand' => $faker->randomElement(['Dell', 'HP', 'Brother', 'Canon']),
-                    'model' => $faker->words(4, true),
+                    'model' => $faker->words(2, true),
                     'serial_number' => $faker->words(5, true),
                     'type_id' => $faker->numberBetween(1, PeripheralType::all()->count()),
                     'description' => $faker->words(30, true),
                     'worker_id' => $faker->numberBetween(1, Worker::all()->count()),
                     'date_of_buy' => $faker->date(),
+                    'ip_address' => $faker->ipv4(),
+                    'mac_address' => $faker->macAddress(),
+                    'network_name' => $faker->word(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];

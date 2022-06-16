@@ -68,14 +68,14 @@ class ComputerRepository implements ComputerRepositoryInterface
 
             return $computers->with('worker' ,'computerType')->paginate(25);
         } else {
-            return $this->computerModel->with('worker', 'computerType')->paginate(25);
+            return $this->computerModel->with(['worker', 'computerType'])->paginate(25);
         }
     }
 
     public function all()
     {
         return $this->computerModel
-                    ->with('worker', 'computerType')
+                    ->with(['worker', 'computerType'])
                     ->paginate(25);
     }
 
@@ -83,6 +83,12 @@ class ComputerRepository implements ComputerRepositoryInterface
     {
         return $this->computerModel->find($id);
     }
+
+    public function computersByType(int $typeId)
+    {
+        return $this->computerModel->query()->where('type_id', '=', $typeId)->with('worker')->paginate(25);
+    }
+
     public function storeAndReturnId(array $computerData)
     {
         $computer = $this->computerModel->newInstance();
