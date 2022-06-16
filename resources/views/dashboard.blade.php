@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Dashboard @endsection
+@section('title', 'Dashboard')
 
 @section('page-heading') Dashboard @endsection
 

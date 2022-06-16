@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Lista typów komputerów @endsection
+@section('title', 'Lista typów komputerów')
 
 @section('page-heading')
     Lista typów komputerów

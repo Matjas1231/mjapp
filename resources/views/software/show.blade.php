@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Szczegóły oprogramowania @endsection
+@section('title', 'Szczegóły oprogramowania')
 
 @section('page-heading') Szczegóły oprogramowania {{ $software->producer }} {{ $software->name }} @endsection
 

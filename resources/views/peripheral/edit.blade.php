@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')Edytowanie urządzenia @endsection
+@section('title', 'Edytowanie urządzenia')
 
 @section('page-heading')Edytowanie urządzenia @endsection
 

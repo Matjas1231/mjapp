@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Edycja pracownika @endsection
+@section('title', 'Edycja pracownika')
 
 @section('page-heading') Edycja {{ $worker->fullname() }} @endsection
 

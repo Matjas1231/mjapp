@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title')Lista peryferii @endsection
+@section('title', 'Lista peryferii')
 
 @section('page-heading')Lista peryferii @endsection
 

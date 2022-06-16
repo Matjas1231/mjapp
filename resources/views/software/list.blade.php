@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Lista oprogramowania @endsection
+@section('title', 'Lista oprogramowania')
 
 @section('page-heading') Lista oprogramowania @endsection
 

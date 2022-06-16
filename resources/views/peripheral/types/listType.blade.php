@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title') Lista typów urządzeń @endsection
+@section('title', 'Lista typów urządzeń')
 
 @section('page-heading')
     Lista typów urządzeń

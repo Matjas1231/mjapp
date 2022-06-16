@@ -1,7 +1,7 @@
 @extends('layouts.layout')
-@section('title')Dodawanie działu @endsection
+@section('title', 'Dodawanie nowego działu')
 
-@section('page-heading')Dodawanie działu @endsection
+@section('page-heading')Dodawanie nowego działu @endsection
 
 @section('content')
 

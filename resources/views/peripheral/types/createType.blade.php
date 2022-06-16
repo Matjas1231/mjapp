@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
-@section('title') Dodawanie typu komputera @endsection
+@section('title', 'Dodawanie nowego typu urządzenia')
 
-@section('page-heading') Dodawanie typu komputera @endsection
+@section('page-heading') Dodawanie nowego typu urządzenia @endsection
 
 @section('content')
 

@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Lista komputerów @endsection
+@section('title', 'Lista komputerów')
 
 @section('page-heading')Lista komputerów @endsection
 

@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Lista działów @endsection
+@section('title', 'Lista działów')
 
 @section('page-heading')
     Lista działów

@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title')Edycja działu @endsection
+@section('title', 'Edycja działu')
 
 @section('page-heading')Edycja działu @endsection
 

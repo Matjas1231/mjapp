@@ -1,7 +1,7 @@
 @extends('layouts.layout')
-@section('title') Dodawanie oprogramowania @endsection
+@section('title', 'Dodawanie nowego oprogramowania')
 
-@section('page-heading') Dodawanie oprogramowania @endsection
+@section('page-heading') Dodawanie nowego oprogramowania @endsection
 
 @section('content')
 
