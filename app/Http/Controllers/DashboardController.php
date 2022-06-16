@@ -12,19 +12,14 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    private WorkerRepositoryInterface $workerRepository;
-    private DepartmentRepositoryInterface $departmentRepository;
-    private ComputerRepositoryInterface $computerRepository;
-    private SoftwareRepositoryInterface $softwareRepository;
-    private ComputerTypeRepositoryInterface $computerTypeRepository;
-    private PeripheralTypeRepositoryInterface $peripheralTypeRepository;
-
-    public function __construct(WorkerRepositoryInterface $workerRepository,
-                                DepartmentRepositoryInterface $departmentRepository,
-                                ComputerRepositoryInterface $computerRepository,
-                                SoftwareRepositoryInterface $softwareRepository,
-                                ComputerTypeRepositoryInterface $computerTypeRepository,
-                                PeripheralTypeRepositoryInterface $peripheralTypeRepository)
+    public function __construct(
+        private WorkerRepositoryInterface $workerRepository,
+        private DepartmentRepositoryInterface $departmentRepository,
+        private ComputerRepositoryInterface $computerRepository,
+        private SoftwareRepositoryInterface $softwareRepository,
+        private ComputerTypeRepositoryInterface $computerTypeRepository,
+        private PeripheralTypeRepositoryInterface $peripheralTypeRepository
+        )
     {
         $this->workerRepository = $workerRepository;
         $this->departmentRepository = $departmentRepository;

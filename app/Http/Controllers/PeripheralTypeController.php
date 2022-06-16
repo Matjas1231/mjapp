@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class PeripheralTypeController extends Controller
 {
-    private PeripheralTypeRepositoryInterface $peripheralTypeRepository;
-    private PeripheralRepositoryInterface $peripheralRepository;
-
-    public function __construct(PeripheralTypeRepositoryInterface $peripheralTypeRepository, PeripheralRepositoryInterface $peripheralRepository)
+    public function __construct(
+        private PeripheralTypeRepositoryInterface $peripheralTypeRepository,
+        private PeripheralRepositoryInterface $peripheralRepository
+        )
     {
         $this->peripheralTypeRepository = $peripheralTypeRepository;
         $this->peripheralRepository = $peripheralRepository;

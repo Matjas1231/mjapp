@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class ComputerController extends Controller
 {
-    private ComputerRepositoryInterface $computerRepository;
-    private ComputerTypeRepositoryInterface $computerTypeRepostiory;
-    private WorkerRepositoryInterface $workerRepository;
-
-    public function __construct(ComputerRepositoryInterface $computerRepository, ComputerTypeRepositoryInterface $computerTypeRepository, WorkerRepositoryInterface $workerRepository)
+    public function __construct(
+        private ComputerRepositoryInterface $computerRepository,
+        private ComputerTypeRepositoryInterface $computerTypeRepository,
+        private WorkerRepositoryInterface $workerRepository
+        )
     {
         $this->computerRepository = $computerRepository;
         $this->computerTypeRepostiory = $computerTypeRepository;
