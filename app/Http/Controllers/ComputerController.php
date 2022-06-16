@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Computer\StoreComputerRequest;
 use App\Repository\ComputerRepositoryInterface;
 use App\Repository\ComputerTypeRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
@@ -83,12 +84,14 @@ class ComputerController extends Controller
                 ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreComputerRequest $request)
     {
-        $this->computerRepository->storeAndReturnId($request->input());
+        $validatedData = $request->validated();
+
+        $comptuerId = $this->computerRepository->storeAndReturnId($validatedData);
         return redirect()
                 ->route('computer.show', [
-                    'computerId' => $this->computerRepository->storeAndReturnId($request->input())
+                    'computerId' => $comptuerId
                     ]);
     }
 
