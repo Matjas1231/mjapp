@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Foreign\CurrencyController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DashboardController;
