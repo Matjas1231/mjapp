@@ -217,22 +217,9 @@
                 </div>
             </li>
 
-            {{-- <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('peripheral.list') }}">
-                    <i class="fas fa-keyboard"></i>
-                    <span>Lista urządzeń</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('peripheral.create') }}">
-                    <i class="fas fa-mouse-pointer"></i>
-                    <span>Dodaj urządzenie</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('peripheral.type.list') }}">
-                    <i class="fas fa-laptop-house"></i>
-                    <span>Lista typów urządzeń</span></a>
-            </li> --}}
+            <hr class="sidebar-divider">
+
+
 {{--
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -325,10 +312,32 @@
 
 
             <!-- Sidebar Message -->
-            {{-- <div class="sidebar-card d-none d-lg-flex"></div> --}}
-                        <!-- Sidebar Toggler (Sidebar) -->
+            {{-- <div class="sidebar-card d-none d-lg-flex"></div>
+                        <!-- Sidebar Toggler (Sidebar) --> --}}
+            <div class="text-center text-light">
+                Sekcja API
+            </div>
 
-            <div class="text-center d-none d-md-inline">
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCurrencies"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fan"></i>
+                    <span>Waluty</span>
+                </a>
+                <div id="collapseCurrencies" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        <a class="collapse-item" href="{{ route('currency.index') }}">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Lista walut</span></a>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <div class="text-center d-none d-md-inline mt-3">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
