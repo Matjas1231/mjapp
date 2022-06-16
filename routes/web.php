@@ -143,6 +143,14 @@ Route::group([
     Route::get('/{peripheralTypeId}/delete', [PeripheralTypeController::class, 'delete'])->name('peripheral.type.delete');
 });
 
+Route::group([
+    'prefix' => 'currency',
+    'as' => 'currency.',
+], function() {
+    Route::get('/', [CurrencyController::class, 'index'])->name('index');
+    Route::get('/downloadcurrency', [CurrencyController::class, 'downloadData'])->name('downloadData');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
