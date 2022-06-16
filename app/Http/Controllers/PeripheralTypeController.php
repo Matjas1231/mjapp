@@ -23,11 +23,11 @@ class PeripheralTypeController extends Controller
         ]);
     }
 
-    public function edit(int $id)
+    public function edit(int $typeId)
     {
         return view('peripheral.types.editType', [
-            'peripheralType' => $this->peripheralTypeRepository->getSingle($id),
-            'peripherals' => $this->peripheralRepository->all(),
+            'peripheralType' => $this->peripheralTypeRepository->getSingle($typeId),
+            'peripherals' => $this->peripheralRepository->peripheralsByType($typeId),
         ]);
     }
 

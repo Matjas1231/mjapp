@@ -26,20 +26,39 @@
             <thead>
                 <tr>
                     <th>Lp.</th>
-                    <th>Nazwa</th>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Adres IP</th>
+                    <th>Adres MAC</th>
+                    <th>Nazwa siec.</th>
+                    <th>Numer seryjny</th>
                     <th>Pracownik</th>
+                    <th>Akcja</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($computerType->computers as $computer)
+                @foreach ($computers as $computer)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $computer->brand }}</td>
+                        <td>{{ $computer->model }}</td>
+                        <td>{{ $computer->ip_address }}</td>
+                        <td>{{ $computer->mac_address }}</td>
                         <td>{{ $computer->computer_name }}</td>
-                        <td>{{ !is_null($computer->worker_id) ? $computer->worker->fullname() : '' }}</td>
+                        <td>{{ $computer->serial_number }}</td>
+                        <td>
+                            @if (!is_null($computer->worker_id))
+                                <a href="{{ route('worker.show', ['workerId' => $computer->worker_id]) }}">{{ $computer->worker->fullname() }}</a>
+                            @else
+                                {{ null }}
+                            @endif
+                        </td>
+                        <td><a href="{{ route('computer.show', ['computerId' => $computer->id]) }}">Szczegóły</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $computers->links() }}
     @else
 
     @endif

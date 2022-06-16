@@ -7,7 +7,12 @@
     <div>
         <p>Marka: <b>{{ $computer->brand }}</b></p>
         <p>Model: <b>{{ $computer->model }}</b></p>
-        <p>Typ: <b>{{ $computer->computerType->type ?? 'Brak' }}</b></p>
+        <p>Typ: <b>
+            @if (!is_null($computer->type_id))
+                <a href=" {{ route('computer.type.edit', ['computerTypeId' => $computer->type_id]) }} ">{{ $computer->computerType->type }}</a>
+            @else
+                'Nieprzypisany'
+            @endif </b></p>
         <p>Procesor: <b>{{ $computer->processor }}</b></p>
         <p>Płyta główna: <b>{{ $computer->motherboard }}</b></p>
         <p>RAM: <b>{{ $computer->ram }}</b></p>

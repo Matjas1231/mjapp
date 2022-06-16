@@ -27,22 +27,37 @@
                     <th>Lp.</th>
                     <th>Marka.</th>
                     <th>Model</th>
+                    <th>Numer seryjny</th>
+                    <th>Adres IP</th>
+                    <th>Adres MAC</th>
+                    <th>Nazwa siec.</th>
                     <th>Pracownik</th>
                     <th>Akcja</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($peripheralType->peripherals as $peripheral)
+                @foreach ($peripherals as $peripheral)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $peripheral->brand }}</td>
                         <td>{{ $peripheral->model }}</td>
-                        <td>{{ !is_null($peripheral->worker_id) ? $peripheral->worker->fullname() : '' }}</td>
-                        <td><a href="{{ route('peripheral.edit', ['peripheralId' => $peripheral->id]) }}" class="btn btn-primary">Edytuj</a></td>
+                        <td>{{ $peripheral->serial_number }}</td>
+                        <td>{{ $peripheral->ip_address }}</td>
+                        <td>{{ $peripheral->mac_address }}</td>
+                        <td>{{ $peripheral->network_name }}</td>
+                        <td>
+                            @if (!is_null($peripheral->worker_id))
+                                <a href="{{ route('worker.show', ['workerId' => $peripheral->worker_id]) }}">{{ $peripheral->worker->fullname() }}</a>
+                            @else
+                                ''
+                            @endif
+                        </td>
+                        <td><a href="{{ route('peripheral.show', ['peripheralId' => $peripheral->id]) }}">Szczegóły</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $peripherals->links() }}
     @else
         Brak urządzeń tego typu
     @endif
