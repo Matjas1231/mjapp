@@ -336,6 +336,24 @@
                     </div>
                 </div>
             </li>
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVies"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fan"></i>
+                    <span>VIES</span>
+                </a>
+                <div id="collapseVies" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        <a class="collapse-item" href="{{ route('currency.index') }}">
+                            <i class="fas fa-keyboard"></i>
+                            <span>VIES</span></a>
+                        </a>
+                    </div>
+                </div>
+            </li>
 
             <div class="text-center d-none d-md-inline mt-3">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
