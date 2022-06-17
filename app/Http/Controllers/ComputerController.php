@@ -23,6 +23,7 @@ class ComputerController extends Controller
 
     public function list(Request $request)
     {
+
         if (!empty($request->query())) {
             $filters = [];
             $filters['filter'] = $request->filter ?? null;
@@ -34,7 +35,6 @@ class ComputerController extends Controller
             $filters['macaddress'] = $request->macaddress ?? null;
             $filters['computername'] = $request->computername ?? null;
 
-            // dd($filters);
             $computers = $this->computerRepository->filterBy($filters);
         } else {
             $computers = $this->computerRepository->all();
