@@ -4,7 +4,7 @@ namespace App\Http\Requests\Computer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreComputerRequest extends FormRequest
+class ComputerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class StoreComputerRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $validateArray = [
             'brand' => 'string|max:60',
             'model' => 'string|max:100',
             'type_id' => 'integer|nullable',
@@ -38,5 +38,11 @@ class StoreComputerRequest extends FormRequest
             'serial_number' => 'string|max:255',
             'date_of_buy' => 'date|date_format:Y-m-d'
         ];
+
+        if (key_exists('id', $this->validationData())) {
+            $validateArray['id'] = 'integer';
+        }
+
+        return $validateArray;
     }
 }
