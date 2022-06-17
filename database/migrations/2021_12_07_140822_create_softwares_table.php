@@ -22,7 +22,7 @@ class CreateSoftwaresTable extends Migration
             $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
             $table->text('description')->nullable();
             $table->date('date_of_buy')->default(Carbon::now()->format('Y-m-d'));
-            $table->date('expiry_date')->default('N/D');
+            $table->date('expiry_date')->default(Carbon::now()->format('Y-m-d'));
             $table->timestamps();
         });
     }
