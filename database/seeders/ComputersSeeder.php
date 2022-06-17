@@ -20,11 +20,11 @@ class ComputersSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('computers')->truncate();
+        DB::table('computers')->delete();
 
         for ($j = 0; $j < 1; $j++) {
             $computers = [];
-            for ($i = 0; $i < $faker->numberBetween(400, 1600); $i++) {
+            for ($i = 0; $i < $faker->numberBetween(100, 300); $i++) {
                 $computers[] = [
                     'brand' => $faker->randomElement(['Dell', 'HP', 'Lenovo', 'Fujitsu']),
                     // 'brand' => $faker->randomElement(),

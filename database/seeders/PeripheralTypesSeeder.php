@@ -18,7 +18,7 @@ class PeripheralTypesSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('peripheral_types')->truncate();
+        DB::table('peripheral_types')->delete();
 
         for ($j = 0; $j < 1; $j++) {
             $peripherals = [];

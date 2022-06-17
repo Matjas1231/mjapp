@@ -19,7 +19,7 @@ class DepartmentsSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('departments')->truncate();
+        DB::table('departments')->delete();
 
         for ($j = 0; $j < 1; $j++) {
             $department = [];

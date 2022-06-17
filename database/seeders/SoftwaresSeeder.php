@@ -19,11 +19,11 @@ class SoftwaresSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('softwares')->truncate();
+        DB::table('softwares')->delete();
 
         for ($j = 0; $j < 1; $j++) {
             $softwares = [];
-            for ($i = 0; $i < $faker->numberBetween(542, 2315); $i++) {
+            for ($i = 0; $i < $faker->numberBetween(20, 150); $i++) {
                 $softwares[] = [
                     'producer' => $faker->words('2', true),
                     'serial_number' => $faker->sentence(),

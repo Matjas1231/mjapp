@@ -19,11 +19,11 @@ class WorkersSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('workers')->truncate();
+        DB::table('workers')->delete();
 
         for ($j = 0; $j < 1; $j++) {
             $workers = [];
-            for ($i = 0; $i < $faker->numberBetween(652, 2125); $i++) {
+            for ($i = 0; $i < $faker->numberBetween(10, 100); $i++) {
                 $workers[] = [
                     'name' => $faker->name(),
                     'surname' => $faker->name(),

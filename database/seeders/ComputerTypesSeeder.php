@@ -18,7 +18,7 @@ class ComputerTypesSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        DB::table('computer_types')->truncate();
+        DB::table('computer_types')->delete();
 
             $computerTypes = [];
 

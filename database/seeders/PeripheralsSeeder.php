@@ -20,11 +20,11 @@ class PeripheralsSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('peripherals')->truncate();
+        DB::table('peripherals')->delete();
 
         for ($j = 0; $j < 1; $j++) {
             $peripherals = [];
-            for ($i = 0; $i < $faker->numberBetween(800, 2400); $i++) {
+            for ($i = 0; $i < $faker->numberBetween(100, 110); $i++) {
                 $peripherals[] = [
                     'brand' => $faker->randomElement(['Dell', 'HP', 'Brother', 'Canon']),
                     'model' => $faker->words(2, true),
