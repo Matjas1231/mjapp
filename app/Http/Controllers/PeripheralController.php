@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Peripheral\PeripheralRequest;
 use App\Repository\PeripheralRepositoryInterface;
 use App\Repository\PeripheralTypeRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
@@ -65,9 +66,9 @@ class PeripheralController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PeripheralRequest $request)
     {
-        $newPeripheralId = $this->peripheralRepository->storeAndReturnId($request->input());
+        $newPeripheralId = $this->peripheralRepository->storeAndReturnId($request->validated());
 
         return redirect()
                 ->route('peripheral.show', ['peripheralId' => $newPeripheralId]);
@@ -82,9 +83,9 @@ class PeripheralController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(PeripheralRequest $request)
     {
-        $this->peripheralRepository->update($request->input());
+        $this->peripheralRepository->update($request->validated());
 
         return redirect()
                 ->route('peripheral.show', ['peripheralId' => $request->id]);
