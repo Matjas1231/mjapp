@@ -41,14 +41,20 @@ class ComputerTypesController extends Controller
 
     public function store(Request $request)
     {
-        $this->computerTypeRepository->store($request->input());
+        $this->computerTypeRepository->store($request->validate([
+            'type' => 'string|max:20|unique:computer_types,type'
+        ]));
+
         return redirect()
                 ->route('computer.type.list');
     }
 
     public function update(Request $request)
     {
-        $this->computerTypeRepository->update($request->input());
+        $this->computerTypeRepository->update($request->validate([
+            'type' => 'string|max:20|unique:computer_types,type'
+        ]));
+
         return redirect()
                 ->route('computer.type.edit', ['computerTypeId' => $request['id']]);
     }
