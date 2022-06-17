@@ -40,7 +40,7 @@ class ComputerRequest extends FormRequest
         ];
 
         if (key_exists('id', $this->validationData())) {
-            $validateArray['id'] = 'integer|unique:comptuers,id';
+            $validateArray['id'] = 'integer';
         }
 
         return $validateArray;
