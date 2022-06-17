@@ -19,12 +19,12 @@ class CreateComputersTable extends Migration
             $table->id();
             $table->string('brand', 60)->index();
             $table->string('model', 100)->index();
-            $table->foreignId('type_id')->nullable()->references('id')->on('computer_types')->onDelete('set null');
+            $table->unsignedBigInteger('type_id')->nullable();
             $table->string('processor', 60);
             $table->string('motherboard', 100);
             $table->string('ram', 200);
             $table->text('description')->nullable();
-            $table->foreignId('worker_id')->nullable()->references('id')->on('workers')->onDelete('set null');
+            $table->unsignedBigInteger('worker_id')->nullable();
             $table->string('ip_address')->default('Dynamic');
             $table->string('computer_name');
             $table->string('mac_address', 255);

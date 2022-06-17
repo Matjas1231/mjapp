@@ -18,7 +18,7 @@ class CreateWorkersTable extends Migration
             $table->string('name', 50)->index();
             $table->string('surname', 60)->index();
             $table->string('position', 60);
-            $table->foreignId('department_id')->nullable()->constrained('departments', 'id')->onDelete('set null');
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->string('phone', 12);
             $table->timestamps();
         });

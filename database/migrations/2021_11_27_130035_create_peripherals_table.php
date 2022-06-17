@@ -19,7 +19,7 @@ class CreatePeripheralsTable extends Migration
             $table->string('brand', 60);
             $table->string('model', 100)->nullable();
             $table->string('serial_number', 100)->nullable()->default('N/D');
-            $table->foreignId('type_id')->nullable()->references('id')->on('peripheral_types')->onDelete('set null');
+            $table->unsignedBigInteger('type_id')->nullable();
             $table->text('description')->nullable();
             $table->string('ip_address')->nullable()->default('N/D');
             $table->string('mac_address')->nullable()->default('N/D');
