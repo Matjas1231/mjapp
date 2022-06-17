@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Software\SoftwareRequest;
 use App\Repository\SoftwareRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
@@ -53,9 +54,9 @@ class SoftwareController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(SoftwareRequest $request)
     {
-        $id = $this->softwareRepository->storeAndReturnId($request->input());
+        $id = $this->softwareRepository->storeAndReturnId($request->validated());
         return redirect()
                 ->route('software.show', ['softwareId' => $id]);
     }
@@ -68,9 +69,9 @@ class SoftwareController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(SoftwareRequest $request)
     {
-        $this->softwareRepository->update($request->input());
+        $this->softwareRepository->update($request->validated());
         return redirect()
                 ->route('software.show', ['softwareId' => $request['id']]);
     }
