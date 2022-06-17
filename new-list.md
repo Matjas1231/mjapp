@@ -11,12 +11,13 @@
         - ~~Peripheral~~
         - ~~PeripheralTypes~~
         - ~~Software~~
-        - Worker
+        - ~~Worker~~
         - Dodać wiadomości do walidacji
+        - Przerobić podwójne walidatory pod kątem wartości unique (jeśli jest edycja, to należy zmienić tą wartość w tablicy)
 1. Podpięcie API:
     - ~~NBP - Pobieranie danych o walutach~~
     - GUS
-    - VIES
+    - VIES - Może AJAX
 1. Wystawienie własnego RESTApi
 1. Autoryzacja - podział na administartorów i użytkowników:
     - Po podziale stworzyć panel admina
@@ -63,3 +64,4 @@ Deploy na vxm według: [Instrukcja](https://www.cloudways.com/blog/stay-away-fro
     ```
 1. Potem należy za pomocą kodu dokonać migracji.
 1. Pamiętać o tym, żeby przenieść plik .env!
+1. Przy normalnym deploy pamiętać o komendach do cache
