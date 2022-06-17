@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Worker\WorkerRequest;
 use App\Models\Worker;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
@@ -80,10 +81,9 @@ class WorkerController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(WorkerRequest $request)
     {
-        $workerData = $request->input();
-        $workerId = $this->workerRepository->storeAndReturnId($workerData);
+        $workerId = $this->workerRepository->storeAndReturnId($request->validated());
 
 
         return redirect()
@@ -97,10 +97,9 @@ class WorkerController extends Controller
         return view('worker.edit', ['worker' => $worker, 'departments' => $departments]);
     }
 
-    public function update(Request $request)
+    public function update(WorkerRequest $request)
     {
-        $workerData = $request->input();
-        $this->workerRepository->update($workerData);
+        $this->workerRepository->update($request->validated());
 
         return redirect()
                 ->route('worker.show',['workerId' => $request['id']]);

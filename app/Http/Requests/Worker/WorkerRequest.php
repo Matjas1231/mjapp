@@ -13,7 +13,7 @@ class WorkerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,18 @@ class WorkerRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $validateArray = [
+            'name' => 'string|max:50',
+            'surname' => 'string|max:60',
+            'position' => 'string|max:60',
+            'department_id' => 'integer|nullable',
+            'phone' => 'string|24',
         ];
+
+        if (key_exists('id', $this->validationData())) {
+            $validateArray['id'] = 'integer';
+        }
+
+        return $validateArray;
     }
 }
