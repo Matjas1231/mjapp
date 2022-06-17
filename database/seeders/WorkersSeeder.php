@@ -28,13 +28,14 @@ class WorkersSeeder extends Seeder
                     'name' => $faker->name(),
                     'surname' => $faker->name(),
                     'position' => $faker->name(),
-                    'department_id' => $faker->numberBetween(1, Department::all()->count()),
-                    'phone' => $faker->phoneNumber(),
+                    'department_id' => $faker->numberBetween(Department::all()->first()->id, Department::all()->last()->id),
+                    'phone' => $faker->word(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];
             }
         }
+        dd($workers);
         DB::table('workers')->insert($workers);
     }
 }

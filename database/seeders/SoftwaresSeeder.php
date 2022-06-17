@@ -28,7 +28,7 @@ class SoftwaresSeeder extends Seeder
                     'producer' => $faker->words('2', true),
                     'serial_number' => $faker->sentence(),
                     'name' => $faker->firstName(),
-                    'worker_id' => $faker->numberBetween(1, Worker::all()->count()),
+                    'worker_id' => $faker->numberBetween(Worker::all()->first()->id, Worker::all()->last()->id),
                     'description' => $faker->sentence(9),
                     'date_of_buy' => $faker->date(),
                     'expiry_date' => $faker->date(),
