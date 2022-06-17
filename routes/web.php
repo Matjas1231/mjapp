@@ -69,10 +69,10 @@ Route::group([
     Route::get('/', [ComputerTypesController::class, 'list'])->name('list');
 
     Route::get('/{computerTypeId}/edit', [ComputerTypesController::class, 'edit'])->name('edit');
-    Route::post('//update', [ComputerTypesController::class, 'update'])->name('update');
+    Route::post('/update', [ComputerTypesController::class, 'update'])->name('update');
 
     Route::get('/create', [ComputerTypesController::class, 'create'])->name('create');
-    Route::post('/comptuers/types/store', [ComputerTypesController::class, 'store'])->name('store');
+    Route::post('/store', [ComputerTypesController::class, 'store'])->name('store');
 
     Route::get('/{computerTypeId}/delete', [ComputerTypesController::class, 'delete'])->name('delete');
 });
