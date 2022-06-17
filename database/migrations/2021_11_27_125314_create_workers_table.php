@@ -19,7 +19,7 @@ class CreateWorkersTable extends Migration
             $table->string('surname', 60)->index();
             $table->string('position', 60);
             $table->unsignedBigInteger('department_id')->nullable();
-            $table->string('phone', 12);
+            $table->string('phone', 24);
             $table->timestamps();
         });
     }
