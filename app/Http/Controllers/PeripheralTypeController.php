@@ -38,7 +38,11 @@ class PeripheralTypeController extends Controller
 
     public function store(Request $request)
     {
-        $this->peripheralTypeRepository->store($request->input());
+        $validatedData = $request->validate([
+            'type' => 'string|max:60'
+        ]);
+
+        $this->peripheralTypeRepository->store($validatedData);
 
         return redirect()
                 ->route('peripheral.type.list');
@@ -46,7 +50,11 @@ class PeripheralTypeController extends Controller
 
     public function update(Request $request)
     {
-        $this->peripheralTypeRepository->update($request->input());
+        $validatedData = $request->validate([
+            'type' => 'string|max:60'
+        ]);
+
+        $this->peripheralTypeRepository->update($validatedData);
 
         return redirect()
                 ->route('peripheral.type.list');
