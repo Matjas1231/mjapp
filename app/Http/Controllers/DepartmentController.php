@@ -30,7 +30,11 @@ class DepartmentController extends Controller
 
     public function store(Request $request)
     {
-        $this->departmentRepository->store($request->input());
+        $validatedData = $request->validate([
+            'name' => 'string|max:100'
+        ]);
+
+        $this->departmentRepository->store($validatedData);
         return redirect()
                 ->route('department.list');
     }
@@ -45,7 +49,12 @@ class DepartmentController extends Controller
 
     public function update(Request $request)
     {
-        $this->departmentRepository->update($request->input());
+        $validatedData = $request->validate([
+            'id' => 'integer|unique:departments,id',
+            'name' => 'string|max:100'
+        ]);
+
+        $this->departmentRepository->update($validatedData);
         return redirect()
                 ->route('department.edit', ['departmentId' => $request['id']]);
     }
