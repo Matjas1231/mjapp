@@ -26,7 +26,7 @@ class PeripheralRequest extends FormRequest
         $validateArray = [
             'brand' => 'string|max:60',
             'model' => 'string|max:100|nullable',
-            'serial_number' => 'string|max:100|nullable',
+            'serial_number' => 'string|max:100|nullable|unique:peripherals,serial_number',
             'ip_address' => 'string|nullable',
             'mac_address' => 'string|nullable',
             'network_name' => 'string|nullable',
@@ -38,6 +38,7 @@ class PeripheralRequest extends FormRequest
 
         if (key_exists('id', $this->validationData())) {
             $validateArray['id'] = 'integer';
+            $validateArray['serial_number'] = 'string|max:100|nullable';
         }
 
         return $validateArray;

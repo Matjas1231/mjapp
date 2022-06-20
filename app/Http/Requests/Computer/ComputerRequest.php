@@ -35,12 +35,13 @@ class ComputerRequest extends FormRequest
             'ip_address' => 'string',
             'computer_name' => 'string|max:60',
             'mac_address' => 'string|max:255',
-            'serial_number' => 'string|max:255',
+            'serial_number' => 'string|max:255|unique:computers,serial_number',
             'date_of_buy' => 'date|date_format:Y-m-d'
         ];
 
         if (key_exists('id', $this->validationData())) {
             $validateArray['id'] = 'integer';
+            $validateArray['serial_number'] = 'string|max:255';
         }
 
         return $validateArray;
