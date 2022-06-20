@@ -8,15 +8,22 @@
 
 @include('shared.messages')
 
-<form method="GET">
-    <input type="text" name="country_code" placeholder="Kod kraju">
-    <input type="text" name="nip" placeholder="NIP">
-    <button type="submit">Wyślij</button>
+<form method="GET" class="form-inline">
+    <div class="form-row">
+        <div class="col">
+            <input type="text" name="country_code" placeholder="Kod kraju" class="form-control" required>
+        </div>
+        <div class="col">
+            <input type="text" name="nip" placeholder="NIP" class="form-control" required>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Wyślij</button>
+        </div>
+    </div>
 </form>
 
 @if (!empty($companyData) && $companyData)
     <div>
-        {{-- {{ dd($companyData) }} --}}
         <table class="table">
             <thead>
                 <tr>
