@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Foreign\CurrencyController;
+use App\Http\Controllers\Api\Foreign\ViesController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\ComputerTypesController;
 use App\Http\Controllers\DashboardController;
@@ -147,9 +148,16 @@ Route::group([
 Route::group([
     'prefix' => 'currency',
     'as' => 'currency.',
-], function() {
+], function () {
     Route::get('/', [CurrencyController::class, 'index'])->name('index');
     Route::get('/downloadcurrency', [CurrencyController::class, 'downloadData'])->name('downloadData');
+});
+
+Route::group([
+    'prefix' => 'vies',
+    'as' => 'vies.',
+], function () {
+    Route::get('/', [ViesController::class, 'index'])->name('index');
 });
 
 Auth::routes();
