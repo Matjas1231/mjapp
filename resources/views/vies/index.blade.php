@@ -11,7 +11,6 @@
 <form method="GET" class="form-inline">
     <div class="form-row">
         <div class="col">
-            {{-- <input type="text" name="country_code" placeholder="Kod kraju" class="form-control" required> --}}
             <select class="form-control" id="" name="country_code">
                 <option value=""> -- </option>
                 <option value="AT">	AT-Austria </option>
