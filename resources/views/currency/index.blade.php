@@ -6,13 +6,19 @@
 @section('content')
 @include('shared.messages')
 
-<form method="GET">
-        <input type="text" name="phrase" value="{{ old('phrase') }}" placeholder="Wpisz nazwę lub kod">
-    <button type="submit" class="btn btn-success mb-2">Szukaj</button>
+<form method="GET" class="form-inline">
+    <div class="form-row">
+        <div class="col">
+            <input type="text" name="phrase" value="{{ old('phrase') }}" placeholder="Wpisz nazwę lub kod" class="form-control">
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-success mb-2">Szukaj</button>
+        </div>
+    </div>
 </form>
 
 <form method="GET" action="{{ route('currency.downloadData') }}">
-    <button type="submit" class="btn btn-primary">Pobierz dane</button>
+    <button type="submit" class="btn btn-primary mb-2">Pobierz dane</button>
 </form>
 
 @if ($allCurrency->isEmpty())
