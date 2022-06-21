@@ -28,7 +28,7 @@ class WorkerRequest extends FormRequest
             'surname' => 'string|max:60',
             'position' => 'string|max:60',
             'department_id' => 'integer|nullable',
-            'phone' => 'string|24',
+            'phone' => 'string|max:24',
         ];
 
         if (key_exists('id', $this->validationData())) {
