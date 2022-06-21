@@ -16,10 +16,10 @@ class ViesController extends Controller
             $data = $request->query();
             $companyData = $this->sendData($data);
 
-            if (!$companyData) {
+            if (!$companyData['status']) {
                 return redirect()
                     ->route('vies.index')
-                    ->with('error', 'Błędny format');
+                    ->with('error', $companyData['message']);
             }
 
             if ($companyData['valid'] == 'false') {
@@ -60,7 +60,15 @@ class ViesController extends Controller
         $output = curl_exec($curl);
         curl_close($curl);
 
-        if (strpos($output, 'INVALID_INPUT')) return false;
+        if (strpos($output, 'INVALID_INPUT')) return [
+            'status' => false,
+            'message' => 'Błędny format'
+        ];
+
+        if (strpos($output, 'IP_BLOCKED')) return [
+            'status' => false,
+            'message' => 'IP zablokowane'
+        ];
 
         // NIP
         preg_match('~<vatNumber>([^{]*)</vatNumber>~i', $output, $match);
