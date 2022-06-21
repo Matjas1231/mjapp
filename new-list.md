@@ -13,11 +13,16 @@
         - ~~Software~~
         - ~~Worker~~
         - Dodać wiadomości do walidacji
-        - Przerobić podwójne walidatory pod kątem wartości unique (jeśli jest edycja, to należy zmienić tą wartość w tablicy)
+        - ~~Przerobić podwójne walidatory pod kątem wartości unique (jeśli jest edycja, to należy zmienić tą wartość w tablicy)~~
 1. Podpięcie API:
-    - ~~NBP - Pobieranie danych o walutach~~
-    - GUS
-    - VIES - Może AJAX
+    - NBP - Pobieranie danych o walutach
+        - ~~Podłączenie~~
+        - Licznik w dashboard, który pokazuje kiedy waluty były ostatni raz pobierane - zrobione w newapp
+    - GUS - Pobieranie danych o firmach
+    - ~~VIES~~
+        - ~~Najpierw podłączyć~~
+        - ~~Wystylować~~
+        - ~~Kody kraju na select~~
 1. Wystawienie własnego RESTApi
 1. Autoryzacja - podział na administartorów i użytkowników:
     - Po podziale stworzyć panel admina
@@ -28,7 +33,6 @@
     - Użycie kolejek
 1. Przetestować fasadę Log
 1. Unit Testy
-1. Licznik w dashboard, który pokazuje kiedy waluty były ostatni raz pobierane - zrobione w newapp
 1. Kalkulatory AJAX:
     - Spalania
     - Przelicznik walut, który bazuje na currency itp.
