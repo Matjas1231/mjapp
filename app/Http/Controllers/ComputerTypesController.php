@@ -52,6 +52,7 @@ class ComputerTypesController extends Controller
     public function update(Request $request)
     {
         $this->computerTypeRepository->update($request->validate([
+            'id' => 'integer',
             'type' => 'string|max:20|unique:computer_types,type'
         ]));
 
