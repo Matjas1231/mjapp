@@ -57,7 +57,7 @@ class ComputerTypesController extends Controller
         ]));
 
         return redirect()
-                ->route('computer.type.edit', ['computerTypeId' => $request['id']]);
+                ->route('computer.type.list');
     }
 
     public function delete(int $id)
