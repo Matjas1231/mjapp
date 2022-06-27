@@ -200,7 +200,6 @@
                 </a>
                 <div id="collapsePeripherals" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
                         <a class="collapse-item" href="{{ route('peripheral.list') }}">
                             <i class="fas fa-keyboard"></i>
                             <span>Lista urządzeń</span></a>
@@ -323,35 +322,26 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCurrencies"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fan"></i>
-                    <span>Waluty</span>
+                    <i class="fas fa-link"></i>
+                    <span>Podłączone</span>
                 </a>
                 <div id="collapseCurrencies" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        {{-- Currency --}}
                         <a class="collapse-item" href="{{ route('currency.index') }}">
-                            <i class="fas fa-keyboard"></i>
+                            <i class="fas fa-euro-sign"></i>
                             <span>Lista walut</span></a>
                         </a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVies"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fan"></i>
-                    <span>VIES</span>
-                </a>
-                <div id="collapseVies" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                        {{-- VIES --}}
                         <a class="collapse-item" href="{{ route('vies.index') }}">
-                            <i class="fas fa-keyboard"></i>
+                            <i class="fas fa-certificate"></i>
                             <span>VIES</span></a>
                         </a>
+
                     </div>
                 </div>
             </li>
+
             <hr class="sidebar-divider">
 
             <div class="text-center d-none d-md-inline mt-3">
