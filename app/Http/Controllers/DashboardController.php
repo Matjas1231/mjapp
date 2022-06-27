@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repository\ComputerRepositoryInterface;
 use App\Repository\ComputerTypeRepositoryInterface;
+use App\Repository\CurrencyRepositoryInterface;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\PeripheralTypeRepositoryInterface;
 use App\Repository\SoftwareRepositoryInterface;
@@ -18,7 +19,8 @@ class DashboardController extends Controller
         private ComputerRepositoryInterface $computerRepository,
         private SoftwareRepositoryInterface $softwareRepository,
         private ComputerTypeRepositoryInterface $computerTypeRepository,
-        private PeripheralTypeRepositoryInterface $peripheralTypeRepository
+        private PeripheralTypeRepositoryInterface $peripheralTypeRepository,
+        private CurrencyRepositoryInterface $currencyRepository
         )
     {
         $this->workerRepository = $workerRepository;
@@ -27,30 +29,22 @@ class DashboardController extends Controller
         $this->softwareRepository = $softwareRepository;
         $this->computerTypeRepository = $computerTypeRepository;
         $this->peripheralTypeRepository = $peripheralTypeRepository;
+        $this->currencyRepository = $currencyRepository;
     }
 
     public function dashboard()
     {
-        $countWorkers = $this->workerRepository->countWorkers();
-
         $departments = $this->departmentRepository->all();
 
-        $countComputers = $this->computerRepository->countComputers();
-        $computerTypes = $this->computerTypeRepository->all();
-
-        $peripheralTypes = $this->peripheralTypeRepository->all();
-
-        $countSoftwares = $this->softwareRepository->countSoftwares();
-
-
         return view('dashboard', [
-            'countWorkers' => $countWorkers,
+            'countWorkers' => $this->workerRepository->countWorkers(),
             'countDepartments' => $departments->count(),
             'departments' => $departments,
-            'countComputers' => $countComputers,
-            'computerTypes' => $computerTypes,
-            'peripheralTypes' => $peripheralTypes,
-            'countSoftwares' => $countSoftwares,
+            'countComputers' => $this->computerRepository->countComputers(),
+            'computerTypes' => $this->computerTypeRepository->all(),
+            'peripheralTypes' => $this->peripheralTypeRepository->all(),
+            'countSoftwares' => $this->softwareRepository->countSoftwares(),
+            'lastCurrencyDownload' => $this->currencyRepository->getlatest(),
         ]);
     }
 }
