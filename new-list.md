@@ -14,10 +14,13 @@
         - ~~Worker~~
         - Dodać wiadomości do walidacji
         - ~~Przerobić podwójne walidatory pod kątem wartości unique (jeśli jest edycja, to należy zmienić tą wartość w tablicy)~~
+1. ~~Poprawić edycję typów komputera, pokazuje błąd o złym id~~
 1. Podpięcie API:
     - NBP - Pobieranie danych o walutach
         - ~~Podłączenie~~
-        - Licznik w dashboard, który pokazuje kiedy waluty były ostatni raz pobierane - zrobione w newapp
+        - ~~Licznik w dashboard, który pokazuje kiedy waluty były ostatni raz pobierane - zrobione w newapp~~
+        - Pobierać dwa różnie przeliczniki: sprzedaży i kupna
+        - Przerobić na multi-curl jest gdzieś w zakładkach
     - GUS - Pobieranie danych o firmach
     - ~~VIES~~
         - ~~Najpierw podłączyć~~
@@ -46,6 +49,7 @@
 1. Uporządkować pliki - kontrolery, modele itd. Czy da się jakoś zautomatyzować zmianę namespce?
 1. Wrzucić na hosting
 1. Implementacja bootstrap icons
+1. Ajaxowy notatnik 
 
 ---
 
