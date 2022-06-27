@@ -30,7 +30,7 @@
                 <th>ID</th>
                 <th>Nazwa</th>
                 <th>Kod</th>
-                <th>Kurs waluty</th>
+                <th>Średni kurs waluty</th>
             </tr>
         </thead>
         <tbody>
