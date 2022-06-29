@@ -16,7 +16,7 @@ class ViesController extends Controller
             $data = $request->query();
             $companyData = $this->sendData($data);
 
-            if (!$companyData['status']) {
+            if (isset($companyData['status'])  && !$companyData['status']) {
                 return redirect()
                     ->route('vies.index')
                     ->with('error', $companyData['message']);
@@ -29,8 +29,40 @@ class ViesController extends Controller
             }
         }
 
+        $countryCodes = [
+            'AT' => 'Austria',
+            'BE' => 'Belgia',
+            'BG' => 'Bułgaria',
+            'CY' => 'Cypr',
+            'CZ' => 'Czechy',
+            'DE' => 'Niemcy',
+            'DK' => 'Dania',
+            'EE' => 'Estonia',
+            'EL' => 'Grecja',
+            'ES' => 'Hiszpania',
+            'FI' => 'Finlandia',
+            'FR' => 'Francja',
+            'HR' => 'Chorwacja',
+            'HU' => 'Węgry',
+            'IE' => 'Irlandia',
+            'IT' => 'Włochy',
+            'LT' => 'Litwa',
+            'LU' => 'Luksemburg',
+            'LV' => 'Łotwa',
+            'MT' => 'Malta',
+            'NL' => 'Holandia',
+            'PL' => 'Polska',
+            'PT' => 'Portugalia',
+            'RO' => 'Rumunia',
+            'SE' => 'Szwecja',
+            'SI' => 'Słowenia',
+            'SK' => 'Słowacja',
+            'XI' => 'Irlandii Północnej',
+        ];
+
         return view('vies.index', [
             'companyData' => $companyData,
+            'countryCodes' => $countryCodes
         ]);
     }
 
@@ -99,9 +131,4 @@ class ViesController extends Controller
             'companyAddress' => $companyAddress,
         ];
     }
-
-        // $countryCodeToCheck = 'pl';
-        // $nipToCheck = '8721002039';
-
-
 }
