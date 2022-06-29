@@ -60,7 +60,7 @@ class ViesController extends Controller
             'XI' => 'Irlandii Północnej',
         ];
 
-        return view('vies.index', [
+        return view('api.vies.index', [
             'companyData' => $companyData,
             'countryCodes' => $countryCodes
         ]);
