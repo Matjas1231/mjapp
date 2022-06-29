@@ -27,7 +27,7 @@ class CurrencyController extends Controller
         $phrase = $validatedData['phrase'] ?? null;
 
         $allCurrency = $this->currencyRepositoryInterface->getAllFiltered($phrase);
-        return view('currency.index', [
+        return view('api.currency.index', [
             'allCurrency' => $allCurrency,
         ]);
     }
