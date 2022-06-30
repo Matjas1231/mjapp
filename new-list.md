@@ -27,6 +27,7 @@
         - ~~Przerobić wyświetlanie kodów na pętle~~
 1. ~~Wystawienie własnego RESTApi~~
     - ~~Wykorzystać resource~~
+    - ~~Dodać route w layout~~
 1. Autoryzacja - podział na administartorów i użytkowników:
     - Po podziale stworzyć panel admina
 1. Wykorzystać shared messages w innych view (przykład użycia w Currency)
