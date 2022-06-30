@@ -16,28 +16,29 @@
         - ~~Przerobić podwójne walidatory pod kątem wartości unique (jeśli jest edycja, to należy zmienić tą wartość w tablicy)~~
 1. ~~Poprawić edycję typów komputera, pokazuje błąd o złym id~~
 1. Podpięcie API:
-    - NBP - Pobieranie danych o walutach
+    - ~~NBP - Pobieranie danych o walutach~~
         - ~~Podłączenie~~
         - ~~Licznik w dashboard, który pokazuje kiedy waluty były ostatni raz pobierane - zrobione w newapp~~
-        - Pobierać dwa różnie przeliczniki: sprzedaży i kupna
-        - Przerobić na multi-curl jest gdzieś w zakładkach
     - GUS - Pobieranie danych o firmach
     - ~~VIES~~
         - ~~Najpierw podłączyć~~
         - ~~Wystylować~~
         - ~~Kody kraju na select~~
-1. Wystawienie własnego RESTApi
+        - ~~Przerobić wyświetlanie kodów na pętle~~
+1. ~~Wystawienie własnego RESTApi~~
+    - ~~Wykorzystać resource~~
 1. Autoryzacja - podział na administartorów i użytkowników:
     - Po podziale stworzyć panel admina
 1. Wykorzystać shared messages w innych view (przykład użycia w Currency)
 1. Generowanie PDF
-1. Observer:
-    - Może logi, może wysyłka mail
-    - Użycie kolejek
-1. Przetestować fasadę Log
+    - Np. lista walut
+1. ~~Observer:~~
+    - ~~Przy aktualizacji walut~~
+    - ~~Wysyłka mail~~
+    - ~~Użycie kolejek~~
 1. Unit Testy
-1. Kalkulatory AJAX:
-    - Spalania
+1. Kalkulatory - może AJAX:
+    - Spalania - może coś bardziej rozbudowanego, z zapisem do bazy itd.
     - Przelicznik walut, który bazuje na currency itp.
 1. Maski do inputów
 1. Readme - Pamiętać o komendzie do pobierania walut:
@@ -46,8 +47,9 @@
 1. PHP-DOM
 1. Automatyczne tłumaczenia - nie jestem pewien co do tego
 1. Cron - zautomatyzować jakąś czynność - jest już dodane w harmonogramie pobieranie walut
-1. Uporządkować pliki - kontrolery, modele itd. Czy da się jakoś zautomatyzować zmianę namespce?
-1. Wrzucić na hosting
+1. ~~Uporządkować pliki - kontrolery, modele itd.~~
+1. Posegregować widoki
+1. ~~Wrzucić na hosting~~
 1. Implementacja bootstrap icons
 1. Ajaxowy notatnik 
 
@@ -71,5 +73,6 @@ Deploy na vxm według: [Instrukcja](https://www.cloudways.com/blog/stay-away-fro
     $app = require_once __DIR__.'/LaravelApp/bootstrap/app.php';
     ```
 1. Potem należy za pomocą kodu dokonać migracji.
+1. Do używania komend z poziomu kodu używa się fasady Artisan::call('komenda', ['--force' => true]) (np. php artisan migrate = Artisan::call('migrate', ['--force' => true]))
 1. Pamiętać o tym, żeby przenieść plik .env!
 1. Przy normalnym deploy pamiętać o komendach do cache
