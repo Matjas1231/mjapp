@@ -156,12 +156,12 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCurrencies"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForeginApi"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-link"></i>
                     <span>Podłączone</span>
                 </a>
-                <div id="collapseCurrencies" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseForeginApi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- Currency --}}
                         <a class="collapse-item" href="{{ route('currency.index') }}">
@@ -172,6 +172,23 @@
                         <a class="collapse-item" href="{{ route('vies.index') }}">
                             <i class="fas fa-certificate"></i>
                             <span>VIES</span></a>
+                        </a>
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOurApi"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Wystawione</span>
+                </a>
+                <div id="collapseOurApi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('api.computers') }}">
+                            <i class="fas fa-desktop"></i>
+                            <span>Komputery</span></a>
                         </a>
 
                     </div>
