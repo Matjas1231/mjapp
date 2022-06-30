@@ -382,7 +382,7 @@
                         {{-- <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Zaloguj</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -408,9 +408,16 @@
                                 </a>
                             </div>
                         </li> --}}
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input type="submit" value="Wyloguj" class="btn">
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn">Zaloguj</a>
+                        @endauth
 
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -423,6 +430,7 @@
 
                     @yield('content')
                 </div>
+            {{-- </div> --}}
             <!-- End of Main Content -->
 
             <!-- Footer -->
