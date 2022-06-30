@@ -50,6 +50,10 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <div class="text-center text-light">
+                Sekcja CRUD
+            </div>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWorkers"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -76,8 +80,6 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoftwares"
@@ -98,9 +100,6 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComputers"
@@ -125,9 +124,6 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeripherals"
@@ -158,8 +154,6 @@
             <div class="text-center text-light">
                 Sekcja API
             </div>
-
-            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCurrencies"
