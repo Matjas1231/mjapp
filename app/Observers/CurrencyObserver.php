@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Mail\Currency\CurrencyFirstDownload;
 use App\Mail\Currency\CurrencyUpdate;
 use App\Models\Currency;
 use Illuminate\Support\Facades\Mail;
