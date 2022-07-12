@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Foreign;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SoapClient;
 
 class ViesController extends Controller
 {
@@ -81,7 +82,7 @@ class ViesController extends Controller
             </soapenv:Body>
         </soapenv:Envelope>
         ';
-        $url = "https://ec.europa.eu/taxation_customs/vies/services/checkVatService";
+        $url = 'https://ec.europa.eu/taxation_customs/vies/services/checkVatService';
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
