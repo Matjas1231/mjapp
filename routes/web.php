@@ -12,6 +12,7 @@ use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\PeripheralTypeController;
 use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\WorkerController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -172,3 +173,23 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
+
+// Technical rotues
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('view:cache');
+    return 'Cache done';
+});
+
+Route::get('/database-migration', function() {
+    $exitCode = Artisan::call('migrate:rollback');
+    $exitCode = Artisan::call('migrate');
+    return 'Migration done';
+});
+
+Route::get('/database-seed', function() {
+    $exitCode = Artisan::call('db:seed');
+    return 'Seeding done';
+});
+
