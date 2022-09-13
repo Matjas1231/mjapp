@@ -116,8 +116,8 @@
 </script>
 
 
-{{-- <script> // dobre
-
+<script> // dobre
+// TODO: DO PRZEROBIENIA
     let getUrl = window.location;
     let baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
     let url = baseUrl + "/ajax-request-get";
@@ -172,6 +172,6 @@
         }
     }
 
-</script> --}}
+</script>
 
 @endsection
