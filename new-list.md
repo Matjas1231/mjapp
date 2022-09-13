@@ -28,15 +28,25 @@
 1. ~~Wystawienie własnego RESTApi~~
     - ~~Wykorzystać resource~~
     - ~~Dodać route w layout~~
-1. Autoryzacja - podział na administartorów i użytkowników:
+1. Autoryzacja:
+    - ~~Uruchomić autoryzację~~
+    - Rejestracja użytkowników
+    - Podział na administartorów i użytkowników
+    - Profil użytkownika
     - Po podziale stworzyć panel admina
+1. ~~Przerobić seedery na fabryki~~
+1. Dodać route do kolejek na serwerze
 1. Wykorzystać shared messages w innych view (przykład użycia w Currency)
+1. Sklep:
+    - Utworzyć parę produktów
+    - Podłączyć stripe - testowe konto mam założone
 1. Generowanie PDF
     - Np. lista walut
-1. ~~Observer:~~
+1. Observer:
     - ~~Przy aktualizacji walut~~
     - ~~Wysyłka mail~~
     - ~~Użycie kolejek~~
+    - Dodać route do obsługi kolejek na serwerze
 1. Unit Testy
 1. Kalkulatory - może AJAX:
     - Spalania - może coś bardziej rozbudowanego, z zapisem do bazy itd.
@@ -52,28 +62,4 @@
 1. Posegregować widoki
 1. ~~Wrzucić na hosting~~
 1. Implementacja bootstrap icons
-1. Ajaxowy notatnik 
-
----
-
-## Deploy na hostinghouse
-Deploy na vxm według: [Instrukcja](https://www.cloudways.com/blog/stay-away-from-laravel-shared-hosting/?fbclid=IwAR3H5hvJTxUNE6ytYYH0x71n4WHnqnYrhRpBBn5E3k5jLcw2Z9QGRS81-kc)
-
-1. Przenieść Laravela wrzucić do public_html\LaravelApp oprocz pliku `mix_manifest.json`
-1. index.php - zamienić linie w ten sposób
-    ```php
-    // Pierwsza
-    if (file_exists(__DIR__.'/storage/framework/maintenance.php')) {
-        require __DIR__.'/storage/framework/maintenance.php';
-    }
-
-    // Druga
-    require __DIR__.'/LaravelApp/vendor/autoload.php';
-
-    // Trzecia
-    $app = require_once __DIR__.'/LaravelApp/bootstrap/app.php';
-    ```
-1. Potem należy za pomocą kodu dokonać migracji.
-1. Do używania komend z poziomu kodu używa się fasady Artisan::call('komenda', ['--force' => true]) (np. php artisan migrate = Artisan::call('migrate', ['--force' => true]))
-1. Pamiętać o tym, żeby przenieść plik .env!
-1. Przy normalnym deploy pamiętać o komendach do cache
+1. Ajaxowy notatnik
