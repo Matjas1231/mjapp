@@ -129,7 +129,7 @@
                         <thead>
                             <tr>
                                 <th>Lp.</th>
-                                <th>Nazwa typu komputera</th>
+                                <th>Typ komputera</th>
                                 <th>Ilość komputerów danego typu</th>
                             </tr>
                         </thead>
