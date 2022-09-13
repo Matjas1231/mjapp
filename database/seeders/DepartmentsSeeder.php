@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory;
+use Database\Factories\DepartmentFactory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 class DepartmentsSeeder extends Seeder
 {
@@ -17,21 +15,9 @@ class DepartmentsSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-
         DB::table('departments')->delete();
 
-        for ($j = 0; $j < 1; $j++) {
-            $department = [];
-            for ($i = 0; $i < $faker->numberBetween(5, 24); $i++) {
-                $department[] = [
-                    'name' => $faker->word(),
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now(),
-                ];
-            }
-        }
-
-        DB::table('departments')->insert($department);
+        $factory = new DepartmentFactory(fake()->numberBetween(5,24));
+        $factory->create();
     }
 }

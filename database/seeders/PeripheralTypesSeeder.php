@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory;
+use Database\Factories\PeripheralTypeFactory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PeripheralTypesSeeder extends Seeder
@@ -16,20 +15,9 @@ class PeripheralTypesSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-
         DB::table('peripheral_types')->delete();
+        $factory = new PeripheralTypeFactory(fake()->numberBetween(3, 15));
 
-        for ($j = 0; $j < 1; $j++) {
-            $peripherals = [];
-            for ($i = 0; $i < $faker->numberBetween(3, 15); $i++) {
-                $peripherals[] = [
-                    'type' => $faker->word(),
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now(),
-                ];
-            }
-        }
-        DB::table('peripheral_types')->insert($peripherals);
+        $factory->create();
     }
 }
