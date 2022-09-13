@@ -197,6 +197,28 @@
 
             <hr class="sidebar-divider">
 
+            <div class="text-center text-light">
+                Sklep
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-link"></i>
+                    <span>Sklep</span>
+                </a>
+                <div id="collapseShop" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">
+                            <i class="fas fa-euro-sign"></i>
+                            <span>Sklep</span></a>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+
             <div class="text-center d-none d-md-inline mt-3">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
