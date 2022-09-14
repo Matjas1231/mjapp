@@ -5,6 +5,7 @@
 
 // Import Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons';
 
 // Import Custom SB Admin 2 Mixins and Components
 @import "mixins.scss";
@@ -20,4 +21,6 @@
 @import "login.scss";
 @import "error.scss";
 @import "footer.scss";
+
+// Po zastąpieniu przez bootstrap icons do usunięcia
 @import 'fontawesome-free/css/all.min';
