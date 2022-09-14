@@ -198,6 +198,32 @@
             <hr class="sidebar-divider">
 
             <div class="text-center text-light">
+                Kalkulatory
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCalculators"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-link"></i>
+                    <span>Kalkulatory - AJAX</span>
+                </a>
+
+                <div id="collapseCalculators" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">
+                            <i class="fas fa-euro-sign"></i>
+                            <span>Spalania</span></a>
+                        </a>
+                        <a class="collapse-item" href="#">
+                            <i class="fas fa-euro-sign"></i>
+                            <span>Walut</span></a>
+                        </a>
+                    </div>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <div class="text-center text-light">
                 Sklep
             </div>
 
@@ -207,6 +233,7 @@
                     <i class="fas fa-link"></i>
                     <span>Sklep</span>
                 </a>
+
                 <div id="collapseShop" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">
@@ -222,7 +249,6 @@
             <div class="text-center d-none d-md-inline mt-3">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
      </ul>
         <!-- End of Sidebar -->
 
