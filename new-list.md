@@ -61,5 +61,5 @@
 1. ~~Uporządkować pliki - kontrolery, modele itd.~~
 1. Posegregować widoki
 1. ~~Wrzucić na hosting~~
-1. Implementacja bootstrap icons
+1. ~~Implementacja bootstrap icons~~
 1. Ajaxowy notatnik
