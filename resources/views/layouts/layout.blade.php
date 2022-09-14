@@ -43,7 +43,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="bi bi-speedometer2"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -57,22 +57,22 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWorkers"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-briefcase"></i>
+                    <i class="bi bi-people-fill"></i>
                     <span>Pracownicy</span>
                 </a>
                 <div id="collapseWorkers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
                         <a class="collapse-item" href="{{ route('worker.list') }}">
-                            <i class="fas fa-address-book"></i>
+                            <i class="bi bi-person-lines-fill"></i>
                             <span>Lista pracowników</span>
                         </a>
                         <a class="collapse-item" href="{{ route('worker.create') }}">
-                            <i class="fas fa-user-plus"></i>
+                            <i class="bi bi-person-plus-fill"></i>
                             <span>Dodaj pracownika</span>
                         </a>
                         <a class="collapse-item" href="{{ route('department.list') }}">
-                            <i class="fas fa-building"></i>
+                            <i class="bi bi-building"></i>
                             <span>Lista działów</span>
                         </a>
                     </div>
@@ -84,17 +84,17 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoftwares"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fab fa-uncharted"></i>
+                    <i class="bi bi-braces-asterisk"></i>
                     <span>Oprogramowanie</span>
                 </a>
                 <div id="collapseSoftwares" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('software.list') }}">
-                            <i class="fas fa-spinner"></i>
+                            <i class="bi bi-arrow-clockwise"></i>
                             <span>Lista oprogramowania</span>
                         </a>
                         <a class="collapse-item" href="{{ route('software.create') }}">
-                            <i class="fas fa-plus-square"></i>
+                            <i class="bi bi-plus-lg"></i>
                             <span>Dodaj oprogramowanie</span>
                         </a>
                     </div>
@@ -104,21 +104,21 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComputers"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-laptop-house"></i>
+                    <i class="bi bi-pc"></i>
                     <span>Komputery</span>
                 </a>
                 <div id="collapseComputers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('computer.list') }}">
-                            <i class="fas fa-desktop"></i>
+                            <i class="bi bi-laptop-fill"></i>
                             <span>Lista komputerów</span>
                         </a>
                         <a class="collapse-item" href="{{ route('computer.create') }}">
-                            <i class="fas fa-laptop-medical"></i>
+                            <i class="bi bi-plus-circle"></i>
                             <span>Dodaj komputer</span>
                         </a>
                         <a class="collapse-item" href="{{ route('computer.type.list') }}">
-                            <i class="fas fa-laptop-house"></i>
+                            <i class="bi bi-cpu-fill"></i>
                             <span>Lista typów</span>
                         </a>
                     </div>
@@ -128,21 +128,21 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeripherals"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fan"></i>
+                    <i class="bi bi-printer-fill"></i>
                     <span>Peryferia</span>
                 </a>
                 <div id="collapsePeripherals" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('peripheral.list') }}">
-                            <i class="fas fa-keyboard"></i>
+                            <i class="bi bi-mouse3-fill"></i>
                             <span>Lista urządzeń</span></a>
                         </a>
                         <a class="collapse-item" href="{{ route('peripheral.create') }}">
-                            <i class="fas fa-mouse-pointer"></i>
+                            <i class="bi bi-plus-circle"></i>
                             <span>Dodaj urządzenie</span></a>
                         </a>
                         <a class="collapse-item" href="{{ route('peripheral.type.list') }}">
-                            <i class="fas fa-laptop-house"></i>
+                            <i class="bi bi-upc-scan"></i>
                             <span>Lista typów urządzeń</span></a>
                         </a>
                     </div>
@@ -158,19 +158,19 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForeginApi"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-link"></i>
+                    <i class="bi bi-link-45deg"></i>
                     <span>Podłączone</span>
                 </a>
                 <div id="collapseForeginApi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- Currency --}}
                         <a class="collapse-item" href="{{ route('currency.index') }}">
-                            <i class="fas fa-euro-sign"></i>
+                            <i class="bi bi-currency-euro"></i>
                             <span>Lista walut</span></a>
                         </a>
                         {{-- VIES --}}
                         <a class="collapse-item" href="{{ route('vies.index') }}">
-                            <i class="fas fa-certificate"></i>
+                            <i class="bi bi-patch-check-fill"></i>
                             <span>VIES</span></a>
                         </a>
 
@@ -181,13 +181,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOurApi"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-external-link-alt"></i>
+                    <i class="bi bi-box-arrow-up-right"></i>
                     <span>Wystawione</span>
                 </a>
                 <div id="collapseOurApi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('api.computers') }}">
-                            <i class="fas fa-desktop"></i>
+                            <i class="bi bi-laptop-fill"></i>
                             <span>Komputery</span></a>
                         </a>
 
@@ -204,18 +204,18 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCalculators"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-link"></i>
+                    <i class="bi bi-calculator-fill"></i>
                     <span>Kalkulatory - AJAX</span>
                 </a>
 
                 <div id="collapseCalculators" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">
-                            <i class="fas fa-euro-sign"></i>
+                            <i class="bi bi-car-front-fill"></i>
                             <span>Spalania</span></a>
                         </a>
                         <a class="collapse-item" href="#">
-                            <i class="fas fa-euro-sign"></i>
+                            <i class="bi bi-cash"></i>
                             <span>Walut</span></a>
                         </a>
                     </div>
@@ -230,14 +230,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-link"></i>
+                    <i class="bi bi-shop"></i>
                     <span>Sklep</span>
                 </a>
 
                 <div id="collapseShop" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">
-                            <i class="fas fa-euro-sign"></i>
+                            <i class="bi bi-basket-fill"></i>
                             <span>Sklep</span></a>
                         </a>
                     </div>
