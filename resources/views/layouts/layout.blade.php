@@ -173,6 +173,11 @@
                             <i class="bi bi-patch-check-fill"></i>
                             <span>VIES</span></a>
                         </a>
+                        {{-- Deepl --}}
+                        <a class="collapse-item" href="{{ route('deepl.index') }}">
+                            <i class="bi bi-translate"></i>
+                            <span>Deepl</span></a>
+                        </a>
 
                     </div>
                 </div>
@@ -523,7 +528,7 @@
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
-    @yield('script')
+    @yield('javascript')
 
 </body>
 

@@ -166,6 +166,14 @@ Route::group([
     });
 });
 
+Route::group([
+    'prefix' => 'deepl',
+    'as' => 'deepl.'
+], function () {
+    Route::get('/', [DeeplController::class, 'index'])->name('index');
+    Route::post('/deepltranslation', [DeeplController::class, 'translate'])->name('translation');
+});
+
 // Authentication Routes
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
