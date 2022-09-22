@@ -200,7 +200,8 @@
                 </div>
             </li>
 
-            <hr class="sidebar-divider">
+            {{-- Kalkulatory --}}
+            {{-- <hr class="sidebar-divider">
 
             <div class="text-center text-light">
                 Kalkulatory
@@ -210,12 +211,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCalculators"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="bi bi-calculator-fill"></i>
-                    <span>Kalkulatory - AJAX</span>
+                    <span>Kalkulatory</span>
                 </a>
 
                 <div id="collapseCalculators" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">
+                        <a class="collapse-item" href="{{ route('calculator.tank') }}">
                             <i class="bi bi-car-front-fill"></i>
                             <span>Spalania</span></a>
                         </a>
@@ -224,7 +225,7 @@
                             <span>Walut</span></a>
                         </a>
                     </div>
-            </li>
+            </li> --}}
 
             <hr class="sidebar-divider">
 
