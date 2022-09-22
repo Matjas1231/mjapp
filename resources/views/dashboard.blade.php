@@ -21,7 +21,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countWorkers }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="bi bi-person-fill h1 text-gray-300"></i>
+                                <i class="bi bi-person-fill h1"></i>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countDepartments }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="bi bi-building h1 text-gray-300"></i>
+                                <i class="bi bi-building h1"></i>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $countComputers }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="bi bi-pc-display h1 text-gray-300"></i>
+                                    <i class="bi bi-pc-display h1"></i>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countSoftwares }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="bi bi-braces-asterisk h1 text-gray-300"></i>
+                                <i class="bi bi-braces-asterisk h1"></i>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $lastCurrencyDownload->updated_at }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="bi bi-currency-euro h1 text-gray-300"></i>
+                                <i class="bi bi-currency-euro h1"></i>
                             </div>
                         </div>
                     </div>
