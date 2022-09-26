@@ -1,8 +1,8 @@
 1. CRUD:
+    - AJAX
     - ~~CRUD~~
-    - AJAX - Co się da i ma sens
     - Walidacja:
-        - Computer:
+        - ~~Computer:~~
             - ~~Stworzyć warunek w walidacji (żeby zlikwidować jeden plik) i zobaczyć jak działa~~
         - ~~Currency~~
         - ~~ComputerTypes~~
@@ -20,6 +20,7 @@
         - ~~Podłączenie~~
         - ~~Licznik w dashboard, który pokazuje kiedy waluty były ostatni raz pobierane - zrobione w newapp~~
     - GUS - Pobieranie danych o firmach
+    - ~~DeePL~~
     - ~~VIES~~
         - ~~Najpierw podłączyć~~
         - ~~Wystylować~~
@@ -48,7 +49,7 @@
     - ~~Użycie kolejek~~
     - Dodać route do obsługi kolejek na serwerze
 1. Unit Testy
-1. Kalkulatory - może AJAX:
+1. Kalkulatory
     - Spalania - może coś bardziej rozbudowanego, z zapisem do bazy itd.
     - Przelicznik walut, który bazuje na currency itp.
 1. Maski do inputów
@@ -59,7 +60,7 @@
 1. Automatyczne tłumaczenia - nie jestem pewien co do tego
 1. Cron - zautomatyzować jakąś czynność - jest już dodane w harmonogramie pobieranie walut
 1. ~~Uporządkować pliki - kontrolery, modele itd.~~
-1. Posegregować widoki
+1. ~~Posegregować widoki~~
 1. ~~Wrzucić na hosting~~
 1. ~~Implementacja bootstrap icons~~
 1. Ajaxowy notatnik
