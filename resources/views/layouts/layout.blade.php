@@ -51,7 +51,7 @@
             <hr class="sidebar-divider">
 
             <div class="text-center text-light">
-                Sekcja CRUD
+                Zarządzanie zasobami
             </div>
 
             <li class="nav-item">
@@ -152,7 +152,7 @@
             <hr class="sidebar-divider">
 
             <div class="text-center text-light">
-                Sekcja API
+                API
             </div>
 
             <li class="nav-item">
