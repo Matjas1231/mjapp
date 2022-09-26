@@ -1,8 +1,8 @@
 window.translateDeepl = function translateDeepl(pathToTranslation, csrfToken) {
-    let textareaToTranslation = document.querySelector('#textareaToTranslate');
+    const textareaToTranslation = document.querySelector('#textareaToTranslate');
     let countletters = document.querySelector('#countLetters');
-    let resultTranslation = document.querySelector('#resultTranslation');
-    let translateButton = document.querySelector('#translateButton');
+    const resultTranslation = document.querySelector('#resultTranslation');
+    const translateButton = document.querySelector('#translateButton');
 
     countletters.innerHTML = textareaToTranslation.value.length;
 
