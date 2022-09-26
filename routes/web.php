@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Foreign\CurrencyController;
+use App\Http\Controllers\Api\Foreign\DeeplController;
 use App\Http\Controllers\Api\Foreign\ViesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -173,6 +174,12 @@ Route::group([
     Route::get('/', [DeeplController::class, 'index'])->name('index');
     Route::post('/deepltranslation', [DeeplController::class, 'translate'])->name('translation');
 });
+
+
+
+Route::get('/calculator/tank', function () {
+    return view('calculator.tank');
+})->name('calculator.tank');
 
 // Authentication Routes
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
