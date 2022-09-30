@@ -64,3 +64,4 @@
 1. ~~Wrzucić na hosting~~
 1. ~~Implementacja bootstrap icons~~
 1. Ajaxowy notatnik
+1. Przenieść się z webpack na vite
