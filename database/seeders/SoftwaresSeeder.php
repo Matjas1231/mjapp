@@ -15,7 +15,7 @@ class SoftwaresSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('softwares')->delete();
+        DB::table('softwares')->truncate();
 
         $factory = new SoftwareFactory(fake()->numberBetween(20, 150));
         $factory->create();

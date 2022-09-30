@@ -15,7 +15,7 @@ class WorkersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('workers')->delete();
+        DB::table('workers')->truncate();
 
         $factory = new WorkerFactory(fake()->numberBetween(10, 100));
         $factory->create();

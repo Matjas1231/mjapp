@@ -14,7 +14,7 @@ class PeripheralsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('peripherals')->delete();
+        DB::table('peripherals')->truncate();
 
         $factory = new PeripheralFactory(fake()->numberBetween(100, 110));
         $factory->create();

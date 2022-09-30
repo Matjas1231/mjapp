@@ -15,7 +15,7 @@ class DepartmentsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('departments')->delete();
+        DB::table('departments')->truncate();
 
         $factory = new DepartmentFactory(fake()->numberBetween(5,24));
         $factory->create();

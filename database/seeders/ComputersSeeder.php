@@ -19,7 +19,7 @@ class ComputersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('computers')->delete();
+        DB::table('computers')->truncate();
 
         $factory = new ComputerFactory(fake()->numberBetween(100, 300));
         $factory->create();

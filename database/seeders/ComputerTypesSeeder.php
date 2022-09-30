@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 class ComputerTypesSeeder extends Seeder
 {
@@ -17,8 +15,7 @@ class ComputerTypesSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-        DB::table('computer_types')->delete();
+        DB::table('computer_types')->truncate();
 
             $computerTypes = [];
 
