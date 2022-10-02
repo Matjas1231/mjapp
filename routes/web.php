@@ -41,6 +41,8 @@ Route::group([
         Route::get('/workers/ajax-request-get', [WorkerController::class, 'ajaxList']);
 
         Route::get('/', [WorkerController::class, 'list'])->name('list');
+        Route::post('/workersearch',[ WorkerController::class, 'searchWorker'])->name('searchWorker');
+
         Route::get('/{workerId}/show', [WorkerController::class, 'show'])->name('show');
 
         Route::get('/create', [WorkerController::class, 'create'])->name('create');

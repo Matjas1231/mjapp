@@ -7,7 +7,7 @@ interface WorkerRepositoryInterface
 {
     public function all();
     public function allWithoutPaginate();
-    public function filterBy(?array $filters);
+    public function workerSearch(string $filterName = null, string $filterDep = null);
     public function getWorker(int $id);
     public function storeAndReturnId(array $workerData);
     public function update(array $workerData);
