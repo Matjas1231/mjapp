@@ -1,11 +1,9 @@
 window.searchWorker = function searchWorker(path, csrfToken) {
-
-    const filters = document.querySelectorAll('.filter');
-    // const filterName = document.querySelector('#filtername');
     const table = document.querySelector('#datatable-table');
     const paginateLinks = document.querySelector('#paginateLinks');
     const resultTablePlace = document.querySelector('#resultdatatable');
     const filterForm = document.querySelector('#filterForm');
+
     filterForm.addEventListener('input', e => {
         setTimeout(() => {
             let filterName = document.querySelector('#filtername').value;
@@ -73,7 +71,7 @@ window.searchWorker = function searchWorker(path, csrfToken) {
                         resultTable = `<center class="font-weight-bold mt-3">Brak wyników</center>`;
                     }
 
-                    resultTablePlace.innerHTML = resultTable
+                    resultTablePlace.innerHTML = resultTable;
                 })
                 .catch(err => console.log(`Err: ${err}`));
             } else {
@@ -81,6 +79,6 @@ window.searchWorker = function searchWorker(path, csrfToken) {
                 resultTablePlace.style.display = 'none';
                 table.style.display = null;
             }
-        }, 300);
+        }, 100);
     });
 }
