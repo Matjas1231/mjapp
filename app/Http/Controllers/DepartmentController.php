@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Worker;
+use App\Models\Department;
 use App\Repository\DepartmentRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
@@ -21,6 +21,16 @@ class DepartmentController extends Controller
     public function list()
     {
         return view('department.list', ['departments' => $this->departmentRepository->all()]);
+    }
+
+    public function searchDepartment(Request $request)
+    {
+        if ($request->ajax()) {
+            $filterDep = $request->input('filterDep');
+            $result = $this->departmentRepository->departmentSearch($filterDep);
+
+            return response()->json($result);
+        }
     }
 
     public function create()
