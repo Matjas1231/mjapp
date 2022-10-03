@@ -41,7 +41,7 @@ Route::group([
         Route::get('/workers/ajax-request-get', [WorkerController::class, 'ajaxList']);
 
         Route::get('/', [WorkerController::class, 'list'])->name('list');
-        Route::post('/workersearch',[ WorkerController::class, 'searchWorker'])->name('searchWorker');
+        Route::post('/searchworker',[WorkerController::class, 'searchWorker'])->name('searchWorker');
 
         Route::get('/{workerId}/show', [WorkerController::class, 'show'])->name('show');
 
@@ -60,6 +60,7 @@ Route::group([
         'as' => 'department.'
     ], function () {
         Route::get('/', [DepartmentController::class, 'list'])->name('list');
+        Route::post('/searchdepartment',[DepartmentController::class, 'searchDepartment'])->name('searchDepartment');
 
         Route::get('/create', [DepartmentController::class, 'create'])->name('create');
         Route::post('/store', [DepartmentController::class, 'store'])->name('store');
