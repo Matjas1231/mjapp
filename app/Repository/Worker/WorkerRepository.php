@@ -19,16 +19,14 @@ class WorkerRepository implements WorkerRepositoryInterface
 
     public function all()
     {
-        // return $this->workerModel->all();
         return $this->workerModel->with('department')->paginate(25);
     }
     public function allWithoutPaginate()
     {
-        // return $this->workerModel->all();
         return $this->workerModel->all();
     }
 
-    public function workerSearch($filterName = null, $filterDep = null)
+    public function workerSearch(?string $filterName = null, ?string $filterDep = null)
     {
         if ($filterName && !$filterDep) {
             $result = $this->workerModel->where('name', 'LIKE', "%$filterName%")
