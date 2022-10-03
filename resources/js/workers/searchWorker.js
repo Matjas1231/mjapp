@@ -42,7 +42,7 @@ window.searchWorker = function searchWorker(path, csrfToken) {
                                 <td>${el.id}</td>
                                 <td>${el.name}</td>
                                 <td>${el.surname}</td>
-                                <td>${el.department.name}</td>
+                                <td>${el.department ? el.department.name : ''}</td>
                                 <td>${el.phone}</td>
                                 <td><a href="workers/${el.id}/show">Szczegóły</a></td>
                             </tr>
@@ -75,9 +75,9 @@ window.searchWorker = function searchWorker(path, csrfToken) {
                 })
                 .catch(err => console.log(`Err: ${err}`));
             } else {
-                paginateLinks.style.display = null;
                 resultTablePlace.style.display = 'none';
                 table.style.display = null;
+                paginateLinks.style.display = null;
             }
         }, 100);
     });
