@@ -7,15 +7,15 @@
 
 @section('content')
 
-<div class="form-inline" id="filterForm">
+<div class="form-inline">
     <div class="form-group mb-2">
         <label for="phrase">Wyszukaj: </label>
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control" id="filtername" placeholder="Imię lub nazwisko">
+        <input type="text" class="form-control filter" id="filtername" placeholder="Imię lub nazwisko">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control" id="filterdep" placeholder="Dział">
+        <input type="text" class="form-control filter" id="filterdep" placeholder="Dział">
     </div>
 </div>
 
