@@ -1,0 +1,4 @@
+.show {transition: opacity 400ms; width: 225px;}
+.hide-in {opacity: 0; width: 225px;}
+.hide-out {opacity: 0;transition: opacity 400ms; width: 225px;}
+.hidden {visibility:hidden;overflow:hidden;height:0;width:0;}

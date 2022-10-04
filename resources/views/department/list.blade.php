@@ -1,13 +1,17 @@
 @extends('layouts.layout')
 @section('title', 'Lista działów')
 
-@section('page-heading')
-    Lista działów
-    <br>
-    <a href="{{ route('department.create') }}"class="btn btn-primary">Dodaj dział</a>
-@endsection
+@section('page-heading', 'Lista działów')
 
 @section('content')
+<div id="addDepartmentDiv">
+    <a class="btn btn-primary mb-1" id="addButton">Dodaj dział</a>
+</div>
+
+<div id="saveDepartmentDiv" hidden></div>
+
+<div id="hiddenDiv" class="bg-success text-white fw-bold hide-in hidden">Dodano dział</div>
+
 <div class="form-inline" id="filterForm">
     <div class="form-group mb-2">
         <label for="phrase">Wyszukaj: </label>
@@ -26,14 +30,14 @@
                 <th>Akcja</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="departmentTableBody">
             @foreach ($departments as $department)
                 <tr>
                     <td>{{ $department->id }}</td>
                     <td>{{ $department->name }}</td>
                     <td>
                         <a href="{{ route('department.edit', ['departmentId' => $department->id]) }}" class="btn btn-primary">Edytuj</a>
-                        <a href="{{ route('department.delete', ['departmentId' => $department->id]) }}" class="btn btn-danger">Usuń</a>
+                        <a class="btn btn-danger deleteButton" data-id={{ $department->id }}>Usuń</a>
                     </td>
                 </tr>
             @endforeach
@@ -45,6 +49,20 @@
 
 @section('javascript')
     <script>
-        searchDepartment("{{ route('department.searchDepartment') }}", "{{ csrf_token() }}");
+        const deleteRoute = "{{ route('department.delete', ['departmentId' => ':departmentId']) }}";
+        const editRoute = "{{ route('department.edit', ['departmentId' => ':departmentId']) }}"
+        const csrfToken = "{{ csrf_token() }}"
+
+        searchDepartment("{{ route('department.searchDepartment') }}", csrfToken, {
+            edit: editRoute,
+            delete: deleteRoute
+        });
+
+        addDepartment("{{ route('department.store') }}", csrfToken, {
+            edit: editRoute,
+            delete: deleteRoute
+        });
+
+        deleteDepartment(deleteRoute);
     </script>
 @endsection

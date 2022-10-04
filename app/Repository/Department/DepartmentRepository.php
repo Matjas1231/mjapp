@@ -24,12 +24,12 @@ class DepartmentRepository implements DepartmentRepositoryInterface
         return $this->departmentModel->where('name', 'LIKE', "%$filterDep%")->get(['id', 'name'])->toArray();
     }
 
-    public function store(array $deparmentData)
+    public function storeAndReturnId(array $deparmentData)
     {
         $department = $this->departmentModel->newInstance();
         $department->name = $deparmentData['name'];
-
-        return $department->save();
+        $department->save();
+        return $department->id;
     }
 
     public function getSingle(int $id)

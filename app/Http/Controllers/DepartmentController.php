@@ -32,20 +32,16 @@ class DepartmentController extends Controller
         }
     }
 
-    public function create()
-    {
-        return view('department.create');
-    }
-
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'string|max:100'
-        ]);
+        if ($request->ajax()) {
+            $validatedData = $request->validate([
+                'name' => 'string|max:100'
+            ]);
 
-        $this->departmentRepository->store($validatedData);
-        return redirect()
-                ->route('department.list');
+            $departmentId = $this->departmentRepository->storeAndReturnId($validatedData);
+            return response()->json($departmentId);
+        }
     }
 
     public function edit(int $departmentId)

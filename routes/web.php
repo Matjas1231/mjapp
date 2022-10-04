@@ -62,7 +62,6 @@ Route::group([
         Route::get('/', [DepartmentController::class, 'list'])->name('list');
         Route::post('/searchdepartment',[DepartmentController::class, 'searchDepartment'])->name('searchDepartment');
 
-        Route::get('/create', [DepartmentController::class, 'create'])->name('create');
         Route::post('/store', [DepartmentController::class, 'store'])->name('store');
 
         Route::get('/{departmentId}/edit', [DepartmentController::class, 'edit'])->name('edit');

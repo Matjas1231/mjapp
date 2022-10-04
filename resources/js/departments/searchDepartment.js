@@ -1,4 +1,4 @@
-window.searchDepartment = function searchDepartment(path, csrfToken) {
+window.searchDepartment = function searchDepartment(path, csrfToken, routes) {
     const table = document.querySelector('#datatable-table');
     const resultTablePlace = document.querySelector('#resultdatatable');
     const filter = document.querySelector('.filter');
@@ -41,8 +41,8 @@ window.searchDepartment = function searchDepartment(path, csrfToken) {
                                 <td>${el.id}</td>
                                 <td>${el.name}</td>
                                 <td>
-                                    <a href="departments/${el.id}/edit" class="btn btn-primary">Edytuj</a>
-                                    <a href="departments/${el.id}/delete" class="btn btn-danger">Usuń</a>
+                                <a href="${routes.edit.replace(':departmentId', el.id)}" class="btn btn-primary">Edytuj</a>
+                                <a href="${routes.delete.replace(':departmentId', el.id)}" class="btn btn-danger">Usuń</a>
                                 </td>
                             </tr>
                             `
