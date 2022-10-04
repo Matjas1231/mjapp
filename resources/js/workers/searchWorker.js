@@ -5,9 +5,9 @@ window.searchWorker = function searchWorker(path, csrfToken) {
     const filters = document.querySelectorAll('.filter');
     let timer;
 
-    data = {
+    let data = {
         'filterName':null,
-         'filterDep': null
+        'filterDep': null
     }
 
     filters.forEach(filter => {

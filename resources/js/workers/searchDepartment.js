@@ -1,17 +1,20 @@
 window.searchDepartment = function searchDepartment(path, csrfToken) {
     const table = document.querySelector('#datatable-table');
     const resultTablePlace = document.querySelector('#resultdatatable');
-    const filterForm = document.querySelector('#filterForm');
+    const filter = document.querySelector('.filter');
+    let timer;
 
-    filterForm.addEventListener('input', e => {
-        setTimeout(() => {
-            let filterDep = document.querySelector('#filterdep').value;
+    let data = {
+        'filterDep': null
+    }
 
-            if (filterDep) {
-                data = {
-                    filterDep: filterDep
-                };
+    filter.addEventListener('input', e => {
+        clearTimeout(timer);
 
+        timer = setTimeout(() => {
+            data.filterDep = filter.value;
+
+            if (data.filterDep) {
                 fetch(path, {
                     method: 'POST',
                     headers: {
@@ -71,6 +74,6 @@ window.searchDepartment = function searchDepartment(path, csrfToken) {
                 resultTablePlace.style.display = 'none';
                 table.style.display = null;
             }
-        }, 100)
+        }, 500);
     });
 }
