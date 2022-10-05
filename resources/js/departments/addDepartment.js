@@ -76,7 +76,7 @@ window.addDepartment = function addDepartment(path, csrfToken, routes) {
                     <td>${newDeparmentName.value}</td>
                     <td>
                         <a href="${routes.edit.replace(':departmentId', id)}" class="btn btn-primary">Edytuj</a>
-                        <a href="${routes.delete.replace(':departmentId', id)}" class="btn btn-danger">Usuń</a>
+                        <a class="btn btn-danger deleteButton" data-id=${id}>Usuń</a>
                     </td>
                 </tr>
                 `;
@@ -88,21 +88,22 @@ window.addDepartment = function addDepartment(path, csrfToken, routes) {
 
 function showAnimate() {
     const hiddenSuccessDiv = document.querySelector('#hiddenDiv');
+    hiddenSuccessDiv.hidden = '';
 
-    hiddenSuccessDiv.classList.remove('hidden');
     if (hiddenSuccessDiv.classList.contains('hide-out')) {
         hiddenSuccessDiv.classList.remove('hide-out');
     }
 
-    hiddenSuccessDiv.classList.add('show', 'py-2', 'px-2', 'mb-2');
+    hiddenSuccessDiv.classList.add('show-message', 'py-2', 'px-2', 'mb-2');
     hiddenSuccessDiv.classList.remove('hide-in');
+
     setTimeout(() => {
         saveButton.disabled = false;
         hiddenSuccessDiv.classList.add('hide-out');
-        hiddenSuccessDiv.classList.remove('show');
+        hiddenSuccessDiv.classList.remove('show-message');
 
         setTimeout(() => {
-            hiddenSuccessDiv.classList.add('hidden');
+            hiddenSuccessDiv.hidden = true;
             hiddenSuccessDiv.classList.remove('py-2', 'px-2', 'mb-2');
             addButton.hidden = '';// Przycisk do dodawania
         }, 250);

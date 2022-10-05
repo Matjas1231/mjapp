@@ -4,13 +4,12 @@
 @section('page-heading', 'Lista działów')
 
 @section('content')
+
 <div id="addDepartmentDiv">
     <a class="btn btn-primary mb-1" id="addButton">Dodaj dział</a>
+    <div id="saveDepartmentDiv" hidden></div>
+    <div id="hiddenDiv" style="width: 225px" class="bg-success text-white show-message hide-in" hidden>Dodano dział</div>
 </div>
-
-<div id="saveDepartmentDiv" hidden></div>
-
-<div id="hiddenDiv" class="bg-success text-white fw-bold hide-in hidden">Dodano dział</div>
 
 <div class="form-inline" id="filterForm">
     <div class="form-group mb-2">
