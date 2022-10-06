@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Software\SoftwareRequest;
+use App\Models\Software;
 use App\Repository\SoftwareRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SoftwareController extends Controller
 {
@@ -38,6 +40,17 @@ class SoftwareController extends Controller
             'name' => $filters['name'] ?? null,
             'serialNumber' => $filters['serialnumber'] ?? null,
         ]);
+    }
+
+    public function searchSoftware(Request $request)
+    {
+        if ($request->ajax()) {
+            $filtersArray = $this->prepareDataFromAjax($request->query());
+
+            $result = $this->softwareRepository->searchSoftware($filtersArray);
+
+            return response()->json($result);
+        }
     }
 
     public function show(int $id)

@@ -1,11 +1,13 @@
-window.searchWorker = function searchWorker(path) {
+window.searchSoftware = function searchSoftware(path, routes) {
     const table = document.querySelector('#datatable-table');
     const paginateLinks = document.querySelector('#paginateLinks');
     const resultTablePlace = document.querySelector('#resultdatatable');
     const filters = document.querySelectorAll('.filter');
     const data = {
         'filterName': null,
-        'filterDep': null
+        'filterProd': null,
+        'filterNa': null,
+        'filterSn': null,
     }
     let timer;
 
@@ -13,15 +15,17 @@ window.searchWorker = function searchWorker(path) {
         filter.addEventListener('input', e => {
             clearTimeout(timer);
 
-            timer = setTimeout(() => {
-                if (filter.id == 'filtername') data.filterName = filter.value;
-                if (filter.id == 'filterdep') data.filterDep = filter.value;
+            setTimeout(() => {
+                if (filter.id === 'filtername') data.filterName = filter.value;
+                if (filter.id === 'filterprod') data.filterProd = filter.value;
+                if (filter.id === 'filterna') data.filterNa = filter.value;
+                if (filter.id === 'filtersn') data.filterSn = filter.value;
 
-                if (data.filterDep || data.filterName) {
+                if (data.filterName || data.filterProd || data.filterNa || data.filterSn) {
                     fetch(`${path}?${prepareDataToSend(data)}`, {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
-                            'Content-Type': 'application/x-www-form-urlencoded'
+                            'Content-Type': 'application/x-www-form-urlencoded',
                         }
                     })
                     .then(response => {
@@ -30,23 +34,25 @@ window.searchWorker = function searchWorker(path) {
                     })
                     .then(data => {
                         table.style.display = 'none';
-                        resultTablePlace.style.display = null;
                         paginateLinks.style.display = 'none';
+                        resultTablePlace.style.display = null;
                         let resultTable = '';
 
                         if (data.length > 0) {
                             let html = '';
+
                             data.forEach(el => {
                                 html += `
                                 <tr>
                                     <td>${el.id}</td>
+                                    <td>${el.producer}</td>
                                     <td>${el.name}</td>
-                                    <td>${el.surname}</td>
-                                    <td>${el.department ? el.department.name : ''}</td>
-                                    <td>${el.phone}</td>
-                                    <td><a href="workers/${el.id}/show">Szczegóły</a></td>
+                                    <td>${el.serial_number}</td>
+                                    <td><a href="${routes.worker.replace(':workerId', el.worker_id)}">${el.worker.name} ${el.worker.surname}</a></td>
+                                    <td>${el.expiry_date}</td>
+                                    <td><a href="${routes.details.replace(':softwareId', el.id)}">Szczegóły</a></td>
                                 </tr>
-                                `
+                                `;
                             });
 
                             resultTable = `
@@ -54,10 +60,11 @@ window.searchWorker = function searchWorker(path) {
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Imię</th>
-                                        <th>Nazwisko</th>
-                                        <th>Dział</th>
-                                        <th>Telefon</th>
+                                        <th>Producent</th>
+                                        <th>Nazwa</th>
+                                        <th>Numer seryjny</th>
+                                        <th>Pracownik</th>
+                                        <th>Data ważności</th>
                                         <th>Akcja</th>
                                     </tr>
                                 </thead>
@@ -66,7 +73,7 @@ window.searchWorker = function searchWorker(path) {
                                 </tbody>
                             </table>
                             `;
-                        } else {
+                        }  else {
                             resultTable = `<center class="font-weight-bold mt-3">Brak wyników</center>`;
                         }
 

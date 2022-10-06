@@ -32,7 +32,7 @@ class SoftwareRepository implements SoftwareRepositoryInterface
             if (!empty($filters['filter'])) {
                 $fullname = $filters['filter'];
                 $softwares->whereHas('worker', function($q) use($fullname) {
-                    $q->where(DB::raw('("name" || "surname")'), 'LIKE', "%$fullname%");
+                    $q->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%$fullname%");
                 })->get();
             }
 
@@ -55,6 +55,27 @@ class SoftwareRepository implements SoftwareRepositoryInterface
         } else {
             return $this->softwareModel->with('worker')->paginate(25);
         }
+    }
+
+    public function searchSoftware(array $filters)
+    {
+        $softwares = $this->softwareModel->query();
+
+        if (!is_null($filters['filterName'])) {
+            $softwares->whereHas('worker', function ($q) use($filters) {
+                $q->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%{$filters['filterName']}%");
+            });
+        }
+
+        if (!is_null($filters['filterProd'])) $softwares->where('producer', 'LIKE', "%{$filters['filterProd']}%");
+        if (!is_null($filters['filterNa'])) $softwares->where('name', 'LIKE', "%{$filters['filterNa']}%");
+        if (!is_null($filters['filterSn'])) $softwares->where('serial_number', 'LIKE', "%{$filters['filterSn']}%");
+
+        $softwares->with('worker', function ($q) {
+            $q->select(['id', 'name', 'surname']);
+        });
+
+        return $softwares->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
     }
 
     public function getSoftware(int $id)
