@@ -11,18 +11,18 @@
 </div>
 <div class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filtername" name="filter" value="{{ $filter }}" placeholder="Imię lub nazwisko">
+        <input type="text" class="form-control filter" id="filtername" name="filter" placeholder="Imię lub nazwisko">
     </div>
 </div>
 <div class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterprod" name="producer" value="{{ $producer }}"  placeholder="Producent">
+        <input type="text" class="form-control filter" id="filterprod" name="producer"  placeholder="Producent">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterna" name="name" value="{{ $name }}"  placeholder="Nazwa">
+        <input type="text" class="form-control filter" id="filterna" name="name" placeholder="Nazwa">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filtersn" name="serialnumber" value="{{ $serialNumber }}"  placeholder="Numer seryjny">
+        <input type="text" class="form-control filter" id="filtersn" name="serialnumber" placeholder="Numer seryjny">
     </div>
 </div>
 
