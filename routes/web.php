@@ -41,7 +41,7 @@ Route::group([
         Route::get('/workers/ajax-request-get', [WorkerController::class, 'ajaxList']);
 
         Route::get('/', [WorkerController::class, 'list'])->name('list');
-        Route::post('/searchworker',[WorkerController::class, 'searchWorker'])->name('searchWorker');
+        Route::get('/searchworker',[WorkerController::class, 'searchWorker'])->name('searchWorker');
 
         Route::get('/{workerId}/show', [WorkerController::class, 'show'])->name('show');
 
@@ -60,7 +60,7 @@ Route::group([
         'as' => 'department.'
     ], function () {
         Route::get('/', [DepartmentController::class, 'list'])->name('list');
-        Route::post('/searchdepartment',[DepartmentController::class, 'searchDepartment'])->name('searchDepartment');
+        Route::get('/searchdepartment',[DepartmentController::class, 'searchDepartment'])->name('searchDepartment');
 
         Route::post('/store', [DepartmentController::class, 'store'])->name('store');
 
@@ -109,6 +109,8 @@ Route::group([
         'as' => 'software.'
     ], function () {
         Route::get('/', [SoftwareController::class, 'list'])->name('list');
+        Route::get('/searchsoftware', [SoftwareController::class, 'searchSoftware'])->name('searchSoftware');
+
         Route::get('/{softwareId}/show', [SoftwareController::class, 'show'])->name('show');
 
         Route::get('/create', [SoftwareController::class, 'create'])->name('create');

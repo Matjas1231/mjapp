@@ -26,41 +26,51 @@ class WorkerRepository implements WorkerRepositoryInterface
         return $this->workerModel->all();
     }
 
-    public function workerSearch(?string $filterName = null, ?string $filterDep = null)
+    //TODO stary sposób wyszukiwania
+    public function filterBy(?array $filters)
     {
-        if ($filterName && !$filterDep) {
-            $result = $this->workerModel->where('name', 'LIKE', "%$filterName%")
-                        ->orWhere('surname', 'LIKE', "%$filterName%")
-                        ->with(['department' => function($q) {
-                            $q->select(['id', 'name']);
-                        }])
-                        ->get(['id', 'name', 'phone', 'surname', 'department_id'])
-                        ->toArray();
-        } elseif ($filterDep && !$filterName) {
-            $result = $this->workerModel->whereHas('department', function($q) use($filterDep) {
-                            $q->where('name', 'LIKE', "%$filterDep%");
-                        })
-                        ->with('department', function ($q) {
-                            $q->select(['id', 'name']);
-                        })
-                        ->get(['id', 'name', 'phone', 'surname', 'department_id'])
-                        ->toArray();
-        } elseif ($filterName && $filterDep) {
-            $result = $this->workerModel->where(function($q) use($filterName){
-                        $q->where('name', 'LIKE', "%$filterName%")
-                        ->orWhere('surname', 'LIKE', "%$filterName%");
-                    })
-                    ->whereHas('department', function ($q) use ($filterDep) {
-                        $q->where('name', 'LIKE', "%$filterDep%");
-                    })
-                    ->with('department', function ($q) {
-                        $q->get(['id', 'name']);
-                    })
-                    ->get(['id', 'name', 'phone', 'surname', 'department_id'])
-                    ->toArray();
+        if (!empty($filters)) {
+            $workers = $this->workerModel->query();
+
+            if (!empty($filters['filter'])) {
+                $filter = $filters['filter'];
+                $workers->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%$filter%")
+                ->get();
+            }
+
+            if (!empty($filters['filterDeb'])) {
+                $filterDeb = $filters['filterDeb'];
+                $workers->whereHas('department', function($q) use($filterDeb) {
+                    $q->where('name', 'LIKE', "%$filterDeb%");
+                })->get();
+            }
+
+            return $workers->with('department')->paginate(25);
+        } else {
+            return $this->workerModel->with('department')->paginate(25);
+        }
+    }
+
+    public function workerSearch(array $filters)
+    {
+        $workers = $this->workerModel->query();
+
+        if (!is_null($filters['filterName'])) {
+            $workers->where('name', 'LIKE', "%{$filters['filterName']}%")
+                    ->orWhere('surname', 'LIKE', "%{$filters['filterName']}%");
         }
 
-        return $result;
+        if (!is_null($filters['filterDep'])) {
+            $workers->whereHas('department', function ($q) use($filters) {
+                $q->where('name', 'LIKE', "{$filters['filterDep']}");
+            });
+        }
+
+        $workers->with('department', function ($q) {
+            $q->select(['id', 'name']);
+        });
+
+        return $workers->get(['id', 'name', 'phone', 'surname', 'department_id'])->toArray();
     }
 
     public function workersByDepartment(int $departmentId)

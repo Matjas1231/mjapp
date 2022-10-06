@@ -1,12 +1,11 @@
-window.searchDepartment = function searchDepartment(path, csrfToken, routes) {
+window.searchDepartment = function searchDepartment(path, routes) {
     const table = document.querySelector('#datatable-table');
     const resultTablePlace = document.querySelector('#resultdatatable');
     const filter = document.querySelector('.filter');
-    let timer;
-
-    let data = {
+    const data = {
         'filterDep': null
     }
+    let timer;
 
     filter.addEventListener('input', e => {
         clearTimeout(timer);
@@ -15,14 +14,11 @@ window.searchDepartment = function searchDepartment(path, csrfToken, routes) {
             data.filterDep = filter.value;
 
             if (data.filterDep) {
-                fetch(path, {
-                    method: 'POST',
+                fetch(`${path}?${prepareDataToSend(data)}`, {
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    body: JSON.stringify(data)
+                    }
                 })
                 .then(response => {
                     if (response.ok && response.status == 200) return response.json();

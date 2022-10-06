@@ -1,37 +1,28 @@
-window.searchWorker = function searchWorker(path, csrfToken) {
+window.searchWorker = function searchWorker(path) {
     const table = document.querySelector('#datatable-table');
     const paginateLinks = document.querySelector('#paginateLinks');
     const resultTablePlace = document.querySelector('#resultdatatable');
     const filters = document.querySelectorAll('.filter');
-    let timer;
-
-    let data = {
-        'filterName':null,
+    const data = {
+        'filterName': null,
         'filterDep': null
     }
+    let timer;
 
     filters.forEach(filter => {
         filter.addEventListener('input', e => {
             clearTimeout(timer);
 
             timer = setTimeout(() => {
-                if (filter.id == 'filtername') {
-                    data.filterName = filter.value;
-                }
-
-                if (filter.id == 'filterdep') {
-                    data.filterDep = filter.value;
-                }
+                if (filter.id == 'filtername') data.filterName = filter.value;
+                if (filter.id == 'filterdep') data.filterDep = filter.value;
 
                 if (data.filterDep || data.filterName) {
-                    fetch(path, {
-                        method: 'POST',
+                    fetch(`${path}?${prepareDataToSend(data)}`, {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        body: JSON.stringify(data)
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
                     })
                     .then(response => {
                         if (response.ok && response.status == 200) return response.json();

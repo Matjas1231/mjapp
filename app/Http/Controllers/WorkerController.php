@@ -28,10 +28,8 @@ class WorkerController extends Controller
     public function searchWorker(Request $request)
     {
         if ($request->ajax()) {
-            $filterName = $request->input('filterName') ?? null;
-            $filterDep = $request->input('filterDep') ?? null;
-
-            $result = $this->workerRepository->workerSearch($filterName, $filterDep);
+            $filtersArray = $this->prepareDataFromAjax($request->query());
+            $result = $this->workerRepository->workerSearch($filtersArray);
 
             return response()->json($result);
         }

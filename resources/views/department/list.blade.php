@@ -52,7 +52,7 @@
         const editRoute = "{{ route('department.edit', ['departmentId' => ':departmentId']) }}"
         const csrfToken = "{{ csrf_token() }}"
 
-        searchDepartment("{{ route('department.searchDepartment') }}", csrfToken, {
+        searchDepartment("{{ route('department.searchDepartment') }}", {
             edit: editRoute,
             delete: deleteRoute
         });

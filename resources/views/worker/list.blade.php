@@ -61,6 +61,6 @@
 
 @section('javascript')
 <script>
-    searchWorker("{{ route('worker.searchWorker') }}", "{{ csrf_token() }}");
+    searchWorker("{{ route('worker.searchWorker') }}");
 </script>
 @endsection
