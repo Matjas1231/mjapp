@@ -72,6 +72,37 @@ class ComputerRepository implements ComputerRepositoryInterface
         }
     }
 
+    public function searchComputer(array $filters)
+    {
+        $computer = $this->computerModel->query();
+
+        if (!is_null($filters['filterName'])) {
+            $computer->whereHas('worker', function ($q) use($filters) {
+                $q->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%{$filters['filterName']}%");
+            });
+        }
+
+        if (!is_null($filters['filterComputerType'])) {
+            $computer->whereHas('computerType', function ($q) use($filters) {
+                $q->where('type', 'LIKE', "%{$filters['filterComputerType']}%");
+            });
+        }
+
+        if (!is_null($filters['filterBrand'])) $computer->where('brand', 'LIKE', "%{$filters['filterBrand']}%");
+        if (!is_null($filters['filterModel'])) $computer->where('model', 'LIKE', "%{$filters['filterModel']}%");
+        if (!is_null($filters['filterSerialNumber'])) $computer->where('serial_number', 'LIKE', "%{$filters['filterSerialNumber']}%");
+        if (!is_null($filters['filterIpAddress'])) $computer->where('ip_address', 'LIKE', "%{$filters['filterIpAddress']}%");
+        if (!is_null($filters['filterMacAddress'])) $computer->where('mac_address', 'LIKE', "%{$filters['filterMacAddress']}%");
+        if (!is_null($filters['filterComputerName'])) $computer->where('computer_name', 'LIKE', "%{$filters['filterComputerName']}%");
+
+        $computer->with('worker', fn($q) => $q->select(['id', 'name', 'surname']))
+            ->with('computerType', fn($q) => $q->select(['id', 'type']));
+
+        return $computer->get([
+            'id', 'worker_id', 'type_id', 'brand', 'model', 'ip_address', 'mac_address', 'computer_name', 'serial_number'
+            ])->toArray();
+    }
+
     public function all()
     {
         return $this->computerModel

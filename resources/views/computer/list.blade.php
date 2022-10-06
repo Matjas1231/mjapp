@@ -5,47 +5,44 @@
 
 @section('content')
 
-<form method="GET">
-    <div class="form-group mb-2">
-        <label for="phrase">Wyszukaj: </label>
+<div class="form-group mb-2">
+    <label for="phrase">Wyszukaj: </label>
+</div>
+<div class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="filter" id="filtername" value="{{ $filter }}" placeholder="Imię lub nazwisko">
     </div>
-    <div class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="filter" value="{{ $filter }}" placeholder="Imię lub nazwisko">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="computertype" value="{{ $computertype }}" placeholder="Typ">
-        </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="computertype" id="filtercomputertype" value="{{ $computertype }}" placeholder="Typ">
     </div>
-    <div class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="brand" value="{{ $brand }}"  placeholder="Marka">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="model" value="{{ $model }}"  placeholder="Model">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="serialnumber" value="{{ $serialnumber }}" placeholder="Numer seryjny">
-        </div>
+</div>
+<div class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="brand" id="filterbrand" value="{{ $brand }}"  placeholder="Marka">
     </div>
-    <div class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="ipaddress" value="{{ $ipaddress }}" placeholder="Adres IP">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="macaddress" value="{{ $macaddress }}" placeholder="Adres MAC">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input type="text" class="form-control" name="computername" value="{{ $computername }}" placeholder="Nazwa sieciowa komputera">
-        </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="model" id="filtermodel" value="{{ $model }}"  placeholder="Model">
     </div>
-    <button type="submit" class="btn btn-primary">Szukaj</button>
-</form>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="serialnumber" id="filterserialnumber" value="{{ $serialnumber }}" placeholder="Numer seryjny">
+    </div>
+</div>
+<div class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="ipaddress" id="filteripaddress" value="{{ $ipaddress }}" placeholder="Adres IP">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="macaddress" id="filtermacaddress" value="{{ $macaddress }}" placeholder="Adres MAC">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="computername" id="filtercomputername" value="{{ $computername }}" placeholder="Nazwa sieciowa komputera">
+    </div>
+</div>
 
-<table class="table table-striped">
+<table class="table table-striped" id="datatable-table">
     <thead>
         <tr>
-            <th>Lp.</th>
+            <th>ID</th>
             <th>Marka</th>
             <th>Model</th>
             <th>Typ</th>
@@ -60,7 +57,7 @@
     <tbody>
         @foreach ($computers as $computer)
         <tr>
-            <td>{{ $loop->iteration }}</td>
+            <td>{{ $computer->id }}</td>
             <td>{{ $computer->brand }}</td>
             <td>{{ $computer->model }}</td>
             <td>
@@ -88,7 +85,17 @@
         @endforeach
     </tbody>
 </table>
-{{ $computers->links() }}
+<div id="paginateLinks">{{ $computers->links() }}</div>
 
+<div id="resultdatatable" style="display:none"></div>
 
+@endsection
+
+@section('javascript')
+    <script>
+        searchComputer("{{ route('computer.searchComputer') }}", {
+            worker: "{{ route('worker.show', ['workerId' => ':workerId']) }}",
+            details: "{{ route('computer.show', ['computerId' => ':computerId']) }}"
+        });
+    </script>
 @endsection

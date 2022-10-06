@@ -92,6 +92,8 @@ Route::group([
         'as' => 'computer.'
     ], function () {
         Route::get('/', [ComputerController::class, 'list'])->name('list');
+        Route::get('/searchcomputer', [ComputerController::class, 'searchComputer'])->name('searchComputer');
+
         Route::get('/{computerId}/show', [ComputerController::class, 'show'])->name('show');
 
         Route::get('/create', [ComputerController::class, 'create'])->name('create');

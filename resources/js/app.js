@@ -8,3 +8,4 @@ require('./departments/searchDepartment');
 require('./departments/deleteDepartment');
 require('./workers/searchWorker');
 require('./softwares/searchSoftware');
+require('./computers/searchComputer');

@@ -1,13 +1,17 @@
-window.searchSoftware = function searchSoftware(path, routes) {
+window.searchComputer = function searchComputer(path, routes) {
     const table = document.querySelector('#datatable-table');
     const paginateLinks = document.querySelector('#paginateLinks');
     const resultTablePlace = document.querySelector('#resultdatatable');
     const filters = document.querySelectorAll('.filter');
     const data = {
         'filterName': null,
-        'filterProd': null,
-        'filterNa': null,
-        'filterSn': null,
+        'filterComputerType': null,
+        'filterBrand': null,
+        'filterModel': null,
+        'filterSerialNumber': null,
+        'filterIpAddress': null,
+        'filterMacAddress': null,
+        'filterComputerName': null,
     }
     let timer;
 
@@ -17,11 +21,15 @@ window.searchSoftware = function searchSoftware(path, routes) {
 
             timer = setTimeout(() => {
                 if (filter.id === 'filtername') data.filterName = filter.value;
-                if (filter.id === 'filterprod') data.filterProd = filter.value;
-                if (filter.id === 'filterna') data.filterNa = filter.value;
-                if (filter.id === 'filtersn') data.filterSn = filter.value;
+                if (filter.id === 'filtercomputertype') data.filterComputerType = filter.value;
+                if (filter.id === 'filterbrand') data.filterBrand = filter.value;
+                if (filter.id === 'filtermodel') data.filterModel = filter.value;
+                if (filter.id === 'filterserialnumber') data.filterSerialNumber = filter.value;
+                if (filter.id === 'filteripaddress') data.filterIpAddress = filter.value;
+                if (filter.id === 'filtermacaddress') data.filterMacAddress = filter.value;
+                if (filter.id === 'filtercomputername') data.filterComputerName = filter.value;
 
-                if (data.filterName || data.filterProd || data.filterNa || data.filterSn) {
+                if (data.filterName || data.filterComputerType || data.filterBrand || data.filterModel || data.filterSerialNumber || data.filterIpAddress || data.filterMacAddress || data.filterComputerName) {
                     fetch(`${path}?${prepareDataToSend(data)}`, {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
@@ -39,18 +47,21 @@ window.searchSoftware = function searchSoftware(path, routes) {
                         let resultTable = '';
 
                         if (data.length > 0) {
-                            let html = '';
+                            let html = ''
 
                             data.forEach(el => {
                                 html += `
                                 <tr>
                                     <td>${el.id}</td>
-                                    <td>${el.producer}</td>
-                                    <td>${el.name}</td>
+                                    <td>${el.brand}</td>
+                                    <td>${el.model}</td>
+                                    <td>${el.computer_type.type}</td>
+                                    <td>${el.ip_address}</td>
+                                    <td>${el.mac_address}</td>
+                                    <td>${el.computer_name}</td>
                                     <td>${el.serial_number}</td>
                                     <td><a href="${routes.worker.replace(':workerId', el.worker_id)}">${el.worker.name} ${el.worker.surname}</a></td>
-                                    <td>${el.expiry_date}</td>
-                                    <td><a href="${routes.details.replace(':softwareId', el.id)}">Szczegóły</a></td>
+                                    <td><a href="${routes.details.replace(':computerId', el.id)}">Szczegóły</a></td>
                                 </tr>
                                 `;
                             });
@@ -60,11 +71,14 @@ window.searchSoftware = function searchSoftware(path, routes) {
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Producent</th>
-                                        <th>Nazwa</th>
+                                        <th>Marka</th>
+                                        <th>Model</th>
+                                        <th>Typ</th>
+                                        <th>Adres IP</th>
+                                        <th>Adres MAC</th>
+                                        <th>Nazwa siec.</th>
                                         <th>Numer seryjny</th>
                                         <th>Pracownik</th>
-                                        <th>Data ważności</th>
                                         <th>Akcja</th>
                                     </tr>
                                 </thead>
@@ -73,7 +87,7 @@ window.searchSoftware = function searchSoftware(path, routes) {
                                 </tbody>
                             </table>
                             `;
-                        }  else {
+                        } else {
                             resultTable = `<center class="font-weight-bold mt-3">Brak wyników</center>`;
                         }
 
@@ -87,5 +101,6 @@ window.searchSoftware = function searchSoftware(path, routes) {
                 }
             }, 500);
         });
+
     });
 }

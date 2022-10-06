@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Software\SoftwareRequest;
-use App\Models\Software;
 use App\Repository\SoftwareRepositoryInterface;
 use App\Repository\WorkerRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class SoftwareController extends Controller
 {
@@ -20,25 +18,10 @@ class SoftwareController extends Controller
         $this->workerRepository = $workerRepository;
     }
 
-    public function list(Request $request)
+    public function list()
     {
-        if (!empty($request->query())) {
-            $filters = [];
-            $filters['filter'] = $request->filter ?? null;
-            $filters['producer'] = $request->producer ?? null;
-            $filters['name'] = $request->name ?? null;
-            $filters['serialnumber'] = $request->serialnumber ?? null;
-
-            $softwares = $this->softwareRepository->filterBy($filters);
-        } else {
-            $softwares = $this->softwareRepository->all();
-        }
         return view('software.list', [
-            'softwares' => $softwares,
-            'filter' => $filters['filter'] ?? null,
-            'producer' => $filters['producer'] ?? null,
-            'name' => $filters['name'] ?? null,
-            'serialNumber' => $filters['serialnumber'] ?? null,
+            'softwares' => $this->softwareRepository->all()
         ]);
     }
 
