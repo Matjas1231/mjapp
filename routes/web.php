@@ -130,6 +130,8 @@ Route::group([
         'as' => 'peripheral.'
     ], function () {
         Route::get('/', [PeripheralController::class, 'list'])->name('list');
+        Route::get('/searchperipheral', [PeripheralController::class, 'searchPeripheral'])->name('searchPeripheral');
+
         Route::get('/{peripheralId}/show', [PeripheralController::class, 'show'])->name('show');
 
         Route::get('/create', [PeripheralController::class, 'create'])->name('create');

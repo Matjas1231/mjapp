@@ -61,8 +61,6 @@
 
 @section('javascript')
 <script>
-    // searchWorker("{{ route('worker.searchWorker') }}");
-
     new Search("{{ route('worker.searchWorker') }}", {
             details: "{{ route('worker.show', ['workerId' => ':workerId']) }}",
         });

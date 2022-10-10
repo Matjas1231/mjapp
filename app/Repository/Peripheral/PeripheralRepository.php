@@ -17,6 +17,7 @@ class PeripheralRepository implements PeripheralRepositoryInterface
         $this->peripheralModel = $peripheralModel;
     }
 
+    // Stary sposób wyszukiwania
     public function filterBy(?array $filters)
     {
         if (!empty($filters)) {
@@ -75,6 +76,37 @@ class PeripheralRepository implements PeripheralRepositoryInterface
     public function all()
     {
         return $this->peripheralModel->with(['worker', 'peripheralType'])->paginate(25);
+    }
+
+    public function searchPeripheral($filters)
+    {
+        $peripheral = $this->peripheralModel->query();
+
+        if (!is_null($filters['filterName'])) {
+            $peripheral->whereHas('worker', function ($q) use($filters) {
+                $q->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%{$filters['filterName']}%");
+            });
+        }
+
+        if (!is_null($filters['filterPeripheralType'])) {
+            $peripheral->whereHas('peripheralType', function ($q) use($filters) {
+                $q->where('type', 'LIKE', "%{$filters['filterPeripheralType']}%");
+            });
+        }
+
+        if (!is_null($filters['filterBrand'])) $peripheral->where('brand', 'LIKE', "%{$filters['filterBrand']}%");
+        if (!is_null($filters['filterModel'])) $peripheral->where('model', 'LIKE', "%{$filters['filterModel']}%");
+        if (!is_null($filters['filterSn'])) $peripheral->where('serial_number', 'LIKE', "%{$filters['filterSn']}%");
+        if (!is_null($filters['filterIpAddress'])) $peripheral->where('ip_address', 'LIKE', "%{$filters['filterIpAddress']}%");
+        if (!is_null($filters['filterMacAddress'])) $peripheral->where('mac_address', 'LIKE', "%{$filters['filterMacAddress']}%");
+        if (!is_null($filters['filterNetworkName'])) $peripheral->where('network_name', 'LIKE', "%{$filters['filterNetworkName']}%");
+
+        $peripheral->with('worker', fn($q) => $q->select(['id', 'name', 'surname']))
+        ->with('peripheralType', fn($q) => $q->select(['id', 'type']));
+
+        return $peripheral->get([
+            'id', 'worker_id', 'type_id', 'brand', 'model', 'ip_address', 'mac_address', 'network_name', 'serial_number'
+            ])->toArray();
     }
 
     public function peripheralsByType(int $typeId)

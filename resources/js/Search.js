@@ -79,6 +79,9 @@ window.Search = class Search
                 case '/computers':
                     this.resultTable = this.computerTable(jsonData);
                     break;
+                case '/peripherals':
+                    this.resultTable = this.peripheralTable(jsonData);
+                    break;
             }
         } else {
             this.resultTable = `<center class="font-weight-bold mt-3">Brak wyników</center>`;
@@ -246,6 +249,61 @@ window.Search = class Search
         `;
     }
 
+    peripheralTable(jsonData) {
+        let html = '';
+
+        jsonData.forEach(el => {
+            html += `
+            <tr>
+                <td>${el.id}</td>
+                <td>${el.brand}</td>
+                <td>${el.model}</td>`;
+
+                if (el.peripheral_type) {
+                    html += `<td><a href="${this.routes.worker.replace(':peripheralTypeId', el.peripheral_type.id)}">${el.peripheral_type.type}</a></td>`
+                } else {
+                    html += `<td>Nieprzypisany typ</td>`;
+                }
+
+                html += `<td>${el.serial_number}</td>
+                <td>${el.ip_address}</td>
+                <td>${el.mac_address}</td>
+                <td>${el.network_name}</td>
+                `;
+
+                if (el.worker) {
+                    html += `<td><a href="${this.routes.worker.replace(':workerId', el.worker_id)}">${el.worker.name} ${el.worker.surname}</a></td>`;
+                } else {
+                    html += '<td>Brak pracownika</td>';
+                }
+
+                html += `<td><a href="${this.routes.details.replace(':peripheralId', el.id)}">Szczegóły</a></td>
+            </tr>
+            `;
+        });
+
+        return `
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Typ</th>
+                    <th>Numer seryjny</th>
+                    <th>Adres IP</th>
+                    <th>Adres MAC</th>
+                    <th>Nazwa siec.</th>
+                    <th>Pracownik</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${html}
+            </tbody>
+        </table>
+        `;
+    }
 
     prepareDataToSend(dataToCode) {
         const dataPart = [];
