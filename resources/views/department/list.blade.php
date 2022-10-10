@@ -16,7 +16,7 @@
         <label for="phrase">Wyszukaj: </label>
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterdep" placeholder="Nazwa">
+        <input type="text" class="form-control filter" id="filterDep" placeholder="Nazwa">
     </div>
 </div>
 
@@ -52,7 +52,7 @@
         const editRoute = "{{ route('department.edit', ['departmentId' => ':departmentId']) }}"
         const csrfToken = "{{ csrf_token() }}"
 
-        searchDepartment("{{ route('department.searchDepartment') }}", {
+        new Search("{{ route('department.searchDepartment') }}", {
             edit: editRoute,
             delete: deleteRoute
         });

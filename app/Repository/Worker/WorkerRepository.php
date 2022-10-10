@@ -5,7 +5,6 @@ namespace App\Repository\Worker;
 
 use App\Models\Worker;
 use App\Repository\WorkerRepositoryInterface;
-use GuzzleHttp\Psr7\FnStream;
 use Illuminate\Support\Facades\DB;
 
 class WorkerRepository implements WorkerRepositoryInterface
@@ -56,8 +55,7 @@ class WorkerRepository implements WorkerRepositoryInterface
         $workers = $this->workerModel->query();
 
         if (!is_null($filters['filterName'])) {
-            $workers->where('name', 'LIKE', "%{$filters['filterName']}%")
-                    ->orWhere('surname', 'LIKE', "%{$filters['filterName']}%");
+            $workers->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%{$filters['filterName']}%");
         }
 
         if (!is_null($filters['filterDep'])) {

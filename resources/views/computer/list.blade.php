@@ -10,32 +10,32 @@
 </div>
 <div class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="filter" id="filtername" value="{{ $filter }}" placeholder="Imię lub nazwisko">
+        <input type="text" class="form-control filter" name="filter" id="filterName" placeholder="Imię lub nazwisko">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="computertype" id="filtercomputertype" value="{{ $computertype }}" placeholder="Typ">
-    </div>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="brand" id="filterbrand" value="{{ $brand }}"  placeholder="Marka">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="model" id="filtermodel" value="{{ $model }}"  placeholder="Model">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="serialnumber" id="filterserialnumber" value="{{ $serialnumber }}" placeholder="Numer seryjny">
+        <input type="text" class="form-control filter" name="computertype" id="filterComputerType" placeholder="Typ">
     </div>
 </div>
 <div class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="ipaddress" id="filteripaddress" value="{{ $ipaddress }}" placeholder="Adres IP">
+        <input type="text" class="form-control filter" name="brand" id="filterBrand"  placeholder="Marka">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="macaddress" id="filtermacaddress" value="{{ $macaddress }}" placeholder="Adres MAC">
+        <input type="text" class="form-control filter" name="model" id="filterModel"  placeholder="Model">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="computername" id="filtercomputername" value="{{ $computername }}" placeholder="Nazwa sieciowa komputera">
+        <input type="text" class="form-control filter" name="serialnumber" id="filterSerialNumber" placeholder="Numer seryjny">
+    </div>
+</div>
+<div class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="ipaddress" id="filterIpAddress" placeholder="Adres IP">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="macaddress" id="filterMacAddress" placeholder="Adres MAC">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control filter" name="computername" id="filterComputerName" placeholder="Nazwa sieciowa komputera">
     </div>
 </div>
 
@@ -75,7 +75,7 @@
                 @if (!is_null($computer->worker_id))
                     <a href="{{ route('worker.show', ['workerId' => $computer->worker_id]) }}">{{ $computer->worker->fullname() }}</a>
                 @else
-                    'Brak pracownika'
+                    Brak pracownika
                 @endif
             </td>
             <td>
@@ -93,9 +93,9 @@
 
 @section('javascript')
     <script>
-        searchComputer("{{ route('computer.searchComputer') }}", {
+        new Search("{{ route('computer.searchComputer') }}", {
             worker: "{{ route('worker.show', ['workerId' => ':workerId']) }}",
-            details: "{{ route('computer.show', ['computerId' => ':computerId']) }}"
+            details: "{{ route('computer.show', ['computerId' => ':workerId']) }}"
         });
     </script>
 @endsection

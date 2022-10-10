@@ -12,10 +12,10 @@
         <label for="phrase">Wyszukaj: </label>
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filtername" placeholder="Imię lub nazwisko">
+        <input type="text" class="form-control filter" id="filterName" placeholder="Imię lub nazwisko">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterdep" placeholder="Dział">
+        <input type="text" class="form-control filter" id="filterDep" placeholder="Dział">
     </div>
 </div>
 
@@ -41,7 +41,7 @@
                         @if (!is_null($worker->department_id))
                             <a href="{{ route('department.edit', ['departmentId' => $worker->department_id]) }}">{{ $worker->department->name }}</a>
                         @else
-                            {{ null }}
+                            Brak pracownika
                         @endif
                     </td>
                     <td>{{ $worker->phone }}</td>
@@ -61,6 +61,10 @@
 
 @section('javascript')
 <script>
-    searchWorker("{{ route('worker.searchWorker') }}");
+    // searchWorker("{{ route('worker.searchWorker') }}");
+
+    new Search("{{ route('worker.searchWorker') }}", {
+            details: "{{ route('worker.show', ['workerId' => ':workerId']) }}",
+        });
 </script>
 @endsection

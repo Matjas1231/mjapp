@@ -11,18 +11,18 @@
 </div>
 <div class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filtername" name="filter" placeholder="Imię lub nazwisko">
+        <input type="text" class="form-control filter" id="filterName" name="filter" placeholder="Imię lub nazwisko">
     </div>
 </div>
 <div class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterprod" name="producer"  placeholder="Producent">
+        <input type="text" class="form-control filter" id="filterProd" name="producer"  placeholder="Producent">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterna" name="name" placeholder="Nazwa">
+        <input type="text" class="form-control filter" id="filterNa" name="name" placeholder="Nazwa">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filtersn" name="serialnumber" placeholder="Numer seryjny">
+        <input type="text" class="form-control filter" id="filterSn" name="serialnumber" placeholder="Numer seryjny">
     </div>
 </div>
 
@@ -49,7 +49,7 @@
                     @if (!is_null($software->worker_id))
                         <a href="{{ route('worker.show', ['workerId' => $software->worker_id]) }}">{{ $software->worker->fullname() }}</a>
                     @else
-                        {{ NULL }}
+                        Brak pracownika
                     @endif
                 </td>
                 <td>{{ $software->expiry_date ?? 'N/D' }}</td>
@@ -66,7 +66,7 @@
 
 @section('javascript')
 <script>
-    searchSoftware("{{ route('software.searchSoftware') }}", {
+    new Search("{{ route('software.searchSoftware') }}", {
         worker: "{{ route('worker.show', ['workerId' => ':workerId']) }}",
         details: "{{ route('software.show', ['softwareId' => ':softwareId']) }}"
     });
