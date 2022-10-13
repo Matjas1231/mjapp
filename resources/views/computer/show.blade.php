@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title', 'Szczegóły komputera')
 
-@section('page-heading')Szczegóły komputera {{ $computer->computer_name }} @endsection
+@section('page-heading')Szczegóły komputera {{ $computer->network_name }} @endsection
 
 @section('content')
     <div>
@@ -19,7 +19,7 @@
         <p>Opis: <b>{{ $computer->description }}</b></p>
         <p>Adres IP: <b>{{ $computer->ip_address }}</b></p>
         <p>Adres MAC: <b>{{ $computer->mac_address }}</b></p>
-        <p>Nazwa: <b>{{ $computer->computer_name }}</b></p>
+        <p>Nazwa: <b>{{ $computer->network_name }}</b></p>
         <p>Numer seryjny: <b>{{ $computer->serial_number }}</b></p>
         <p>Data zakupu: <b>{{ $computer->date_of_buy }}</b></p>
         <p>Pracownik: <b>

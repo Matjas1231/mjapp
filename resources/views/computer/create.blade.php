@@ -78,8 +78,8 @@
             <input type='text' class='form-control' id='mac_address' name='mac_address' placeholder='Podaj adres MAC' value='00:00:00:00:00:00' required>
         </div>
         <div class='col'>
-            <label for='computer_name'>Nazwa komputera</label>
-            <input type='text' class='form-control' id='computer_name' name='computer_name' placeholder='Podaj nazwę komputera' required>
+            <label for='network_name'>Nazwa komputera</label>
+            <input type='text' class='form-control' id='network_name' name='network_name' placeholder='Podaj nazwę komputera' required>
         </div>
     </div>
     <br>

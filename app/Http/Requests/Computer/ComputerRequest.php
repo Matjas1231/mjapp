@@ -33,7 +33,7 @@ class ComputerRequest extends FormRequest
             'description' => 'string|nullable',
             'worker_id' => 'integer|nullable',
             'ip_address' => 'string',
-            'computer_name' => 'string|max:60',
+            'network_name' => 'string|max:60',
             'mac_address' => 'string|max:255',
             'serial_number' => 'string|max:255|unique:computers,serial_number',
             'date_of_buy' => 'date|date_format:Y-m-d'

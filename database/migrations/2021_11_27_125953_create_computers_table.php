@@ -26,7 +26,7 @@ class CreateComputersTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('worker_id')->nullable();
             $table->string('ip_address')->default('Dynamic');
-            $table->string('computer_name');
+            $table->string('network_name');
             $table->string('mac_address', 255);
             $table->string('serial_number', 255);
             $table->date('date_of_buy')->default(Carbon::now()->format('Y-m-d'));

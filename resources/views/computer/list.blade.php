@@ -35,7 +35,7 @@
         <input type="text" class="form-control filter" name="macaddress" id="filterMacAddress" placeholder="Adres MAC">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="computername" id="filterComputerName" placeholder="Nazwa sieciowa komputera">
+        <input type="text" class="form-control filter" name="computername" id="filterNetworkName" placeholder="Nazwa sieciowa komputera">
     </div>
 </div>
 
@@ -69,7 +69,7 @@
             </td>
             <td>{{ $computer->ip_address }}</td>
             <td>{{ $computer->mac_address }}</td>
-            <td>{{ $computer->computer_name }}</td>
+            <td>{{ $computer->network_name }}</td>
             <td>{{ $computer->serial_number }}</td>
             <td>
                 @if (!is_null($computer->worker_id))
@@ -94,8 +94,9 @@
 @section('javascript')
     <script>
         new Search("{{ route('computer.searchComputer') }}", {
+            type: "{{ route('computer.type.edit', ['computerTypeId' => ':computerTypeId']) }}",
             worker: "{{ route('worker.show', ['workerId' => ':workerId']) }}",
-            details: "{{ route('computer.show', ['computerId' => ':workerId']) }}"
+            details: "{{ route('computer.show', ['computerId' => ':computerId']) }}"
         });
     </script>
 @endsection

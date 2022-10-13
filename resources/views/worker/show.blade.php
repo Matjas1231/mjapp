@@ -85,7 +85,7 @@
                     <td>{{ $computer->model }}</td>
                     <td>{{ !is_null($computer->type_id) ? $computer->computerType->type : NULL }}</td>
                     <td>{{ $computer->ip_address }}</td>
-                    <td>{{ $computer->computer_name }}</td>
+                    <td>{{ $computer->network_name }}</td>
                     <td><a href="{{ route('computer.edit', ['computerId' => $computer->id]) }}" class="btn btn-primary">Edytuj</a></td>
                 </tr>
                 @endforeach

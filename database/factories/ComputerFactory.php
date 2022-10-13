@@ -30,7 +30,7 @@ class ComputerFactory extends Factory
             'worker_id' => fake()->numberBetween(Worker::all()->first()->id, Worker::all()->last()->id),
             'ip_address' => fake()->ipv4(),
             'mac_address' => fake()->macAddress(),
-            'computer_name' => fake()->word(),
+            'network_name' => fake()->word(),
             'date_of_buy' => fake()->date(),
             'serial_number' => fake()->sentence(),
             'created_at' => Carbon::now(),

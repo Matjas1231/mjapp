@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title', 'Edytowanie komputera')
-@section('page-heading') Edytowanie komputera {{ $computer->computer_name }} @endsection
+@section('page-heading') Edytowanie komputera {{ $computer->network_name }} @endsection
 
 @section('content')
 
@@ -77,8 +77,8 @@
             <input type='text' class='form-control' id='mac_address' name='mac_address' placeholder='Podaj adres MAC' value="{{ $computer->mac_address }}" required>
         </div>
         <div class='col'>
-            <label for='computer_name'>Nazwa komputera</label>
-            <input type='text' class='form-control' id='computer_name' name='computer_name' placeholder='Podaj nazwę komputera' value="{{ $computer->computer_name }}" required>
+            <label for='network_name'>Nazwa komputera</label>
+            <input type='text' class='form-control' id='network_name' name='network_name' placeholder='Podaj nazwę komputera' value="{{ $computer->network_name }}" required>
         </div>
     </div>
     <br>

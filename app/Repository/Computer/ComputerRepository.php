@@ -63,7 +63,7 @@ class ComputerRepository implements ComputerRepositoryInterface
 
             if (!empty($filters['computername'])) {
                 $computername = $filters['computername'];
-                $computers->where('computer_name', 'LIKE', "%$computername%")->get();
+                $computers->where('network_name', 'LIKE', "%$computername%")->get();
             }
 
             return $computers->with('worker' ,'computerType')->paginate(25);
@@ -93,13 +93,13 @@ class ComputerRepository implements ComputerRepositoryInterface
         if (!is_null($filters['filterSerialNumber'])) $computer->where('serial_number', 'LIKE', "%{$filters['filterSerialNumber']}%");
         if (!is_null($filters['filterIpAddress'])) $computer->where('ip_address', 'LIKE', "%{$filters['filterIpAddress']}%");
         if (!is_null($filters['filterMacAddress'])) $computer->where('mac_address', 'LIKE', "%{$filters['filterMacAddress']}%");
-        if (!is_null($filters['filterComputerName'])) $computer->where('computer_name', 'LIKE', "%{$filters['filterComputerName']}%");
+        if (!is_null($filters['filterNetworkName'])) $computer->where('network_name', 'LIKE', "%{$filters['filterNetworkName']}%");
 
         $computer->with('worker', fn($q) => $q->select(['id', 'name', 'surname']))
             ->with('computerType', fn($q) => $q->select(['id', 'type']));
 
         return $computer->get([
-            'id', 'worker_id', 'type_id', 'brand', 'model', 'ip_address', 'mac_address', 'computer_name', 'serial_number'
+            'id', 'worker_id', 'type_id', 'brand', 'model', 'ip_address', 'mac_address', 'network_name', 'serial_number'
             ])->toArray();
     }
 
@@ -133,7 +133,7 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->worker_id = $computerData['worker_id'];
         $computer->ip_address = $computerData['ip_address'] ?? 'Dynamic';
         $computer->mac_address = $computerData['mac_address'] ?? '00:00:00:00:00:00';
-        $computer->computer_name = $computerData['computer_name'];
+        $computer->network_name = $computerData['network_name'];
         $computer->serial_number = $computerData['serial_number'];
         $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('Y-m-d');
         $computer->save();
@@ -154,7 +154,7 @@ class ComputerRepository implements ComputerRepositoryInterface
         $computer->worker_id = $computerData['worker_id'];
         $computer->ip_address = $computerData['ip_address'] ?? 'Dynamic';
         $computer->mac_address = $computerData['mac_address'] ?? '00:00:00:00:00:00';
-        $computer->computer_name = $computerData['computer_name'];
+        $computer->network_name = $computerData['network_name'];
         $computer->serial_number = $computerData['serial_number'];
         $computer->date_of_buy = $computerData['date_of_buy'] ?? Carbon::now()->format('Y-m-d');
         return $computer->save();

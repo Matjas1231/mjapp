@@ -44,7 +44,7 @@
                         <td>{{ $computer->model }}</td>
                         <td>{{ $computer->ip_address }}</td>
                         <td>{{ $computer->mac_address }}</td>
-                        <td>{{ $computer->computer_name }}</td>
+                        <td>{{ $computer->network_name }}</td>
                         <td>{{ $computer->serial_number }}</td>
                         <td>
                             @if (!is_null($computer->worker_id))
