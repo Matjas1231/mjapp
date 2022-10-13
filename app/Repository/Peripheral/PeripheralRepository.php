@@ -109,6 +109,11 @@ class PeripheralRepository implements PeripheralRepositoryInterface
             ])->toArray();
     }
 
+    public function peripheralWithoutWorker()
+    {
+        return $this->peripheralModel->where('worker_id', '=', null)->get(['id', 'worker_id', 'type_id', 'brand', 'model', 'ip_address', 'mac_address', 'network_name', 'serial_number'])->toArray();
+    }
+
     public function peripheralsByType(int $typeId)
     {
         return $this->peripheralModel->query()->where('type_id', '=', $typeId)->with('worker')->paginate(25);

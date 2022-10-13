@@ -9,10 +9,13 @@ window.Search = class Search
         this.paginateLinks = document.querySelector('#paginateLinks') ?? document.createElement('div', {'id': 'paginateLinks'});
         this.resultTablePlace = document.querySelector('#resultdatatable');
         this.filters = document.querySelectorAll('.filter');
+        this.withoutWorker = document.querySelector('#filterWithoutWorker') ?? null;
         this.resultTable = '';
 
         this.data = this.generateEmptyDataObject();
         this.inputFieldsListener(this.data);
+
+        if (this.withoutWorker) this.checkboxListener();
     }
 
     generateEmptyDataObject() {
@@ -97,6 +100,21 @@ window.Search = class Search
         }
 
         this.resultTablePlace.innerHTML = this.resultTable;
+    }
+
+    checkboxListener() {
+        let data = { filterWithoutWorker: false };
+        this.withoutWorker.addEventListener('click', e => {
+            data = { filterWithoutWorker: this.withoutWorker.checked }
+
+            if (this.withoutWorker.checked) {
+                this.sendData(data);
+            } else {
+                this.resultTablePlace.style.display = 'none';
+                this.table.style.display = null;
+                this.paginateLinks.style.display = null;
+            }
+        });
     }
 
     #prepareDataToSend(dataToCode) {

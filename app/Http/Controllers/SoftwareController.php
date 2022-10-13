@@ -28,6 +28,10 @@ class SoftwareController extends Controller
     public function searchSoftware(Request $request)
     {
         if ($request->ajax()) {
+            if ($request->query('filterWithoutWorker')) {
+                return $this->softwareRepository->softwareWithoutWorker();
+            }
+
             $filtersArray = $this->prepareDataFromAjax($request->query());
 
             $result = $this->softwareRepository->searchSoftware($filtersArray);

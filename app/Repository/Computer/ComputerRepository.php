@@ -103,6 +103,11 @@ class ComputerRepository implements ComputerRepositoryInterface
             ])->toArray();
     }
 
+    public function computerWithoutWorker()
+    {
+        return $this->computerModel->where('worker_id', '=', null)->get(['id', 'worker_id', 'type_id', 'brand', 'model', 'ip_address', 'mac_address', 'network_name', 'serial_number'])->toArray();
+    }
+
     public function all()
     {
         return $this->computerModel

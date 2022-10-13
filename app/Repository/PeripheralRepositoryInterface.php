@@ -8,6 +8,7 @@ interface PeripheralRepositoryInterface
     public function all();
     public function filterBy(?array $filters);
     public function searchPeripheral(array $filters);
+    public function peripheralWithoutWorker();
     public function peripheralsByType(int $typeId);
     public function getPeripheral(int $id);
     public function storeAndReturnId(array $peripheralData);

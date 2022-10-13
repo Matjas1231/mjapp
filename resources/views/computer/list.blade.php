@@ -5,6 +5,8 @@
 
 @section('content')
 
+@include('shared.showWithoutWorker')
+
 <table class="table table-striped" id="datatable-table">
     <thead>
         <tr>

@@ -31,6 +31,9 @@ class ComputerController extends Controller
     public function searchComputer(Request $request)
     {
         if ($request->ajax()) {
+            if ($request->query('filterWithoutWorker')) {
+                return $this->computerRepository->computerWithoutWorker();
+            }
             $filtersArray = $this->prepareDataFromAjax($request->query());
             $result = $this->computerRepository->searchComputer($filtersArray);
 

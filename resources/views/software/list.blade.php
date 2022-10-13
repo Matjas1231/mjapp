@@ -6,6 +6,8 @@
 
 @section('content')
 
+@include('shared.showWithoutWorker')
+
 <table class="table table-striped table-hover" id="datatable-table">
     <thead>
         <tr>
@@ -18,7 +20,7 @@
             <th>Akcja</th>
         </tr>
         <tr>
-            <td class="td-padding">{{-- Blank --}}</td>
+            <td class="td-padding"><center>X</center></td>
 
             <td class="td-padding">
                 <input type="text" class="form-control filter" id="filterProd" name="producer"  placeholder="Producent">
@@ -36,9 +38,9 @@
                 <input type="text" class="form-control filter" id="filterName" name="filter" placeholder="Imię lub nazwisko">
             </td>
 
-            <td class="td-padding">{{-- Blank --}}</td>
+            <td class="td-padding"><center>X</center></td>
 
-            <td class="td-padding">{{-- Blank --}}</td>
+            <td class="td-padding"><center>X</center></td>
         </tr>
     </thead>
     <tbody id="resultdatatable" style="display:none"></tbody>

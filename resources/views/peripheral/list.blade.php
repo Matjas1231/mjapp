@@ -6,6 +6,8 @@
 
 @section('content')
 
+@include('shared.showWithoutWorker')
+
 <div id="datatable">
     <table class="table table-striped" id="datatable-table">
         <thead>

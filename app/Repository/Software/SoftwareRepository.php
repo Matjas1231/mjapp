@@ -78,6 +78,11 @@ class SoftwareRepository implements SoftwareRepositoryInterface
         return $softwares->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
     }
 
+    public function softwareWithoutWorker()
+    {
+        return $this->softwareModel->where('worker_id', '=', null)->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
+    }
+
     public function getSoftware(int $id)
     {
         return $this->softwareModel->find($id);

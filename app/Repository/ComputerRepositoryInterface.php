@@ -8,6 +8,7 @@ interface ComputerRepositoryInterface
     public function all();
     public function filterBy(?array $filters);
     public function searchComputer(array $filters);
+    public function computerWithoutWorker();
     public function getComputer(int $id);
     public function computersByType(int $typeId);
     public function storeAndReturnId(array $computerData);

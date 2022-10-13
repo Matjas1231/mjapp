@@ -9,6 +9,7 @@ interface SoftwareRepositoryInterface
     public function all();
     public function filterBy(?array $filters);
     public function searchSoftware(array $filters);
+    public function softwareWithoutWorker();
     public function getSoftware(int $id);
     public function storeAndReturnId(array $peripheralData);
     public function update(array $peripheralData);

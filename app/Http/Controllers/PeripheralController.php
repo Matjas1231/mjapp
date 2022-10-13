@@ -31,6 +31,10 @@ class PeripheralController extends Controller
     public function searchPeripheral(Request $request)
     {
         if ($request->ajax()) {
+            if ($request->query('filterWithoutWorker')) {
+                return $this->peripheralRepository->peripheralWithoutWorker();
+            }
+
             $filtersArray = $this->prepareDataFromAjax($request->query());
             $result = $this->peripheralRepository->searchPeripheral($filtersArray);
 
