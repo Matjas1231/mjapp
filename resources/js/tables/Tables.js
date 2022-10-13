@@ -88,16 +88,16 @@ export class Tables
                 <td>${el.brand}</td>
                 <td>${el.model}</td>`;
 
-                switch (type) {
-                    case ('peripheral' && el.peripheral_type):
+                if (type === 'peripheral' || type === 'computer') {
+                    if (el.peripheral_type) {
                         html += `<td> <a href="${routes.type.replace(':peripheralTypeId', el.peripheral_type.id)}">${el.peripheral_type.type}</a></td>`;
-                        break
-                    case ('computer' && el.computer_type):
+                    }
+
+                    if (el.computer_type) {
                         html += `<td> <a href="${routes.type.replace(':computerTypeId', el.computer_type.id)}">${el.computer_type.type}</a></td>`;
-                        break;
-                    default:
-                        html += `<td>Nieprzypisany typ</td>`;
-                        break;
+                    }
+                } else {
+                    html += `<td>Nieprzypisany typ</td>`;
                 }
 
                 html += `
