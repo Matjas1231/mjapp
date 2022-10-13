@@ -6,26 +6,6 @@
 
 @section('content')
 
-<div class="form-group mb-2">
-    <label for="phrase">Wyszukaj: </label>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterName" name="filter" placeholder="Imię lub nazwisko">
-    </div>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterProd" name="producer"  placeholder="Producent">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterNa" name="name" placeholder="Nazwa">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterSn" name="serialnumber" placeholder="Numer seryjny">
-    </div>
-</div>
-
 <table class="table table-striped table-hover" id="datatable-table">
     <thead>
         <tr>
@@ -37,8 +17,33 @@
             <th>Data ważności</th>
             <th>Akcja</th>
         </tr>
+        <tr>
+            <td class="td-padding">{{-- Blank --}}</td>
+
+            <td class="td-padding">
+                <input type="text" class="form-control filter" id="filterProd" name="producer"  placeholder="Producent">
+            </td>
+
+            <td class="td-padding">
+                <input type="text" class="form-control filter" id="filterNa" name="name" placeholder="Nazwa">
+            </td>
+
+            <td class="td-padding">
+                <input type="text" class="form-control filter" id="filterSn" name="serialnumber" placeholder="Numer seryjny">
+            </td>
+
+            <td class="td-padding">
+                <input type="text" class="form-control filter" id="filterName" name="filter" placeholder="Imię lub nazwisko">
+            </td>
+
+            <td class="td-padding">{{-- Blank --}}</td>
+
+            <td class="td-padding">{{-- Blank --}}</td>
+        </tr>
     </thead>
-    <tbody>
+    <tbody id="resultdatatable" style="display:none"></tbody>
+
+    <tbody id="datatable-rows">
         @foreach ($softwares as $software)
             <tr>
                 <td>{{ $software->id }}</td>
@@ -59,8 +64,6 @@
     </tbody>
 </table>
 <div id="paginateLinks">{{ $softwares->links() }}</div>
-
-<div id="resultdatatable" style="display:none"></div>
 
 @endsection
 

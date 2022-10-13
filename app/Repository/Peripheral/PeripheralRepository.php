@@ -88,9 +88,9 @@ class PeripheralRepository implements PeripheralRepositoryInterface
             });
         }
 
-        if (!is_null($filters['filterPeripheralType'])) {
+        if (!is_null($filters['filterType'])) {
             $peripheral->whereHas('peripheralType', function ($q) use($filters) {
-                $q->where('type', 'LIKE', "%{$filters['filterPeripheralType']}%");
+                $q->where('type', 'LIKE', "%{$filters['filterType']}%");
             });
         }
 

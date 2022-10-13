@@ -5,7 +5,7 @@ window.Search = class Search
     constructor(path, routes) {
         this.path = path;
         this.routes = routes;
-        this.table = document.querySelector('#datatable-table');
+        this.table = document.querySelector('#datatable-rows');
         this.paginateLinks = document.querySelector('#paginateLinks') ?? document.createElement('div', {'id': 'paginateLinks'});
         this.resultTablePlace = document.querySelector('#resultdatatable');
         this.filters = document.querySelectorAll('.filter');
@@ -50,7 +50,7 @@ window.Search = class Search
     }
 
     sendData(data) {
-        fetch(`${this.path}?${this.prepareDataToSend(data)}`, {
+        fetch(`${this.path}?${this.#prepareDataToSend(data)}`, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -93,13 +93,13 @@ window.Search = class Search
                     break;
             }
         } else {
-            this.resultTable = `<center class="font-weight-bold mt-3">Brak wyników</center>`;
+            this.resultTable = `<tr class="font-weight-bold mt-3"><td colspan="100%"><center>Brak wyników</center></td></tr>`;
         }
 
         this.resultTablePlace.innerHTML = this.resultTable;
     }
 
-    prepareDataToSend(dataToCode) {
+    #prepareDataToSend(dataToCode) {
         const dataPart = [];
         for (let key in dataToCode)dataPart.push(encodeURIComponent(key) + "=" + encodeURIComponent(dataToCode[key]));
 

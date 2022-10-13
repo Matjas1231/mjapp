@@ -5,40 +5,6 @@
 
 @section('content')
 
-<div class="form-group mb-2">
-    <label for="phrase">Wyszukaj: </label>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="filter" id="filterName" placeholder="Imię lub nazwisko">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="computertype" id="filterComputerType" placeholder="Typ">
-    </div>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="brand" id="filterBrand"  placeholder="Marka">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="model" id="filterModel"  placeholder="Model">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="serialnumber" id="filterSerialNumber" placeholder="Numer seryjny">
-    </div>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="ipaddress" id="filterIpAddress" placeholder="Adres IP">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="macaddress" id="filterMacAddress" placeholder="Adres MAC">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" name="computername" id="filterNetworkName" placeholder="Nazwa sieciowa komputera">
-    </div>
-</div>
-
 <table class="table table-striped" id="datatable-table">
     <thead>
         <tr>
@@ -53,8 +19,12 @@
             <th>Pracownik</th>
             <th>Akcja</th>
         </tr>
+        @include('shared.searchPeripheralAndComputerForm')
     </thead>
-    <tbody>
+
+    <tbody id="resultdatatable" style="display: none"></tbody>
+
+    <tbody id="datatable-rows">
         @foreach ($computers as $computer)
         <tr>
             <td>{{ $computer->id }}</td>
@@ -86,8 +56,6 @@
     </tbody>
 </table>
 <div id="paginateLinks">{{ $computers->links() }}</div>
-
-<div id="resultdatatable" style="display:none"></div>
 
 @endsection
 

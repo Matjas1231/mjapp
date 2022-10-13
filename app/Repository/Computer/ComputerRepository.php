@@ -82,9 +82,9 @@ class ComputerRepository implements ComputerRepositoryInterface
             });
         }
 
-        if (!is_null($filters['filterComputerType'])) {
+        if (!is_null($filters['filterType'])) {
             $computer->whereHas('computerType', function ($q) use($filters) {
-                $q->where('type', 'LIKE', "%{$filters['filterComputerType']}%");
+                $q->where('type', 'LIKE', "%{$filters['filterType']}%");
             });
         }
 

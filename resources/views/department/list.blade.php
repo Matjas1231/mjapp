@@ -29,7 +29,8 @@
                 <th>Akcja</th>
             </tr>
         </thead>
-        <tbody id="departmentTableBody">
+        <tbody id="resultdatatable"></tbody>
+        <tbody id="datatable-rows">
             @foreach ($departments as $department)
                 <tr>
                     <td>{{ $department->id }}</td>
@@ -43,7 +44,7 @@
         </tbody>
     </table>
 </div>
-<div id="resultdatatable"></div>
+
 @endsection
 
 @section('javascript')

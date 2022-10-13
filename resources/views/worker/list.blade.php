@@ -23,14 +23,16 @@
     <table class="table table-striped table-hover" id="datatable-table">
         <thead>
             <tr>
-                    <th>ID</th>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Dział</th>
-                    <th>Telefon</th>
-                    <th>Akcja</th>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Dział</th>
+                <th>Telefon</th>
+                <th>Akcja</th>
             </tr>
         </thead>
+        <tbody id="resultdatatable" style="display:none"></tbody>
+
         <tbody id="datatable-rows">
             @foreach ($workers as $worker)
                 <tr>
@@ -53,8 +55,6 @@
         </tbody>
     </table>
     <div id="paginateLinks">{{ $workers->links() }}</div>
-
-    <div id="resultdatatable" style="display:none"></div>
 </div>
 
 @endsection

@@ -6,40 +6,6 @@
 
 @section('content')
 
-<div class="form-group mb-2">
-    <label for="phrase">Wyszukaj: </label>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterName" name="filter" placeholder="Imię lub nazwisko">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterPeripheralType" name="peripheraltype" placeholder="Typ">
-    </div>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterBrand" name="brand" placeholder="Marka">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterModel" name="model" placeholder="Model">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterSerialNumber" name="serialnumber" placeholder="Numer seryjny">
-    </div>
-</div>
-<div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterIpAddress" name="ipaddress" placeholder="Adres IP">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterMacAddress" name="macaddress" placeholder="Adres MAC">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterNetworkName" name="networkname" placeholder="Nazwa sieciowa urządzenia">
-    </div>
-</div>
-
 <div id="datatable">
     <table class="table table-striped" id="datatable-table">
         <thead>
@@ -55,7 +21,10 @@
                 <th>Pracownik</th>
                 <th>Akcja</th>
             </tr>
+            @include('shared.searchPeripheralAndComputerForm')
         </thead>
+        <tbody id="resultdatatable" style="display: none"></tbody>
+
         <tbody id="datatable-rows">
             @foreach ($peripherals as $peripheral)
                 <tr>
@@ -89,9 +58,7 @@
     </table>
 </div>
 
-    <div id="paginateLinks">{{ $peripherals->links() }}</div>
-
-    <div id="resultdatatable" style="display:none"></div>
+<div id="paginateLinks">{{ $peripherals->links() }}</div>
 @endsection
 
 @section('javascript')

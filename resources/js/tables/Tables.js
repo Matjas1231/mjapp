@@ -16,23 +16,7 @@ export class Tables
             `
         });
 
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Dział</th>
-                    <th>Telefon</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
+        return html;
     }
 
     static softwareTable(jsonData, routes) {
@@ -58,24 +42,7 @@ export class Tables
             `;
         });
 
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Producent</th>
-                    <th>Nazwa</th>
-                    <th>Numer seryjny</th>
-                    <th>Pracownik</th>
-                    <th>Data ważności</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
+        return html;
     }
 
     static peripheralAndComputerTable(jsonData, routes, type) {
@@ -125,28 +92,7 @@ export class Tables
             html += `</tr>`;
         });
 
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Marka</th>
-                    <th>Model</th>
-                    <th>Typ</th>
-                    <th>Adres IP</th>
-                    <th>Adres MAC</th>
-                    <th>Nazwa siec.</th>
-
-                    <th>Numer seryjny</th>
-                    <th>Pracownik</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
+        return html;
     }
 
     static simpleTable(jsonData, routes, type) {
@@ -174,19 +120,6 @@ export class Tables
             `;
         });
 
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nazwa</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
+        return html;
     }
 }
