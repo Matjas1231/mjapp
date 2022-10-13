@@ -20,6 +20,11 @@ class ComputerTypeRepository implements ComputerTypeRepositoryInterface
         return $this->computerTypeModel->all();
     }
 
+    public function searchComputerType(array $filters)
+    {
+        return $this->computerTypeModel->where('type', 'LIKE', "%{$filters['filterName']}%")->get(['id', 'type as name'])->toArray();
+    }
+
     public function store(array $computerTypeData)
     {
         $computerType = $this->computerTypeModel->newInstance();

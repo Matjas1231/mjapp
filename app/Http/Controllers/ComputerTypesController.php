@@ -22,6 +22,16 @@ class ComputerTypesController extends Controller
         return view('computer.types.listType', ['computerTypes' => $this->computerTypeRepository->all()]);
     }
 
+    public function searchComputerType(Request $request)
+    {
+        if ($request->ajax()) {
+            $filtersArray = $this->prepareDataFromAjax($request->query());
+            $result = $this->computerTypeRepository->searchComputerType($filtersArray);
+
+            return response()->json($result);
+        }
+    }
+
 
     public function edit(int $computerTypeId)
     {

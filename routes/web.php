@@ -76,6 +76,7 @@ Route::group([
         'as' => 'computer.type.'
     ], function () {
         Route::get('/', [ComputerTypesController::class, 'list'])->name('list');
+        Route::get('/searchcomputertype', [ComputerTypesController::class, 'searchComputerType'])->name('searchComputerType');
 
         Route::get('/{computerTypeId}/edit', [ComputerTypesController::class, 'edit'])->name('edit');
         Route::post('/update', [ComputerTypesController::class, 'update'])->name('update');

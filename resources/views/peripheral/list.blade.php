@@ -25,7 +25,7 @@
         <input type="text" class="form-control filter" id="filterModel" name="model" placeholder="Model">
     </div>
     <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterSn" name="serialnumber" placeholder="Numer seryjny">
+        <input type="text" class="form-control filter" id="filterSerialNumber" name="serialnumber" placeholder="Numer seryjny">
     </div>
 </div>
 <div class="form-inline">
@@ -44,14 +44,14 @@
     <table class="table table-striped" id="datatable-table">
         <thead>
             <tr>
-                <th>Lp.</th>
+                <th>ID</th>
                 <th>Marka</th>
                 <th>Model</th>
                 <th>Typ</th>
-                <th>Numer seryjny</th>
                 <th>Adres IP</th>
                 <th>Adres MAC</th>
                 <th>Nazwa siec.</th>
+                <th>Numer seryjny</th>
                 <th>Pracownik</th>
                 <th>Akcja</th>
             </tr>
@@ -59,7 +59,7 @@
         <tbody id="datatable-rows">
             @foreach ($peripherals as $peripheral)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $peripheral->id }}</td>
                     <td>{{ $peripheral->brand }}</td>
                     <td>{{ $peripheral->model }}</td>
                     <td>
@@ -69,10 +69,10 @@
                             Nieprzypisany typ
                         @endif
                     </td>
-                    <td>{{ $peripheral->serial_number }}</td>
                     <td>{{ $peripheral->ip_address }}</td>
                     <td>{{ $peripheral->mac_address }}</td>
                     <td>{{ $peripheral->network_name }}</td>
+                    <td>{{ $peripheral->serial_number }}</td>
                     <td>
                         @if (!is_null($peripheral->worker_id))
                             <a href="{{ route('worker.show', ['workerId' => $peripheral->worker_id]) }}">{{ $peripheral->worker->fullname() }}</a>

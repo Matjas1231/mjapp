@@ -96,7 +96,7 @@ class PeripheralRepository implements PeripheralRepositoryInterface
 
         if (!is_null($filters['filterBrand'])) $peripheral->where('brand', 'LIKE', "%{$filters['filterBrand']}%");
         if (!is_null($filters['filterModel'])) $peripheral->where('model', 'LIKE', "%{$filters['filterModel']}%");
-        if (!is_null($filters['filterSn'])) $peripheral->where('serial_number', 'LIKE', "%{$filters['filterSn']}%");
+        if (!is_null($filters['filterSerialNumber'])) $peripheral->where('serial_number', 'LIKE', "%{$filters['filterSerialNumber']}%");
         if (!is_null($filters['filterIpAddress'])) $peripheral->where('ip_address', 'LIKE', "%{$filters['filterIpAddress']}%");
         if (!is_null($filters['filterMacAddress'])) $peripheral->where('mac_address', 'LIKE', "%{$filters['filterMacAddress']}%");
         if (!is_null($filters['filterNetworkName'])) $peripheral->where('network_name', 'LIKE', "%{$filters['filterNetworkName']}%");
