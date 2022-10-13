@@ -94,6 +94,9 @@ window.Search = class Search
                 case '/peripherals':
                     this.resultTable = Tables.peripheralAndComputerTable(jsonData, this.routes, 'peripheral');
                     break;
+                case '/peripherals/types':
+                    this.resultTable = Tables.simpleTable(jsonData, this.routes, 'peripheralType');
+                    break;
             }
         } else {
             this.resultTable = `<tr class="font-weight-bold mt-3"><td colspan="100%"><center>Brak wyników</center></td></tr>`;

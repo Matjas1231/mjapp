@@ -105,14 +105,19 @@ export class Tables
                 <td>${el.name}</td>
                 <td>`;
 
-                if (type === 'department') {
-                    html +=`<a href="${routes.edit.replace(':departmentId', el.id)}" class="btn btn-primary">Edytuj</a>
-                    <a href="${routes.delete.replace(':departmentId', el.id)}" class="btn btn-danger">Usuń</a>`;
-                }
-
-                if (type === 'computerType') {
-                    html +=`<a href="${routes.edit.replace(':computerTypeId', el.id)}" class="btn btn-primary">Edytuj</a>
-                    <a href="${routes.delete.replace(':computerTypeId', el.id)}" class="btn btn-danger">Usuń</a>`;
+                switch (type) {
+                    case 'department':
+                        html +=`<a href="${routes.edit.replace(':departmentId', el.id)}" class="btn btn-primary">Edytuj</a>
+                        <a href="${routes.delete.replace(':departmentId', el.id)}" class="btn btn-danger">Usuń</a>`;
+                        break;
+                    case 'computerType':
+                        html +=`<a href="${routes.edit.replace(':computerTypeId', el.id)}" class="btn btn-primary">Edytuj</a>
+                        <a href="${routes.delete.replace(':computerTypeId', el.id)}" class="btn btn-danger">Usuń</a>`;
+                        break;
+                    case 'peripheralType':
+                        html +=`<a href="${routes.edit.replace(':peripheralTypeId', el.id)}" class="btn btn-primary">Edytuj</a>
+                        <a href="${routes.delete.replace(':peripheralTypeId', el.id)}" class="btn btn-danger">Usuń</a>`;
+                        break;
                 }
 
             html += `</td>

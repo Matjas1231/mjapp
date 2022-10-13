@@ -20,6 +20,11 @@ class PeripheralTypeRepository implements PeripheralTypeRepositoryInterface
         return $this->peripheralTypeModel->get();
     }
 
+    public function searchPeripheralType(array $filters)
+    {
+        return $this->peripheralTypeModel->where('type', 'LIKE', "%{$filters['filterName']}%")->get(['id', 'type as name'])->toArray();
+    }
+
     public function getSingle(int $id)
     {
         return $this->peripheralTypeModel->find($id);

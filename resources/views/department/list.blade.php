@@ -11,14 +11,7 @@
     <div id="hiddenDiv" style="width: 225px" class="bg-success text-white show-message hide-in" hidden>Dodano dział</div>
 </div>
 
-<div class="form-inline" id="filterForm">
-    <div class="form-group mb-2">
-        <label for="phrase">Wyszukaj: </label>
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterDep" placeholder="Nazwa">
-    </div>
-</div>
+@include('shared.simpleSearch')
 
 <div id="datatable">
     <table class="table table-striped" id="datatable-table">
@@ -29,7 +22,8 @@
                 <th>Akcja</th>
             </tr>
         </thead>
-        <tbody id="resultdatatable"></tbody>
+        <tbody id="resultdatatable" style="display: none;"></tbody>
+
         <tbody id="datatable-rows">
             @foreach ($departments as $department)
                 <tr>

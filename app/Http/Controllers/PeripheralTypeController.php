@@ -23,6 +23,16 @@ class PeripheralTypeController extends Controller
         ]);
     }
 
+    public function searchPeripheralType(Request $request)
+    {
+        if ($request->ajax()) {
+            $filtersArray = $this->prepareDataFromAjax($request->query());
+            $result = $this->peripheralTypeRepository->searchPeripheralType($filtersArray);
+
+            return response()->json($result);
+        }
+    }
+
     public function edit(int $typeId)
     {
         return view('peripheral.types.editType', [

@@ -9,14 +9,7 @@
 
 @section('content')
 
-<div class="form-inline" id="filterForm">
-    <div class="form-group mb-2">
-        <label for="phrase">Wyszukaj: </label>
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <input type="text" class="form-control filter" id="filterName" placeholder="Nazwa">
-    </div>
-</div>
+@include('shared.simpleSearch')
 
 <div id="datatable">
     <table class="table table-striped" id="datatable-table">
@@ -27,21 +20,21 @@
                 <th>Akcja</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="resultdatatable" style="display: none;"></tbody>
+
+        <tbody id="datatable-rows">
             @foreach ($computerTypes as $computerType)
                 <tr>
                     <td>{{ $computerType->id }}</td>
                     <td>{{ $computerType->type }}</td>
                     <td>
-                            <a href="{{ route('computer.type.edit', ['computerTypeId' => $computerType->id]) }}" class="btn btn-primary">Edycja</a>
-                            <a href="{{ route('computer.type.delete', ['computerTypeId' => $computerType->id]) }}" class="btn btn-danger">Usuń</a>
+                        <a href="{{ route('computer.type.edit', ['computerTypeId' => $computerType->id]) }}" class="btn btn-primary">Edycja</a>
+                        <a href="{{ route('computer.type.delete', ['computerTypeId' => $computerType->id]) }}" class="btn btn-danger">Usuń</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-
-    <div id="resultdatatable"></div>
 </div>
 
 @endsection

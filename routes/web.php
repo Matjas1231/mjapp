@@ -150,6 +150,7 @@ Route::group([
         'as' => 'peripheral.type.'
     ], function () {
         Route::get('/', [PeripheralTypeController::class, 'list'])->name('list');
+        Route::get('/searchperipheraltype', [PeripheralTypeController::class, 'searchPeripheralType'])->name('searchPeripheralType');
 
         Route::get('/{peripheralTypeId}/edit', [PeripheralTypeController::class, 'edit'])->name('edit');
         Route::get('/update', [PeripheralTypeController::class, 'update'])->name('update');

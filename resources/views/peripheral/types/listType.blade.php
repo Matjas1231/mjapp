@@ -10,7 +10,10 @@
 
 @section('content')
 
-    <table class="table table-striped">
+@include('shared.simpleSearch')
+
+<div id="datatable">
+    <table class="table table-striped" id="datatable-table">
         <thead>
             <tr>
                 <th>Lp.</th>
@@ -18,7 +21,8 @@
                 <th>Akcja</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="resultdatatable" style="display: none;"></tbody>
+        <tbody id="datatable-rows">
             @foreach ($peripheralTypes as $type)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -31,5 +35,15 @@
             @endforeach
         </tbody>
     </table>
+</div>
 
+@endsection
+
+@section('javascript')
+    <script>
+        new Search("{{ route('peripheral.type.searchPeripheralType') }}", {
+            edit: "{{ route('peripheral.type.edit', ['peripheralTypeId' => ':peripheralTypeId']) }}",
+            delete: "{{ route('peripheral.type.delete', ['peripheralTypeId' => ':peripheralTypeId']) }}"
+        });
+    </script>
 @endsection

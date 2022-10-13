@@ -25,8 +25,8 @@ class DepartmentController extends Controller
     public function searchDepartment(Request $request)
     {
         if ($request->ajax()) {
-            $filterDep = $request->query('filterDep');
-            $result = $this->departmentRepository->departmentSearch($filterDep);
+            $filtersArray = $this->prepareDataFromAjax($request->query());
+            $result = $this->departmentRepository->departmentSearch($filtersArray);
 
             return response()->json($result);
         }

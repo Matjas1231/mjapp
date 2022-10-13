@@ -19,9 +19,9 @@ class DepartmentRepository implements DepartmentRepositoryInterface
         return $this->departmentModel->all();
     }
 
-    public function departmentSearch(?string $filterDep = null)
+    public function departmentSearch(array $filters)
     {
-        return $this->departmentModel->where('name', 'LIKE', "%$filterDep%")->get(['id', 'name'])->toArray();
+        return $this->departmentModel->where('name', 'LIKE', "%{$filters['filterName']}%")->get(['id', 'name'])->toArray();
     }
 
     public function storeAndReturnId(array $deparmentData)
