@@ -1,7 +1,7 @@
 
 
 <tr>
-    <td class="td-padding">{{-- Blank --}}</td>
+    <td class="td-padding">X</td>
 
     <td class="td-padding">
         <input type="text" class="form-control input-sm filter" id="filterBrand"  placeholder="Marka">
@@ -35,5 +35,5 @@
         <input type="text" class="form-control input-sm filter" id="filterName"  placeholder="Pracownik">
     </td>
 
-    <td class="td-padding">{{-- Blank --}}</td>
+    <td class="td-padding">X</td>
 </tr>

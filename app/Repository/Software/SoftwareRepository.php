@@ -59,28 +59,32 @@ class SoftwareRepository implements SoftwareRepositoryInterface
 
     public function searchSoftware(array $filters)
     {
-        $softwares = $this->softwareModel->query();
+        $software = $this->softwareModel->query();
 
         if (!is_null($filters['filterName'])) {
-            $softwares->whereHas('worker', function ($q) use($filters) {
+            $software->whereHas('worker', function ($q) use($filters) {
                 $q->where(DB::raw('("name" || " " || "surname")'), 'LIKE', "%{$filters['filterName']}%");
             });
         }
 
-        if (!is_null($filters['filterProd'])) $softwares->where('producer', 'LIKE', "%{$filters['filterProd']}%");
-        if (!is_null($filters['filterNa'])) $softwares->where('name', 'LIKE', "%{$filters['filterNa']}%");
-        if (!is_null($filters['filterSn'])) $softwares->where('serial_number', 'LIKE', "%{$filters['filterSn']}%");
+        if (!is_null($filters['filterProd'])) $software->where('producer', 'LIKE', "%{$filters['filterProd']}%");
+        if (!is_null($filters['filterNa'])) $software->where('name', 'LIKE', "%{$filters['filterNa']}%");
+        if (!is_null($filters['filterSn'])) $software->where('serial_number', 'LIKE', "%{$filters['filterSn']}%");
 
-        $softwares->with('worker', function ($q) {
+        $software->with('worker', function ($q) {
             $q->select(['id', 'name', 'surname']);
         });
 
-        return $softwares->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
+        return $software->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
     }
 
     public function softwareWithoutWorker()
     {
-        return $this->softwareModel->where('worker_id', '=', null)->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
+        $software = $this->softwareModel->query();
+        $software->where('worker_id', '=', null)
+                ->with('worker', fn ($q) => $q->select(['id', 'name', 'surname']));
+
+        return $software->get(['id', 'producer', 'name', 'serial_number', 'expiry_date', 'worker_id'])->toArray();
     }
 
     public function getSoftware(int $id)
