@@ -1,3 +1,5 @@
+import { Tables } from "./tables/Tables";
+
 window.Search = class Search
 {
     constructor(path, routes) {
@@ -30,8 +32,12 @@ window.Search = class Search
 
                 clearTimeout(timer);
                 setTimeout(() => {
+                    let send = false;
                     data[filter.id] = filter.value
-                    if (data[filter.id]) {
+
+                    for (const [k, v] of Object.entries(data)) if (v) send = true;
+
+                    if (send) {
                         this.sendData(data);
                     } else {
                         this.resultTablePlace.style.display = 'none';
@@ -68,19 +74,22 @@ window.Search = class Search
         if (jsonData.length > 0) {
             switch (location.pathname) {
                 case '/workers':
-                    this.resultTable = this.workerTable(jsonData);
+                    this.resultTable = Tables.workerTable(jsonData, this.routes);
                     break;
                 case '/departments':
-                    this.resultTable = this.deparmentTable(jsonData);
+                    this.resultTable = Tables.simpleTable(jsonData, this.routes, 'department');
                     break;
                 case '/softwares':
-                    this.resultTable = this.softwareTable(jsonData);
+                    this.resultTable = Tables.softwareTable(jsonData, this.routes);
                     break;
                 case '/computers':
-                    this.resultTable = this.computerTable(jsonData);
+                    this.resultTable = Tables.peripheralAndComputerTable(jsonData, this.routes, 'computer');
+                    break;
+                case '/computers/types':
+                    this.resultTable = Tables.simpleTable(jsonData, this.routes, 'computerType');
                     break;
                 case '/peripherals':
-                    this.resultTable = this.peripheralTable(jsonData);
+                    this.resultTable = Tables.peripheralAndComputerTable(jsonData, this.routes, 'peripheral');
                     break;
             }
         } else {
@@ -90,226 +99,10 @@ window.Search = class Search
         this.resultTablePlace.innerHTML = this.resultTable;
     }
 
-    workerTable(jsonData) {
-        let html = '';
-
-        jsonData.forEach(el => {
-            html += `
-            <tr>
-                <td>${el.id}</td>
-                <td>${el.name}</td>
-                <td>${el.surname}</td>
-                <td>${el.department ? el.department.name : ''}</td>
-                <td>${el.phone}</td>
-                <td><a href="${this.routes.details.replace(':wokerId', el.id)}">Szczegóły</a></td>
-            </tr>
-            `
-        });
-
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Dział</th>
-                    <th>Telefon</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
-    }
-
-    deparmentTable(jsonData) {
-        let html = '';
-
-        jsonData.forEach(el => {
-            html += `
-            <tr>
-                <td>${el.id}</td>
-                <td>${el.name}</td>
-                <td>
-                <a href="${this.routes.edit.replace(':departmentId', el.id)}" class="btn btn-primary">Edytuj</a>
-                <a href="${this.routes.delete.replace(':departmentId', el.id)}" class="btn btn-danger">Usuń</a>
-                </td>
-            </tr>
-            `
-        });
-
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nazwa</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
-    }
-
-    softwareTable(jsonData) {
-        let html = '';
-
-        jsonData.forEach(el => {
-            html += `
-            <tr>
-                <td>${el.id}</td>
-                <td>${el.producer}</td>
-                <td>${el.name}</td>
-                <td>${el.serial_number}</td>`;
-
-                if (el.worker) {
-                    html += `<td><a href="${this.routes.worker.replace(':workerId', el.worker_id)}">${el.worker.name} ${el.worker.surname}</a></td>`
-                } else {
-                    html += '<td>Brak pracownika</td>';
-                }
-
-                html += `<td>${el.expiry_date}</td>
-                <td><a href="${this.routes.details.replace(':softwareId', el.id)}">Szczegóły</a></td>
-            </tr>
-            `;
-        });
-
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Producent</th>
-                    <th>Nazwa</th>
-                    <th>Numer seryjny</th>
-                    <th>Pracownik</th>
-                    <th>Data ważności</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
-    }
-
-    computerTable(jsonData) {
-        let html = '';
-
-        jsonData.forEach(el => {
-            html += `
-            <tr>
-                <td>${el.id}</td>
-                <td>${el.brand}</td>
-                <td>${el.model}</td>
-                <td>${el.computer_type.type}</td>
-                <td>${el.ip_address}</td>
-                <td>${el.mac_address}</td>
-                <td>${el.computer_name}</td>
-                <td>${el.serial_number}</td>`;
-
-                if (el.worker) {
-                    html += `<td><a href="${this.routes.worker.replace(':workerId', el.worker_id)}">${el.worker.name} ${el.worker.surname}</a></td>`
-                } else {
-                    html += '<td>Brak pracownika</td>';
-                }
-
-                `<td><a href="${this.routes.details.replace(':computerId', el.id)}">Szczegóły</a></td>
-            </tr>
-            `;
-        });
-
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Marka</th>
-                    <th>Model</th>
-                    <th>Typ</th>
-                    <th>Adres IP</th>
-                    <th>Adres MAC</th>
-                    <th>Nazwa siec.</th>
-                    <th>Numer seryjny</th>
-                    <th>Pracownik</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
-    }
-
-    peripheralTable(jsonData) {
-        let html = '';
-
-        jsonData.forEach(el => {
-            html += `
-            <tr>
-                <td>${el.id}</td>
-                <td>${el.brand}</td>
-                <td>${el.model}</td>`;
-
-                if (el.peripheral_type) {
-                    html += `<td><a href="${this.routes.worker.replace(':peripheralTypeId', el.peripheral_type.id)}">${el.peripheral_type.type}</a></td>`
-                } else {
-                    html += `<td>Nieprzypisany typ</td>`;
-                }
-
-                html += `<td>${el.serial_number}</td>
-                <td>${el.ip_address}</td>
-                <td>${el.mac_address}</td>
-                <td>${el.network_name}</td>
-                `;
-
-                if (el.worker) {
-                    html += `<td><a href="${this.routes.worker.replace(':workerId', el.worker_id)}">${el.worker.name} ${el.worker.surname}</a></td>`;
-                } else {
-                    html += '<td>Brak pracownika</td>';
-                }
-
-                html += `<td><a href="${this.routes.details.replace(':peripheralId', el.id)}">Szczegóły</a></td>
-            </tr>
-            `;
-        });
-
-        return `
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Marka</th>
-                    <th>Model</th>
-                    <th>Typ</th>
-                    <th>Numer seryjny</th>
-                    <th>Adres IP</th>
-                    <th>Adres MAC</th>
-                    <th>Nazwa siec.</th>
-                    <th>Pracownik</th>
-                    <th>Akcja</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${html}
-            </tbody>
-        </table>
-        `;
-    }
-
     prepareDataToSend(dataToCode) {
         const dataPart = [];
         for (let key in dataToCode)dataPart.push(encodeURIComponent(key) + "=" + encodeURIComponent(dataToCode[key]));
 
         return dataPart.join("&").replace(/%20/g, "+");
     }
-
 }
