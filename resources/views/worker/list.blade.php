@@ -43,7 +43,7 @@
                         @if (!is_null($worker->department_id))
                             <a href="{{ route('department.edit', ['departmentId' => $worker->department_id]) }}">{{ $worker->department->name }}</a>
                         @else
-                            Brak pracownika
+                            Brak działu
                         @endif
                     </td>
                     <td>{{ $worker->phone }}</td>
