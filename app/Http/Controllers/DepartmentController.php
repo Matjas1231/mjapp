@@ -28,6 +28,8 @@ class DepartmentController extends Controller
             $filtersArray = $this->prepareDataFromAjax($request->query());
             $result = $this->departmentRepository->departmentSearch($filtersArray);
 
+            if (!$result) return response()->json(['message' => 'empty']);
+
             return response()->json($result);
         }
     }

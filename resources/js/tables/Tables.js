@@ -2,14 +2,14 @@ export class Tables
 {
     static workerTable(jsonData, routes) {
         let html = '';
-
+        console.log(jsonData);
         jsonData.forEach(el => {
             html += `
             <tr>
                 <td>${el.id}</td>
                 <td>${el.name}</td>
                 <td>${el.surname}</td>
-                <td>${el.department ? el.department.name : ''}</td>
+                <td>${el.department ? el.department.name : 'Brak działu'}</td>
                 <td>${el.phone}</td>
                 <td><a href="${routes.details.replace(':wokerId', el.id)}">Szczegóły</a></td>
             </tr>

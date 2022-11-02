@@ -29,12 +29,14 @@ class SoftwareController extends Controller
     {
         if ($request->ajax()) {
             if ($request->query('filterWithoutWorker')) {
-                return $this->softwareRepository->softwareWithoutWorker();
+                $result = $this->softwareRepository->softwareWithoutWorker();
+                if (!$result) return response()->json(['message' => 'empty']);
+                return $result;
             }
 
             $filtersArray = $this->prepareDataFromAjax($request->query());
-
             $result = $this->softwareRepository->searchSoftware($filtersArray);
+            if (!$result) return response()->json(['message' => 'empty']);
 
             return response()->json($result);
         }
