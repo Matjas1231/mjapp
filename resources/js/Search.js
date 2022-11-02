@@ -102,7 +102,6 @@ window.Search = class Search
     }
 
     noResultTable() {
-        console.log('no result');
         this.hideTable();
         let res = document.querySelector('#resultTableRow') ?? null;
 
@@ -116,7 +115,7 @@ window.Search = class Search
         let data = { filterWithoutWorker: false };
         this.withoutWorker.addEventListener('click', e => {
             data = { filterWithoutWorker: this.withoutWorker.checked }
-            console.log(data);
+
             if (this.withoutWorker.checked) {
                 this.sendData(data);
             } else {
