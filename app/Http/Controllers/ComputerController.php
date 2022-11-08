@@ -32,11 +32,13 @@ class ComputerController extends Controller
     {
         if ($request->ajax()) {
             if ($request->query('filterWithoutWorker')) {
-                return $this->computerRepository->computerWithoutWorker();
+                $result = $this->computerRepository->computerWithoutWorker();
+                if (!$result) return response()->json(['message' => 'empty']);
+                return $result;
             }
+
             $filtersArray = $this->prepareDataFromAjax($request->query());
             $result = $this->computerRepository->searchComputer($filtersArray);
-
             if (!$result) return response()->json(['message' => 'empty']);
 
             return response()->json($result);
