@@ -1,13 +1,12 @@
 @extends('layouts.layout')
 @section('title', 'Lista typów komputerów')
 
-@section('page-heading')
-    Lista typów komputerów
-    <br>
-    <a href="{{ route('computer.type.create') }}"class="btn btn-primary">Dodaj typ</a>
-@endsection
+@section('page-heading', 'Lista typów komputerów')
 
 @section('content')
+
+@include('shared.messages')
+@include('shared.simpleAdd', ['route' => route('computer.type.store'), 'name' => 'typ komputera'])
 
 @include('shared.simpleSearch')
 

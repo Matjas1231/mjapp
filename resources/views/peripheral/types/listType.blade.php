@@ -2,13 +2,12 @@
 
 @section('title', 'Lista typów urządzeń')
 
-@section('page-heading')
-    Lista typów urządzeń
-    <br>
-    <a href="{{ route('peripheral.type.create') }}" class="btn btn-primary">Dodaj</a>
-@endsection
+@section('page-heading', 'Lista typów urządzeń')
 
 @section('content')
+
+@include('shared.messages')
+@include('shared.simpleAdd', ['route' => route('peripheral.type.store'), 'name' => 'typ urządzenia'])
 
 @include('shared.simpleSearch')
 
