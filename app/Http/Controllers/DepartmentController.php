@@ -36,14 +36,13 @@ class DepartmentController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->ajax()) {
-            $validatedData = $request->validate([
-                'name' => 'string|max:100'
-            ]);
 
-            $departmentId = $this->departmentRepository->storeAndReturnId($validatedData);
-            return response()->json($departmentId);
-        }
+        $validatedData = $request->validate([
+            'name' => 'string|max:100|unique:departments,name'
+        ]);
+
+        $this->departmentRepository->create($validatedData);
+        return redirect()->route('department.list');
     }
 
     public function edit(int $departmentId)
