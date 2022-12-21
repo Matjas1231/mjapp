@@ -2,7 +2,8 @@
 <html lang="pl">
 
 <head>
-    <!-- Google tag (gtag.js) -->
+
+        <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CXGT54N7C"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
