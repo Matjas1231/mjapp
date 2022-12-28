@@ -5,6 +5,7 @@ namespace App\Repository\Computer;
 
 use App\Models\ComputerTypes;
 use App\Repository\ComputerTypeRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class ComputerTypeRepository implements ComputerTypeRepositoryInterface
 {
@@ -49,5 +50,14 @@ class ComputerTypeRepository implements ComputerTypeRepositoryInterface
     {
         $computerType = $this->computerTypeModel->find($computerTypeid);
         return $computerType->delete();
+    }
+
+    public function getAllWithCountedComputers()
+    {
+        return DB::table('computer_types')
+            ->select(['computer_types.type', DB::raw('COUNT(computers.id) as numbersOfComputers')])
+            ->join('computers', 'computer_types.id', '=', 'computers.type_id')
+            ->groupBy('computer_types.type')
+            ->get();
     }
 }

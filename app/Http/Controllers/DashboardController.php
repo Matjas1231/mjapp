@@ -34,15 +34,13 @@ class DashboardController extends Controller
 
     public function dashboard()
     {
-        $departments = $this->departmentRepository->all();
-
         return view('dashboard', [
             'countWorkers' => $this->workerRepository->countWorkers(),
-            'countDepartments' => $departments->count(),
-            'departments' => $departments,
+            'countDepartments' => $this->departmentRepository->all()->count(),
+            'departmentsWithCountedWorkers' => $this->departmentRepository->getAllWithCountedWorkers(),
             'countComputers' => $this->computerRepository->countComputers(),
-            'computerTypes' => $this->computerTypeRepository->all(),
-            'peripheralTypes' => $this->peripheralTypeRepository->all(),
+            'computerTypesWithCountedComputers' => $this->computerTypeRepository->getAllWithCountedComputers(),
+            'peripheralTypesWithCountedDevices' => $this->peripheralTypeRepository->getAllWithCountedDevices(),
             'countSoftwares' => $this->softwareRepository->countSoftwares(),
             'lastCurrencyDownload' => $this->currencyRepository->getlatest(),
         ]);

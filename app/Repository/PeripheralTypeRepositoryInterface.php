@@ -11,4 +11,5 @@ interface PeripheralTypeRepositoryInterface
     public function store(array $peripheralData);
     public function update(array $peripheralData);
     public function delete(int $id);
+    public function getAllWithCountedDevices();
 }

@@ -111,11 +111,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($departments as $department)
+                            @foreach ($departmentsWithCountedWorkers as $department)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $department->name }}</td>
-                                    <td>{{ $department->workers->count() }}</td>
+                                    <td>{{ $department->numbersOfWorkers }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -134,11 +134,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($computerTypes as $computerType)
+                            @foreach ($computerTypesWithCountedComputers as $computerType)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $computerType->type }}</td>
-                                    <td>{{ $computerType->computers->count() }}</td>
+                                    <td>{{ $computerType->numbersOfComputers }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -157,11 +157,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($peripheralTypes as $peripheralType)
+                            @foreach ($peripheralTypesWithCountedDevices as $peripheralType)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $peripheralType->type }}</td>
-                                    <td>{{ $peripheralType->peripherals->count() }}</td>
+                                    <td>{{ $peripheralType->numbersOfDevices }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

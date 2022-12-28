@@ -5,6 +5,7 @@ namespace App\Repository\Department;
 
 use App\Models\Department;
 use App\Repository\DepartmentRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentRepository implements DepartmentRepositoryInterface
 {
@@ -24,12 +25,11 @@ class DepartmentRepository implements DepartmentRepositoryInterface
         return $this->departmentModel->where('name', 'LIKE', "%{$filters['filterName']}%")->get(['id', 'name'])->toArray();
     }
 
-    public function storeAndReturnId(array $deparmentData)
+    public function create(array $deparmentData)
     {
         $department = $this->departmentModel->newInstance();
-        $department->name = $deparmentData['name'];
+        $department->fill($deparmentData);
         $department->save();
-        return $department->id;
     }
 
     public function getSingle(int $id)
@@ -48,5 +48,14 @@ class DepartmentRepository implements DepartmentRepositoryInterface
     {
         $department = $this->departmentModel->find($departmentId);
         return $department->delete();
+    }
+
+    public function getAllWithCountedWorkers()
+    {
+        return DB::table('departments')
+                    ->select(['departments.name', DB::raw('COUNT(workers.id) as numbersOfWorkers')])
+                    ->join('workers', 'departments.id', '=', 'workers.department_id')
+                    ->groupBy('departments.name')
+                    ->get();
     }
 }

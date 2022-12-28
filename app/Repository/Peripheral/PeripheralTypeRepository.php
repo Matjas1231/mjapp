@@ -5,6 +5,7 @@ namespace App\Repository\Peripheral;
 
 use App\Models\PeripheralType;
 use App\Repository\PeripheralTypeRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class PeripheralTypeRepository implements PeripheralTypeRepositoryInterface
 {
@@ -49,5 +50,14 @@ class PeripheralTypeRepository implements PeripheralTypeRepositoryInterface
     public function delete(int $id)
     {
         return $this->peripheralTypeModel->find($id)->delete();
+    }
+
+    public function getAllWithCountedDevices()
+    {
+        return DB::table('peripheral_types')
+                    ->select(['peripheral_types.type', DB::raw('COUNT(peripherals.id) as numbersOfDevices')])
+                    ->join('peripherals', 'peripheral_types.id', '=', 'peripherals.type_id')
+                    ->groupBy('peripheral_types.type')
+                    ->get();
     }
 }
