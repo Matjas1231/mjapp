@@ -14,6 +14,11 @@
         - ~~Worker~~
         - Dodać wiadomości do walidacji
         - ~~Przerobić podwójne walidatory pod kątem wartości unique (jeśli jest edycja, to należy zmienić tą wartość w tablicy)~~
+1. Repozytoria i modele:
+    - Przerobić / przemyśleć modele i ich repozytoria zgodnie z tym, co jest podane w doctrine (kurs symfony)
+    - Przerobić zapytania (np. na stronie głównej jest 38 zapytań, czy potrzebnie? - porobić customowe zapytania z join)
+1. Generyczne formularze
+1. Zorientować się w wiadomościach flash
 1. ~~Poprawić edycję typów komputera, pokazuje błąd o złym id~~
 1. Podpięcie API:
     - ~~NBP - Pobieranie danych o walutach~~
@@ -26,8 +31,9 @@
         - ~~Wystylować~~
         - ~~Kody kraju na select~~
         - ~~Przerobić wyświetlanie kodów na pętle~~
-1. ~~Wystawienie własnego RESTApi~~
+1. Wystawienie własnego RESTApi
     - ~~Wykorzystać resource~~
+    - Poprawić w przypadku relacji (chyba trzeba utworzyć kolekcję) - https://www.youtube.com/watch?v=L1owEfA9ioc
     - ~~Dodać route w layout~~
 1. Autoryzacja:
     - ~~Uruchomić autoryzację~~
@@ -65,3 +71,4 @@
 1. ~~Implementacja bootstrap icons~~
 1. Ajaxowy notatnik
 1. Przenieść się z webpack na vite
+1. Przejść na tailwind
