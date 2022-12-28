@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Computer;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ComputerResource extends JsonResource
@@ -18,12 +19,7 @@ class ComputerResource extends JsonResource
             'id' => $this->id,
             'brand' => $this->brand,
             'model' => $this->model,
-            'type' => $this->computerType->type,
-            'worker' => [
-                'id' => $this->worker->id,
-                'name' => $this->worker->name,
-                'department' =>$this->worker->department->name
-            ],
+            'type' => $this->computerType->type
         ];
     }
 }
