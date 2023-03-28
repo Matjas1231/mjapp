@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Database\Factories\DepartmentFactory;
+use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +16,14 @@ class DepartmentsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('departments')->truncate();
+        DB::table('departments')->delete();
 
         $factory = new DepartmentFactory(fake()->numberBetween(5,24));
-        $factory->create();
+        try {
+            $factory->create();
+        } catch (Exception $e) {
+            $e;
+        }
+
     }
 }

@@ -15,7 +15,7 @@ class PeripheralTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('peripheral_types')->truncate();
+        DB::table('peripheral_types')->delete();
         $factory = new PeripheralTypeFactory(fake()->numberBetween(3, 15));
 
         $factory->create();

@@ -15,7 +15,7 @@ class ComputerTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('computer_types')->truncate();
+        DB::table('computer_types')->delete();
 
             $computerTypes = [];
 
