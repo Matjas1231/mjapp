@@ -17,7 +17,7 @@ class ComputerController extends Controller
     )
     {
         $this->computerRepository = $computerRepository;
-        $this->computerTypeRepostiory = $computerTypeRepository;
+        $this->computerTypeRepository = $computerTypeRepository;
         $this->workerRepository = $workerRepository;
     }
 
@@ -56,7 +56,7 @@ class ComputerController extends Controller
         return view('computer.edit', [
             'computer' => $this->computerRepository->getComputer($computerId),
             'workers' => $this->workerRepository->allWithoutPaginate(),
-            'types' => $this->computerTypeRepostiory->all(),
+            'types' => $this->computerTypeRepository->all(),
         ]);
     }
 
@@ -72,7 +72,7 @@ class ComputerController extends Controller
     public function create()
     {
         return view('computer.create', [
-                        'types' => $this->computerTypeRepostiory->all(),
+                        'types' => $this->computerTypeRepository->all(),
                         'workers' => $this->workerRepository->all()
                 ]);
     }
