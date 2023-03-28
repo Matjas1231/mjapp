@@ -1,7 +1,6 @@
 # Mjapp
 
 Aplikacja, której początkowym założeniem było usprawnienie zarządzania informacjami opracownikach (tj. w jakim są dziale, jakie mają przypisane do siebie komputery itp.).
-Obecnie trochę się ona rozrosła i jest w ciągłej budowie.
 
 Dane do logowania na konto admnistratora to
 - Login / Email: **admin@admin.pl**
