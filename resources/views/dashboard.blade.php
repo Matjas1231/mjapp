@@ -85,7 +85,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Ostatnia aktualizacja walut</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $lastCurrencyDownload->updated_at }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ !empty($lastCurrencyDownload->updated_at) ? $lastCurrencyDownload->updated_at : 'Jeszcze nie pobrano' }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="bi bi-currency-euro h1"></i>
