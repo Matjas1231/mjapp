@@ -25,8 +25,10 @@ return new class extends Migration
      */
     public function down()
     {
+
         Schema::table('peripherals', function (Blueprint $table) {
-            $table->dropForeign('type_id');
+            $table->dropForeign('peripherals_type_id_foreign');
+            $table->dropColumn('type_id');
         });
     }
 };
