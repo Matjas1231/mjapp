@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\Our\ComputerRestController;
-use App\Http\Resources\ComputerResource;
-use App\Models\Computer;
+use App\Http\Controllers\Api\V1\ComputerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function () {
-    return ComputerResource::collection(Computer::all());
-})->name('api.computers');
+Route::group([
+    'prefix' => 'v1',
+    'controller' => ComputerController::class
+], function () {
+    Route::get('/computers', 'index');
+});

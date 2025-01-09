@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\V1;
 
-use App\Models\Computer;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ComputerResource extends JsonResource
+class WorkerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +16,8 @@ class ComputerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'brand' => $this->brand,
-            'model' => $this->model,
-            'type' => $this->computerType->type
+            'name' => $this->name,
+            'surname' => $this->surname,
         ];
     }
 }

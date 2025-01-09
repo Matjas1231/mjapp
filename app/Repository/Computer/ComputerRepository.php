@@ -65,8 +65,7 @@ class ComputerRepository implements ComputerRepositoryInterface
                 $computername = $filters['computername'];
                 $computers->where('network_name', 'LIKE', "%$computername%")->get();
             }
-
-            return $computers->with('worker' ,'computerType')->paginate(25);
+            return $computers->with('worker' ,'computerType')->get();
         } else {
             return $this->computerModel->with(['worker', 'computerType'])->paginate(25);
         }

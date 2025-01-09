@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class CurrencyController extends Controller
 {
     public function __construct(
-        private CurrencyRepositoryInterface $repository
+        private CurrencyRepositoryInterface $currencyRepositoryInterface
         )
     {
-        $this->currencyRepositoryInterface = $repository;
+        $this->currencyRepositoryInterface = $currencyRepositoryInterface;
     }
 
     public function index(Request $request)
